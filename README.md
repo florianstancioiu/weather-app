@@ -54,6 +54,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ## My process
 
+- **September 8th, 2025:** I created the github repo and I reused the contents of my calculator app solution because setting up React Testing Library to work correctly with Typescript is quite a pain. I created the component structure for the project and I also started working on the mobile version of the design.
+
 ### Built with
 
 - Semantic HTML5 markup
@@ -62,8 +64,10 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- [TypeScript](https://www.typescriptlang.org/) - JavaScript with types
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) - For testing
+- [TailwindCSS](https://tailwindcss.com/) - For styles
+- [Vite](https://vite.dev/) - Build tool
 
 **Note: These are just examples. Delete this note and replace the list above with your own choices**
 
