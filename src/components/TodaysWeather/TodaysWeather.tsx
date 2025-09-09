@@ -5,7 +5,7 @@ const TodaysWeather = () => {
   return (
     <main className="mb-[2.5rem]">
       <div className="mb-[1.25rem]">
-        <div className="bg-[url('/images/bg-today-small.svg')] bg-cover bg-center rounded-[15px]">
+        <div className="bg-[url('/images/bg-today-small.svg')] bg-cover bg-center rounded-[1rem]">
           <div className="text-center pt-[3.375rem] mb-[2.75rem]">
             <h2 className="mb-[1.5rem] font-bold text-[1.5rem]">
               Berlin, Germany
