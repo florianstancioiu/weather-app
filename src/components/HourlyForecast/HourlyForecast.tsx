@@ -12,8 +12,8 @@ import IconSnow from "../../images/icon-snow.webp";
 const HourlyForecast = () => {
   return (
     <aside className="mt-[2rem] py-[1.25rem] px-[1rem] bg-background-2 rounded-[0.625rem]">
-      <div className="flex justify-between items-center">
-        <h3 className="mb-[1.5rem]">Hourly forecast</h3>
+      <div className="flex justify-between items-center mb-[1.5rem]">
+        <h3>Hourly forecast</h3>
         <DaysDropdown />
       </div>
       <div className="max-h-[37rem] overflow-scroll grid gap-[1rem] grid-cols-1">
