@@ -16,7 +16,7 @@ const HourlyForecast = () => {
         <h3>Hourly forecast</h3>
         <DaysDropdown />
       </div>
-      <div className="max-h-[37rem] overflow-scroll grid gap-[1rem] grid-cols-1">
+      <div className="max-h-[37rem] overflow-y-scroll grid gap-[1rem] grid-cols-1">
         <HourlyForecastItem hour="3 PM" temperature="20°" image={IconRain} />
         <HourlyForecastItem hour="4 PM" temperature="20°" image={IconDrizzle} />
         <HourlyForecastItem hour="5 PM" temperature="20°" image={IconFog} />

@@ -1,4 +1,5 @@
 import DailyForecastItem from "../DailyForecastItem/DailyForecastItem";
+
 import IconRain from "../../images/icon-rain.webp";
 import IconDrizzle from "../../images/icon-drizzle.webp";
 import IconFog from "../../images/icon-fog.webp";
