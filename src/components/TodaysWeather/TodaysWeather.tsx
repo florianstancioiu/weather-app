@@ -1,7 +1,7 @@
 import IconSunny from "../../images/icon-sunny.webp";
-import CurrentWeatherDetail from "../CurrentWeatherDetail/CurrentWeatherDetail";
+import TodaysWeatherItem from "../TodaysWeatherItem/TodaysWeatherItem";
 
-const CurrentWeather = () => {
+const TodaysWeather = () => {
   return (
     <main className="mb-[2.5rem]">
       <div className="mb-[1.25rem]">
@@ -19,13 +19,13 @@ const CurrentWeather = () => {
         </div>
       </div>
       <div className="grid gap-[1rem] grid-cols-2">
-        <CurrentWeatherDetail title="Feels Like" value="18°" />
-        <CurrentWeatherDetail title="Humidity" value="46%" />
-        <CurrentWeatherDetail title="Wind" value="14 km/h" />
-        <CurrentWeatherDetail title="Precipitation" value="0 mm" />
+        <TodaysWeatherItem title="Feels Like" value="18°" />
+        <TodaysWeatherItem title="Humidity" value="46%" />
+        <TodaysWeatherItem title="Wind" value="14 km/h" />
+        <TodaysWeatherItem title="Precipitation" value="0 mm" />
       </div>
     </main>
   );
 };
 
-export default CurrentWeather;
+export default TodaysWeather;

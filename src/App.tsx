@@ -1,6 +1,6 @@
 import Header from "./components/Header/Header";
 import SearchPlaces from "./components/SearchPlaces/SearchPlaces";
-import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
+import TodaysWeather from "./components/TodaysWeather/TodaysWeather";
 import DailyForecast from "./components/DailyForecast/DailyForecast";
 import HourlyForecast from "./components/HourlyForecast/HourlyForecast";
 
@@ -10,7 +10,7 @@ const App = () => {
       <Header />
       <SearchPlaces />
       <div>
-        <CurrentWeather />
+        <TodaysWeather />
         <DailyForecast />
       </div>
       <HourlyForecast />

@@ -1,9 +1,9 @@
-export type CurrentWeatherDetail = {
+export type TodaysWeatherItem = {
   title: string;
   value: string;
 };
 
-const CurrentWeatherDetail = ({ title, value }: CurrentWeatherDetail) => {
+const TodaysWeatherItem = ({ title, value }: TodaysWeatherItem) => {
   return (
     <div className="p-[1.625rem] bg-background-2 rounded-[0.625rem] border-[2px] border-dark-blue">
       <p className="text-grayish-white font-semibold mb-[1.875rem]">{title}</p>
@@ -12,4 +12,4 @@ const CurrentWeatherDetail = ({ title, value }: CurrentWeatherDetail) => {
   );
 };
 
-export default CurrentWeatherDetail;
+export default TodaysWeatherItem;
