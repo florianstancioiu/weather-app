@@ -10,8 +10,12 @@ const SearchPlaces = () => {
       </h1>
       <div className="bg-background-2 mb-[0.75rem] relative rounded-[0.625rem] ">
         <SearchIcon className="absolute top-[1.125rem] left-[1.5rem] text-grayish-white" />
+        <label htmlFor="search-input" className="hidden">
+          Search for a place...
+        </label>
         <input
           type="text"
+          id="search-input"
           placeholder="Search for a place..."
           className="w-full h-[3.625rem] pl-[3.875rem]"
         />
