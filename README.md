@@ -14,9 +14,6 @@ This is a solution to the [Weather app challenge on Frontend Mentor](https://www
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -39,14 +36,6 @@ Users should be able to:
 
 ![](./screenshot.jpg)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
-
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
@@ -55,6 +44,7 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 ## My process
 
 - **September 8th, 2025:** I created the github repo and I reused the contents of my calculator app solution because setting up React Testing Library to work correctly with Typescript is quite a pain. I created the component structure for the project and I also started working on the mobile version of the design.
+- **September 9th, 2025:** I worked on the mobile version of the app, I picked up from where I left the design yesterday and I made my way through the app from top to bottom. I avoided implementing the functionality of the dropdowns or the search component, I just made them look like in the design.
 
 ### Built with
 
@@ -68,8 +58,6 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) - For testing
 - [TailwindCSS](https://tailwindcss.com/) - For styles
 - [Vite](https://vite.dev/) - Build tool
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
@@ -95,20 +83,13 @@ const proudOfThisFunc = () => {
 
 If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I would also add [storybook](https://storybook.js.org/) to this project, I don't know if I will have time until the Frontendmentor Hackathon time runs out, but I think I will add it nonetheless.
 
 ### Useful resources
 
 - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
@@ -116,9 +97,3 @@ Use this section to outline areas that you want to continue focusing on in futur
 - Threads - [@florianstancioiu01](https://www.threads.com/@florianstancioiu01)
 - LinkedIn - [florianstancioiu](https://www.linkedin.com/in/florian-stancioiu-765661349/)
 - freeCodeCamp - [florianstancioiu](https://www.freecodecamp.org/florianstancioiu)
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
