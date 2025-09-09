@@ -1,9 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 @import "tailwindcss";
 
 @theme {
+  --font-bricolage-grotesque: "Bricolage Grotesque", sans-serif;
+  --font-dm-sans: "DM Sans", sans-serif;
+
   --color-background: #02012b;
   --color-background-2: #25253f;
 
   --color-white: #f4f2f5;
+  --color-grayish-white: #cbcddc;
   --color-blue: #4657d9;
+  --color-dark-blue: #313050;
 }

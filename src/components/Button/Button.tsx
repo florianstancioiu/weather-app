@@ -4,7 +4,7 @@ export type Button = {
 
 const Button = ({ title }: Button) => {
   return (
-    <button className="bg-blue rounded-[0.625rem] w-full h-[3.5rem]">
+    <button className="bg-blue rounded-[0.625rem] w-full h-[3.5rem] cursor-pointer">
       {title}
     </button>
   );
