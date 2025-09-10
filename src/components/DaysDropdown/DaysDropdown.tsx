@@ -1,5 +1,5 @@
 import DropdownIcon from "../../images/icon-dropdown.svg";
-import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 import { createRef, useState } from "react";
 
 export type Day =
@@ -33,7 +33,6 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
   // Close the dropdown on blur
   useOnClickOutside(wrapperRef, () => {
     setIsOpen(false);
-    console.log("close the days dropdown");
   });
 
   const activeDay = days.find((value) => value.isActive === true);

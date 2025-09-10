@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, createRef } from "react";
 import UnitsIcon from "../../images/icon-units.svg";
 import DropdownIcon from "../../images/icon-dropdown.svg";
 import CheckmarkIcon from "../../images/icon-checkmark.svg?react";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 export type UnitsDropdown = {
   onChangeSystem?: (isMetric: boolean) => void;
@@ -10,6 +11,7 @@ export type UnitsDropdown = {
 const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMetric, setIsMetric] = useState(true);
+  const wrapperRef = createRef<HTMLDivElement | null>();
 
   const toggleDropdown = () => {
     setIsOpen((val) => !val);
@@ -25,8 +27,13 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
     });
   };
 
+  // Close the dropdown on blur
+  useOnClickOutside(wrapperRef, () => {
+    setIsOpen(false);
+  });
+
   return (
-    <div className="relative">
+    <div ref={wrapperRef} className="relative">
       <div
         onClick={toggleDropdown}
         className="flex justify-between items-center cursor-pointer bg-background-2 py-[0.438rem] px-[0.625rem] rounded-[0.375rem] gap-[0.375rem]"
