@@ -9,11 +9,13 @@ const App = () => {
     <>
       <Header />
       <SearchPlaces />
-      <div>
-        <TodaysWeather />
-        <DailyForecast />
+      <div className="dsktp:w-[75.75rem] dsktp:mx-auto dsktp:grid dsktp:grid-cols-3 dsktp:items-start dsktp:gap-[2rem]">
+        <div className="dsktp:col-span-2">
+          <TodaysWeather />
+          <DailyForecast />
+        </div>
+        <HourlyForecast />
       </div>
-      <HourlyForecast />
     </>
   );
 };

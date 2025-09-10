@@ -12,7 +12,7 @@ const DailyForecast = () => {
   return (
     <div>
       <h3 className="mb-[1.5rem]">Daily forecast</h3>
-      <div className="grid grid-cols-3 gap-[1rem]">
+      <div className="grid grid-cols-3 gap-[1rem] dsktp:grid-cols-7">
         <DailyForecastItem
           day="Tue"
           maximum="20°"

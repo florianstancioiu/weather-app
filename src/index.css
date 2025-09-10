@@ -5,6 +5,8 @@
   --font-bricolage-grotesque: "Bricolage Grotesque", sans-serif;
   --font-dm-sans: "DM Sans", sans-serif;
 
+  --breakpoint-dsktp: 75.75rem;
+
   /* TODO: Rename these colors */
   --color-background: #02012b;
   --color-background-2: #25253f;

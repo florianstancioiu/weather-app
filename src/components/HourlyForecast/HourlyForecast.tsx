@@ -62,12 +62,12 @@ const HourlyForecast = () => {
   };
 
   return (
-    <aside className="mt-[2rem] py-[1.25rem] px-[1rem] bg-background-2 rounded-[0.625rem]">
+    <aside className="mt-[2rem] py-[1.25rem] px-[1rem] bg-background-2 rounded-[0.625rem] dsktp:mt-0 dsktp:h-[43.25rem]">
       <div className="flex justify-between items-center mb-[1.5rem]">
         <h3>Hourly forecast</h3>
         <DaysDropdown days={days} onChange={onDaysDropdownChangeHandler} />
       </div>
-      <div className="max-h-[37rem] overflow-y-scroll grid gap-[1rem] grid-cols-1">
+      <div className="max-h-[37.125rem] overflow-y-scroll grid gap-[1rem] grid-cols-1">
         <HourlyForecastItem hour="3 PM" temperature="20°" image={IconRain} />
         <HourlyForecastItem hour="4 PM" temperature="20°" image={IconDrizzle} />
         <HourlyForecastItem hour="5 PM" temperature="20°" image={IconFog} />
