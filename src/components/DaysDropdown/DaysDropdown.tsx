@@ -41,7 +41,7 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
       </div>
 
       {isOpen && (
-        <div className="absolute bg-background-2 top-[3.313rem] right-0 w-[214px] border-light-blue border-[1px] p-[8px] rounded-[12px]">
+        <div className="absolute bg-background-2 top-[3.313rem] right-0 w-[13.375rem] border-light-blue border-[1px] p-[0.5rem] rounded-[0.75rem]">
           {days.map((day) => (
             <div
               key={day.id}
@@ -51,7 +51,7 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
               }}
               className={`${
                 day.isActive ? "bg-background-3" : ""
-              } px-[8px] h-[40px] flex items-center rounded-[12px] cursor-pointer hover:bg-background-3`}
+              } px-[0.5rem] h-[2.5rem] flex items-center rounded-[0.75rem] cursor-pointer hover:bg-background-3`}
             >
               {day.title}
             </div>
