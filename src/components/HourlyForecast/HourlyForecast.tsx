@@ -1,5 +1,7 @@
+import { useState } from "react";
 import DaysDropdown from "../DaysDropdown/DaysDropdown";
 import HourlyForecastItem from "../HourlyForecastItem/HourlyForecastItem";
+import { type DayDropdownValue } from "../DaysDropdown/DaysDropdown";
 
 import IconRain from "../../images/icon-rain.webp";
 import IconDrizzle from "../../images/icon-drizzle.webp";
@@ -10,11 +12,60 @@ import IconSunny from "../../images/icon-sunny.webp";
 import IconSnow from "../../images/icon-snow.webp";
 
 const HourlyForecast = () => {
+  const [days, setDays] = useState<DayDropdownValue[]>([
+    {
+      id: 1,
+      title: "Monday",
+      isActive: true,
+    },
+    {
+      id: 2,
+      title: "Tuesday",
+      isActive: false,
+    },
+    {
+      id: 3,
+      title: "Wednesday",
+      isActive: false,
+    },
+    {
+      id: 4,
+      title: "Thursday",
+      isActive: false,
+    },
+    {
+      id: 5,
+      title: "Friday",
+      isActive: false,
+    },
+    {
+      id: 6,
+      title: "Saturday",
+      isActive: false,
+    },
+    {
+      id: 7,
+      title: "Sunday",
+      isActive: false,
+    },
+  ]);
+
+  const onDaysDropdownChangeHandler = (value: DayDropdownValue) => {
+    const newDays = days
+      .map((day) => ({
+        ...day,
+        isActive: false,
+      }))
+      .map((day) => ({ ...day, isActive: day.id === value.id }));
+
+    setDays(newDays);
+  };
+
   return (
     <aside className="mt-[2rem] py-[1.25rem] px-[1rem] bg-background-2 rounded-[0.625rem]">
       <div className="flex justify-between items-center mb-[1.5rem]">
         <h3>Hourly forecast</h3>
-        <DaysDropdown />
+        <DaysDropdown days={days} onChange={onDaysDropdownChangeHandler} />
       </div>
       <div className="max-h-[37rem] overflow-y-scroll grid gap-[1rem] grid-cols-1">
         <HourlyForecastItem hour="3 PM" temperature="20°" image={IconRain} />
