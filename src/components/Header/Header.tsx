@@ -4,7 +4,9 @@ import WeatherNowLogo from "../../images/logo.svg";
 const Header = () => {
   return (
     <header className="flex justify-between items-center">
-      <img src={WeatherNowLogo} alt="Weather Now Logo" />
+      <a href="#">
+        <img src={WeatherNowLogo} alt="Weather Now Logo" />
+      </a>
       <UnitsDropdown />
     </header>
   );
