@@ -4,8 +4,8 @@ import Button from "../Button/Button";
 
 const SearchPlaces = () => {
   return (
-    <div className="mb-[2rem] pt-[4.25rem] dsktp:w-[75.75rem] dsktp:mx-auto">
-      <h1 className="font-bricolage-grotesque text-6xl text-center mb-[4.25rem] font-bold">
+    <div className="mb-[2rem] pt-[4.25rem] dsktp:w-[75.75rem] dsktp:mx-auto dsktp:pt-0">
+      <h1 className="font-bricolage-grotesque text-6xl text-center mb-[4.25rem] font-bold dsktp:mb-[4rem] dsktp:text-[3.25rem] dsktp:leading-[120%]">
         How's the sky looking today?
       </h1>
       <div className="dsktp:flex dsktp:justify-center dsktp:items-center dsktp:gap-[1rem]">
