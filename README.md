@@ -89,7 +89,7 @@ I would also add [storybook](https://storybook.js.org/) to this project, I don't
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
+- [React JS close dropdown using onBlur function](https://stackoverflow.com/a/73699297/12159189) - This helped me create a custom hook that I used to close the dropdowns when the user clicks outside of the dropdowns
 
 ## Author
 

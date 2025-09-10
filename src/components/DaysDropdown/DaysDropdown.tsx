@@ -1,5 +1,6 @@
 import DropdownIcon from "../../images/icon-dropdown.svg";
-import { useState } from "react";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import { createRef, useState } from "react";
 
 export type Day =
   | "Monday"
@@ -23,15 +24,22 @@ export type DaysDropdown = {
 
 const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
   const [isOpen, setIsOpen] = useState(false);
+  const wrapperRef = createRef<HTMLDivElement>();
 
   const toggleOpenHandler = () => {
     setIsOpen((val) => !val);
   };
 
+  // Close the dropdown on blur
+  useOnClickOutside(wrapperRef, () => {
+    setIsOpen(false);
+    console.log("close the days dropdown");
+  });
+
   const activeDay = days.find((value) => value.isActive === true);
 
   return (
-    <div className="relative">
+    <div ref={wrapperRef} className="relative">
       <div
         onClick={toggleOpenHandler}
         className="bg-lighter-blue px-[1.25rem] flex gap-[0.813rem] items-center py-[0.5rem] rounded-[0.625rem] cursor-pointer"
