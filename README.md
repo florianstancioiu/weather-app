@@ -38,13 +38,13 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- URL: [https://florianstancioiu.github.io/weather-app/](https://florianstancioiu.github.io/weather-app/)
 
 ## My process
 
 - **September 8th, 2025:** I created the github repo and I reused the contents of my calculator app solution because setting up React Testing Library to work correctly with Typescript is quite a pain. I created the component structure for the project and I also started working on the mobile version of the design.
 - **September 9th, 2025:** I worked on the mobile version of the app, I picked up from where I left the design yesterday and I made my way through the app from top to bottom. I avoided implementing the functionality of the dropdowns or the search component, I just made them look like in the design.
+- **September 10th, 2025:** I implemented the UnitsDropdown and DaysDropdown components, I don't think this will be their final version, meaning I will have to update them further to actually use them correctly but this is a first step. I'm happy with how DaysDropdown turned out and relatively happy with the UnitsDropdown - I think there's room for improvement here. I also started working on the desktop version - I created a first rough version, I made the mistake of creating a new breakpoint for desktop called `dsktp`, even though it's descriptive, the name is too long and might bother me in the future. I also added a screenshot which will also be replaced, on top of that I added some Open Graph tags so that people can see what they click on in posts on social media.
 
 ### Built with
 
