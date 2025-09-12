@@ -2,7 +2,7 @@ import SearchIcon from "../../images/icon-search.svg?react";
 
 import Button from "../Button/Button";
 
-const SearchPlaces = () => {
+const SearchCity = () => {
   return (
     <div className="mb-[2rem] pt-[4.25rem] dsktp:w-[75.75rem] dsktp:mx-auto dsktp:pt-0">
       <h1 className="font-bricolage-grotesque text-6xl text-center mb-[4.25rem] font-bold dsktp:mb-[4rem] dsktp:text-[3.25rem] dsktp:leading-[120%]">
@@ -27,4 +27,4 @@ const SearchPlaces = () => {
   );
 };
 
-export default SearchPlaces;
+export default SearchCity;
