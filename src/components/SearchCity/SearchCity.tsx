@@ -1,8 +1,16 @@
+import { useState } from "react";
 import SearchIcon from "../../images/icon-search.svg?react";
 
 import Button from "../Button/Button";
 
-const SearchCity = () => {
+export type SearchCity = {
+  onChange: (searchKeyword: string) => void;
+  onSearch: (searchKeyword: string) => void;
+};
+
+const SearchCity = ({ onChange, onSearch }: SearchCity) => {
+  const [keyword, setKeyword] = useState("");
+
   return (
     <div className="mb-[2rem] pt-[4.25rem] dsktp:w-[75.75rem] dsktp:mx-auto dsktp:pt-0">
       <h1 className="font-bricolage-grotesque text-6xl text-center mb-[4.25rem] font-bold dsktp:mb-[4rem] dsktp:text-[3.25rem] dsktp:leading-[120%]">
@@ -17,11 +25,20 @@ const SearchCity = () => {
           <input
             type="text"
             id="search-input"
+            value={keyword}
+            onChange={(event) => setKeyword(event.target.value)}
             placeholder="Search for a place..."
             className="w-full h-[3.625rem] pl-[3.875rem]"
           />
         </div>
-        <Button title="Search" />
+        <Button
+          onClick={() => {
+            onSearch(keyword);
+            // TODO: remove onChange call after implementing it correctly
+            onChange(keyword);
+          }}
+          title="Search"
+        />
       </div>
     </div>
   );
