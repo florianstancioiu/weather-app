@@ -11,7 +11,11 @@ import IconOvercast from "../../images/icon-overcast.webp";
 import IconSunny from "../../images/icon-sunny.webp";
 import IconSnow from "../../images/icon-snow.webp";
 
-const HourlyForecast = () => {
+export type HourlyForecast = {
+  isLoading: boolean;
+};
+
+const HourlyForecast = ({ isLoading }: HourlyForecast) => {
   const [days, setDays] = useState<DayDropdownValue[]>([
     {
       id: 1,
@@ -68,24 +72,90 @@ const HourlyForecast = () => {
         <DaysDropdown days={days} onChange={onDaysDropdownChangeHandler} />
       </div>
       <div className="max-h-[37.125rem] overflow-y-scroll grid gap-[1rem] grid-cols-1">
-        <HourlyForecastItem hour="3 PM" temperature="20°" image={IconRain} />
-        <HourlyForecastItem hour="4 PM" temperature="20°" image={IconDrizzle} />
-        <HourlyForecastItem hour="5 PM" temperature="20°" image={IconFog} />
-        <HourlyForecastItem hour="6 PM" temperature="20°" image={IconStorm} />
+        <HourlyForecastItem
+          hour="3 PM"
+          temperature="20°"
+          image={IconRain}
+          isLoading={isLoading}
+        />
+        <HourlyForecastItem
+          hour="4 PM"
+          temperature="20°"
+          image={IconDrizzle}
+          isLoading={isLoading}
+        />
+        <HourlyForecastItem
+          hour="5 PM"
+          temperature="20°"
+          image={IconFog}
+          isLoading={isLoading}
+        />
+        <HourlyForecastItem
+          hour="6 PM"
+          temperature="20°"
+          image={IconStorm}
+          isLoading={isLoading}
+        />
         <HourlyForecastItem
           hour="7 PM"
           temperature="20°"
           image={IconOvercast}
+          isLoading={isLoading}
         />
-        <HourlyForecastItem hour="8 PM" temperature="20°" image={IconSunny} />
-        <HourlyForecastItem hour="9 PM" temperature="20°" image={IconSnow} />
-        <HourlyForecastItem hour="10 PM" temperature="20°" image={IconRain} />
-        <HourlyForecastItem hour="11 PM" temperature="20°" image={IconRain} />
-        <HourlyForecastItem hour="12 PM" temperature="20°" image={IconRain} />
-        <HourlyForecastItem hour="1 AM" temperature="20°" image={IconRain} />
-        <HourlyForecastItem hour="2 AM" temperature="20°" image={IconRain} />
-        <HourlyForecastItem hour="3 AM" temperature="20°" image={IconRain} />
-        <HourlyForecastItem hour="4 AM" temperature="20°" image={IconRain} />
+        <HourlyForecastItem
+          hour="8 PM"
+          temperature="20°"
+          image={IconSunny}
+          isLoading={isLoading}
+        />
+        <HourlyForecastItem
+          hour="9 PM"
+          temperature="20°"
+          image={IconSnow}
+          isLoading={isLoading}
+        />
+        <HourlyForecastItem
+          hour="10 PM"
+          temperature="20°"
+          image={IconRain}
+          isLoading={isLoading}
+        />
+        <HourlyForecastItem
+          hour="11 PM"
+          temperature="20°"
+          image={IconRain}
+          isLoading={isLoading}
+        />
+        <HourlyForecastItem
+          hour="12 PM"
+          temperature="20°"
+          image={IconRain}
+          isLoading={isLoading}
+        />
+        <HourlyForecastItem
+          hour="1 AM"
+          temperature="20°"
+          image={IconRain}
+          isLoading={isLoading}
+        />
+        <HourlyForecastItem
+          hour="2 AM"
+          temperature="20°"
+          image={IconRain}
+          isLoading={isLoading}
+        />
+        <HourlyForecastItem
+          hour="3 AM"
+          temperature="20°"
+          image={IconRain}
+          isLoading={isLoading}
+        />
+        <HourlyForecastItem
+          hour="4 AM"
+          temperature="20°"
+          image={IconRain}
+          isLoading={isLoading}
+        />
       </div>
     </aside>
   );
