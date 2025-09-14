@@ -14,9 +14,9 @@ export type DailyForecast = {
 
 const DailyForecast = ({ isLoading }: DailyForecast) => {
   return (
-    <div>
+    <section>
       <h3 className="mb-[1.5rem]">Daily forecast</h3>
-      <div className="grid grid-cols-3 gap-[1rem] dsktp:grid-cols-7">
+      <ul className="grid grid-cols-3 gap-[1rem] dsktp:grid-cols-7">
         <DailyForecastItem
           day="Tue"
           maximum="20°"
@@ -66,8 +66,8 @@ const DailyForecast = ({ isLoading }: DailyForecast) => {
           image={IconSnow}
           isLoading={isLoading}
         />
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 };
 

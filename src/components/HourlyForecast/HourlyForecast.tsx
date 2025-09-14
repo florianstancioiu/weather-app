@@ -71,7 +71,7 @@ const HourlyForecast = ({ isLoading }: HourlyForecast) => {
         <h3>Hourly forecast</h3>
         <DaysDropdown days={days} onChange={onDaysDropdownChangeHandler} />
       </div>
-      <div className="max-h-[37.125rem] overflow-y-scroll grid gap-[1rem] grid-cols-1">
+      <ul className="max-h-[37.125rem] overflow-y-scroll grid gap-[1rem] grid-cols-1">
         <HourlyForecastItem
           hour="3 PM"
           temperature="20°"
@@ -156,7 +156,7 @@ const HourlyForecast = ({ isLoading }: HourlyForecast) => {
           image={IconRain}
           isLoading={isLoading}
         />
-      </div>
+      </ul>
     </aside>
   );
 };

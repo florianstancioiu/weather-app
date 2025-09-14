@@ -16,7 +16,7 @@ const DailyForecastItem = ({
   return (
     <>
       {!isLoading && (
-        <div className="px-[0.75rem] py-[1.5rem] bg-background-2 rounded-[0.625rem] border-[2px] border-dark-blue dsktp:h-[10.25rem] dsktp:py-[1rem] dsktp:px-[0.625rem]">
+        <li className="px-[0.75rem] py-[1.5rem] bg-background-2 rounded-[0.625rem] border-[2px] border-dark-blue dsktp:h-[10.25rem] dsktp:py-[1rem] dsktp:px-[0.625rem]">
           <p className="mb-[2.125rem] text-center dsktp:mb-[1rem] dsktp:leading-[120%]">
             {day}
           </p>
@@ -29,10 +29,10 @@ const DailyForecastItem = ({
             <p>{maximum}</p>
             <p>{minimum}</p>
           </div>
-        </div>
+        </li>
       )}
       {isLoading && (
-        <div className="px-[0.75rem] py-[1.5rem] bg-background-2 rounded-[0.625rem] border-[2px] border-dark-blue h-[10.313rem] dsktp:h-[10.25rem] dsktp:py-[1rem] dsktp:px-[0.625rem]"></div>
+        <li className="px-[0.75rem] py-[1.5rem] bg-background-2 rounded-[0.625rem] border-[2px] border-dark-blue h-[10.313rem] dsktp:h-[10.25rem] dsktp:py-[1rem] dsktp:px-[0.625rem]"></li>
       )}
     </>
   );

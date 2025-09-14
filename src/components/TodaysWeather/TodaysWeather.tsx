@@ -37,7 +37,7 @@ const TodaysWeather = ({ isLoading }: TodaysWeather) => {
           </div>
         )}
       </div>
-      <div className="grid gap-[1rem] grid-cols-2 dsktp:grid-cols-4">
+      <ul className="grid gap-[1rem] grid-cols-2 dsktp:grid-cols-4">
         <TodaysWeatherItem
           title="Feels Like"
           value="18°"
@@ -50,7 +50,7 @@ const TodaysWeather = ({ isLoading }: TodaysWeather) => {
           value="0 mm"
           isLoading={isLoading}
         />
-      </div>
+      </ul>
     </main>
   );
 };
