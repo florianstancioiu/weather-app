@@ -19,14 +19,13 @@ const SearchCity = ({ onChange, onSearch }: SearchCity) => {
       <div className="dsktp:flex dsktp:justify-center dsktp:items-center dsktp:gap-[1rem]">
         <div className="bg-background-2 mb-[0.75rem] relative rounded-[0.625rem] dsktp:w-[32rem] dsktp:mb-0">
           <SearchIcon className="absolute top-[1.125rem] left-[1.5rem] text-grayish-white" />
-          <label htmlFor="search-input" className="hidden">
-            Search for a place...
-          </label>
           <input
             type="text"
             id="search-input"
             value={keyword}
             onChange={(event) => setKeyword(event.target.value)}
+            autoFocus
+            aria-label="Search for a place..."
             placeholder="Search for a place..."
             className="w-full h-[3.625rem] pl-[3.875rem]"
           />
