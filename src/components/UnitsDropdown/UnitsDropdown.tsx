@@ -52,8 +52,8 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
               {isMetric ? "Switch to Imperial" : "Switch to Metric"}
             </button>
           </div>
-          <div className="select-none">
-            <div className="border-b-[1px] border-light-blue pb-[0.5rem] mb-[1rem]">
+          <ul className="select-none">
+            <li className="border-b-[1px] border-light-blue pb-[0.5rem] mb-[1rem]">
               <p className="text-grayish-white rounded-[0.75rem] px-[0.625rem] h-[2.5rem]">
                 Temperature
               </p>
@@ -73,8 +73,8 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
                 <p>Fahrenheit (°F)</p>
                 {!isMetric && <CheckmarkIcon />}
               </div>
-            </div>
-            <div className="border-b-[1px] border-light-blue pb-[0.5rem] mb-[1rem]">
+            </li>
+            <li className="border-b-[1px] border-light-blue pb-[0.5rem] mb-[1rem]">
               <p className="text-grayish-white rounded-[0.75rem] px-[0.625rem] h-[2.5rem]">
                 Wind Speed
               </p>
@@ -94,8 +94,8 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
                 <p>mph</p>
                 {!isMetric && <CheckmarkIcon />}
               </div>
-            </div>
-            <div>
+            </li>
+            <li>
               <p className="text-grayish-white rounded-[0.75rem] px-[0.625rem] h-[2.5rem]">
                 Precipitation
               </p>
@@ -115,8 +115,8 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
                 <p>Inches (in)</p>
                 {!isMetric && <CheckmarkIcon />}
               </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
       )}
     </div>

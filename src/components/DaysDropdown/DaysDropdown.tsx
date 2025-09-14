@@ -48,9 +48,9 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
       </div>
 
       {isOpen && (
-        <div className="absolute bg-background-2 top-[3.313rem] right-0 w-[13.375rem] border-light-blue border-[1px] p-[0.5rem] rounded-[0.75rem]">
+        <ul className="absolute bg-background-2 top-[3.313rem] right-0 w-[13.375rem] border-light-blue border-[1px] p-[0.5rem] rounded-[0.75rem]">
           {days.map((day) => (
-            <div
+            <li
               key={day.id}
               onClick={() => {
                 onChange(day);
@@ -61,9 +61,9 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
               } px-[0.5rem] h-[2.5rem] flex items-center rounded-[0.75rem] cursor-pointer hover:bg-background-3`}
             >
               {day.title}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );
