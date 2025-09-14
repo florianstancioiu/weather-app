@@ -32,7 +32,7 @@ const TodaysWeather = ({ data, isLoading }: TodaysWeather) => {
                 className="w-[6rem] h-[6rem] dsktp:w-[7.5rem] dsktp:h-[7.5rem]"
               />
               <p className="text-[4.25rem] italic dsktp:text-[6rem] dsktp:font-semibold">
-                {temperature ? Math.floor(temperature) : 0}°
+                {temperature ? Math.floor(temperature) : "NA"}°
               </p>
             </div>
           </div>

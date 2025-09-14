@@ -46,6 +46,7 @@ Users should be able to:
 - **September 9th, 2025:** I worked on the mobile version of the app, I picked up from where I left the design yesterday and I made my way through the app from top to bottom. I avoided implementing the functionality of the dropdowns or the search component, I just made them look like in the design.
 - **September 10th, 2025:** I implemented the UnitsDropdown and DaysDropdown components, I don't think this will be their final version, meaning I will have to update them further to actually use them correctly but this is a first step. I'm happy with how DaysDropdown turned out and relatively happy with the UnitsDropdown - I think there's room for improvement here. I also started working on the desktop version - I created a first rough version, I made the mistake of creating a new breakpoint for desktop called `dsktp`, even though it's descriptive, the name is too long and might bother me in the future. I also added a screenshot which will also be replaced, on top of that I added some Open Graph tags so that people can see what they click on in posts on social media.
 - **September 12th, 2025:** I added a `isLoading` prop for every single component that needed one, I also began work on implementing the API fetch calls.
+- **September 14th, 2025:** I made the existing HTML code more accessible and I also implemented the Search functionality for the Main area (I still have to work on displaying the _Feels Like_, _Humidity_, _Wind_ and _Precipitation_ sections)
 
 ### Built with
 
@@ -69,6 +70,7 @@ I would also add [storybook](https://storybook.js.org/) to this project, I don't
 ### Useful resources
 
 - [React JS close dropdown using onBlur function](https://stackoverflow.com/a/73699297/12159189) - This helped me create a custom hook that I used to close the dropdowns when the user clicks outside of the dropdowns
+- [Destructuring nullable objects](https://stackoverflow.com/a/45210379/12159189) - This helped me solve a TS issue with destructuring nullable objects
 
 ## Author
 
