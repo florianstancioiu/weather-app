@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchWeatherApi } from "openmeteo";
+import fetchJson from "./utils/fetchJson";
+import { getDayName, getMonthShortName } from "./utils/date";
 
 import Header from "./components/Header/Header";
 import SearchCity from "./components/SearchCity/SearchCity";
@@ -7,27 +9,16 @@ import TodaysWeather from "./components/TodaysWeather/TodaysWeather";
 import DailyForecast from "./components/DailyForecast/DailyForecast";
 import HourlyForecast from "./components/HourlyForecast/HourlyForecast";
 
-const fetchJson = async (url: string) => {
-  try {
-    const response = await fetch(url);
+import { type TodaysWeather as TodaysWeatherType } from "./components/TodaysWeather/TodaysWeather";
 
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-
-    const result = await response.json();
-
-    return result;
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-};
+type TodaysData = Omit<TodaysWeatherType, "isLoading">;
 
 const App = () => {
-  const [isLoading, _setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState("");
+  const [todaysData, setTodaysData] = useState<
+    TodaysData["data"] | undefined
+  >();
 
   useEffect(() => {
     const getMeteoData = async () => {
@@ -35,19 +26,28 @@ const App = () => {
         return;
       }
 
+      setIsLoading(true);
+
       const geocodedCity = await fetchJson(
         `https://geocoding-api.open-meteo.com/v1/search?name=${searchKeyword}&count=1&language=en&format=json`
       );
 
-      const { longitude, latitude } = geocodedCity?.results[0];
-
-      console.log(geocodedCity);
+      const { longitude, latitude, name, country } = geocodedCity?.results[0];
 
       const params = {
         latitude,
         longitude,
-        hourly: "temperature_2m",
-        current: "temperature_2m",
+        daily: ["weather_code", "temperature_2m_max", "temperature_2m_min"],
+        hourly: ["temperature_2m", "weather_code"],
+        current: [
+          "temperature_2m",
+          "weather_code",
+          "precipitation",
+          "wind_speed_10m",
+          "relative_humidity_2m",
+          "apparent_temperature",
+        ],
+        timezone: "auto",
       };
       const url = "https://api.open-meteo.com/v1/forecast";
       const responses = await fetchWeatherApi(url, params);
@@ -55,26 +55,33 @@ const App = () => {
       // Process first location. Add a for-loop for multiple locations or weather models
       const response = responses[0];
 
-      console.dir(response);
-
       // Attributes for timezone and location
       const elevation = response.elevation();
+      const timezone = response.timezone();
+      const timezoneAbbreviation = response.timezoneAbbreviation();
       const utcOffsetSeconds = response.utcOffsetSeconds();
 
       console.log(
         `\nCoordinates: ${latitude}°N ${longitude}°E`,
         `\nElevation: ${elevation}m asl`,
+        `\nTimezone: ${timezone} ${timezoneAbbreviation}`,
         `\nTimezone difference to GMT+0: ${utcOffsetSeconds}s`
       );
 
       const current = response.current()!;
       const hourly = response.hourly()!;
+      const daily = response.daily()!;
 
       // Note: The order of weather variables in the URL query and the indices below need to match!
       const weatherData = {
         current: {
           time: new Date((Number(current.time()) + utcOffsetSeconds) * 1000),
           temperature_2m: current.variables(0)!.value(),
+          weather_code: current.variables(1)!.value(),
+          precipitation: current.variables(2)!.value(),
+          wind_speed_10m: current.variables(3)!.value(),
+          relative_humidity_2m: current.variables(4)!.value(),
+          apparent_temperature: current.variables(5)!.value(),
         },
         hourly: {
           time: [
@@ -92,15 +99,57 @@ const App = () => {
               )
           ),
           temperature_2m: hourly.variables(0)!.valuesArray(),
+          weather_code: hourly.variables(1)!.valuesArray(),
+        },
+        daily: {
+          time: [
+            ...Array(
+              (Number(daily.timeEnd()) - Number(daily.time())) /
+                daily.interval()
+            ),
+          ].map(
+            (_, i) =>
+              new Date(
+                (Number(daily.time()) +
+                  i * daily.interval() +
+                  utcOffsetSeconds) *
+                  1000
+              )
+          ),
+          weather_code: daily.variables(0)!.valuesArray(),
+          temperature_2m_max: daily.variables(1)!.valuesArray(),
+          temperature_2m_min: daily.variables(2)!.valuesArray(),
         },
       };
+
+      const currentTime = weatherData.current.time;
+
+      let dataForToday: TodaysData["data"] = {
+        city: name,
+        country: country,
+        date: `${getDayName(currentTime.getDay())}, ${getMonthShortName(
+          currentTime.getMonth()
+        )} ${currentTime.getDate()}, ${currentTime.getFullYear()}`,
+        temperature: weatherData.current.temperature_2m,
+        weatherCode: weatherData.current.weather_code,
+      };
+      setTodaysData(dataForToday);
 
       // 'weatherData' now contains a simple structure with arrays with datetime and weather data
       console.log(
         `\nCurrent time: ${weatherData.current.time}`,
-        weatherData.current.temperature_2m
+        `\nCurrent temperature_2m: ${weatherData.current.temperature_2m}`,
+        `\nCurrent weather_code: ${weatherData.current.weather_code}`,
+        `\nCurrent precipitation: ${weatherData.current.precipitation}`,
+        `\nCurrent wind_speed_10m: ${weatherData.current.wind_speed_10m}`,
+        `\nCurrent relative_humidity_2m: ${weatherData.current.relative_humidity_2m}`,
+        `\nCurrent apparent_temperature: ${weatherData.current.apparent_temperature}`
       );
       console.log("\nHourly data", weatherData.hourly);
+      console.log("\nDaily data", weatherData.daily);
+
+      setIsLoading(false);
+      console.log(todaysData);
     };
 
     getMeteoData();
@@ -123,7 +172,7 @@ const App = () => {
       />
       <div className="dsktp:w-[75.75rem] dsktp:mx-auto dsktp:grid dsktp:grid-cols-3 dsktp:items-start dsktp:gap-[2rem]">
         <div className="dsktp:col-span-2">
-          <TodaysWeather isLoading={isLoading} />
+          <TodaysWeather data={todaysData} isLoading={isLoading} />
           <DailyForecast isLoading={isLoading} />
         </div>
         <HourlyForecast isLoading={isLoading} />
