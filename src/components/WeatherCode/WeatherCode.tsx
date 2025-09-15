@@ -1,4 +1,5 @@
 import IconSunny from "../../images/icon-sunny.webp";
+import IconPartlyClody from "../../images/icon-partly-cloudy.webp";
 import IconOvercast from "../../images/icon-overcast.webp";
 import IconFog from "../../images/icon-fog.webp";
 import IconDrizzle from "../../images/icon-drizzle.webp";
@@ -20,6 +21,14 @@ const WeatherCode = ({ code, className }: WeatherCode) => {
       break;
     case 1:
     case 2:
+      return (
+        <img
+          src={IconPartlyClody}
+          className={className}
+          alt="Outside is partly cloudy."
+        />
+      );
+      break;
     case 3:
       return (
         <img
