@@ -1,3 +1,5 @@
+import { type ForecastHourlyData } from "../components/HourlyForecast/HourlyForecast";
+
 export const getDayName = (day: number) => {
   return [
     "Sunday",
@@ -28,4 +30,32 @@ export const getMonthShortName = (month: number) => {
     "Nov",
     "Dec",
   ][month];
+};
+
+export const getDaysFromHourly = (hourlyTime?: Date[]) => {
+  if (hourlyTime === undefined) {
+    return [];
+  }
+
+  const daysInOrderDuplicated = hourlyTime.map((time) => time.getDay());
+
+  return [...new Set(daysInOrderDuplicated)];
+};
+
+export const getActiveFormattedHoursFromHourly = (
+  activeDay: number,
+  hourly?: ForecastHourlyData
+) => {
+  if (hourly === undefined) {
+    return [];
+  }
+
+  return hourly.time
+    .map((hour, index) => {
+      return {
+        hour: hour,
+        index: index,
+      };
+    })
+    .filter((hour) => hour.hour.getDay() === activeDay);
 };
