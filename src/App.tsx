@@ -11,6 +11,7 @@ import HourlyForecast from "./components/HourlyForecast/HourlyForecast";
 
 import { type TodaysWeather as TodaysWeatherType } from "./components/TodaysWeather/TodaysWeather";
 import { type ForecastDailyData } from "./components/DailyForecast/DailyForecast";
+import { type ForecastHourlyData } from "./components/HourlyForecast/HourlyForecast";
 
 type TodaysData = Omit<TodaysWeatherType, "isLoading">;
 
@@ -25,6 +26,7 @@ const App = () => {
     TodaysData["secondaryData"] | undefined
   >();
   const [dailyData, setDailyData] = useState<ForecastDailyData>();
+  const [hourlyData, setHourlyData] = useState<ForecastHourlyData>();
 
   useEffect(() => {
     const getMeteoData = async () => {
@@ -62,17 +64,12 @@ const App = () => {
       const response = responses[0];
 
       // Attributes for timezone and location
+      /*
       const elevation = response.elevation();
       const timezone = response.timezone();
       const timezoneAbbreviation = response.timezoneAbbreviation();
+      */
       const utcOffsetSeconds = response.utcOffsetSeconds();
-
-      console.log(
-        `\nCoordinates: ${latitude}°N ${longitude}°E`,
-        `\nElevation: ${elevation}m asl`,
-        `\nTimezone: ${timezone} ${timezoneAbbreviation}`,
-        `\nTimezone difference to GMT+0: ${utcOffsetSeconds}s`
-      );
 
       const current = response.current()!;
       const hourly = response.hourly()!;
@@ -147,8 +144,7 @@ const App = () => {
       });
 
       setDailyData(weatherData.daily);
-
-      console.log("\nHourly data", weatherData.hourly);
+      setHourlyData(weatherData.hourly);
 
       setIsLoading(false);
     };
@@ -185,7 +181,7 @@ const App = () => {
             isLoading={isLoading}
           />
         </div>
-        <HourlyForecast isLoading={isLoading} />
+        <HourlyForecast data={hourlyData} isLoading={isLoading} />
       </div>
     </>
   );
