@@ -1,10 +1,32 @@
 export type TodaysWeatherItem = {
   title: string;
-  value: string;
+  value?: number;
+  isMetric: boolean;
   isLoading: boolean;
 };
 
-const TodaysWeatherItem = ({ title, value, isLoading }: TodaysWeatherItem) => {
+const TodaysWeatherItem = ({
+  title,
+  value,
+  isLoading,
+  isMetric,
+}: TodaysWeatherItem) => {
+  let titleSuffix = "";
+  switch (title) {
+    case "Feels Like":
+      titleSuffix = "°";
+      break;
+    case "Humidity":
+      titleSuffix = "%";
+      break;
+    case "Wind":
+      titleSuffix = isMetric ? "km/h" : "mph";
+      break;
+    case "Precipitation":
+      titleSuffix = isMetric ? "mm" : "in";
+      break;
+  }
+
   return (
     <>
       {!isLoading && (
@@ -12,7 +34,10 @@ const TodaysWeatherItem = ({ title, value, isLoading }: TodaysWeatherItem) => {
           <p className="text-grayish-white font-medium mb-[1.875rem] dsktp:mb-[1.5rem] text-[1.125rem] leading-[120%]">
             {title}
           </p>
-          <p className="font-light text-[2rem] leading-none">{value}</p>
+          <p className="font-light text-[2rem] leading-none">
+            {value !== undefined ? Math.round(value) : ""}
+            {titleSuffix}
+          </p>
         </li>
       )}
 

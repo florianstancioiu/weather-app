@@ -7,7 +7,7 @@ import IconSnow from "../../images/icon-snow.webp";
 import IconStorm from "../../images/icon-storm.webp";
 
 export type WeatherCode = {
-  code: number;
+  code?: number;
   className: string;
 };
 

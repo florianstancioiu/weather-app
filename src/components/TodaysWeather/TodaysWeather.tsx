@@ -2,18 +2,31 @@ import TodaysWeatherItem from "../TodaysWeatherItem/TodaysWeatherItem";
 import WeatherCode from "../WeatherCode/WeatherCode";
 
 export type TodaysWeather = {
-  data?: {
+  primaryData?: {
     city: string;
     country: string;
     date: string;
     temperature: number;
     weatherCode: number;
   };
+  secondaryData?: {
+    feelsLike: number;
+    humidity: number;
+    wind: number;
+    precipitation: number;
+  };
+  isMetric: boolean;
   isLoading: boolean;
 };
 
-const TodaysWeather = ({ data, isLoading }: TodaysWeather) => {
-  const { city, country, date, temperature, weatherCode } = data || {};
+const TodaysWeather = ({
+  primaryData,
+  secondaryData,
+  isMetric,
+  isLoading,
+}: TodaysWeather) => {
+  const { city, country, date, temperature, weatherCode } = primaryData || {};
+  const { feelsLike, humidity, wind, precipitation } = secondaryData || {};
 
   return (
     <main className="mb-[2.5rem] dsktp:mb-[3.25rem]">
@@ -48,15 +61,27 @@ const TodaysWeather = ({ data, isLoading }: TodaysWeather) => {
       <ul className="grid gap-[1rem] grid-cols-2 dsktp:grid-cols-4">
         <TodaysWeatherItem
           title="Feels Like"
-          value="18°"
+          value={feelsLike}
           isLoading={isLoading}
+          isMetric={isMetric}
         />
-        <TodaysWeatherItem title="Humidity" value="46%" isLoading={isLoading} />
-        <TodaysWeatherItem title="Wind" value="14 km/h" isLoading={isLoading} />
+        <TodaysWeatherItem
+          title="Humidity"
+          value={humidity}
+          isLoading={isLoading}
+          isMetric={isMetric}
+        />
+        <TodaysWeatherItem
+          title="Wind"
+          value={wind}
+          isLoading={isLoading}
+          isMetric={isMetric}
+        />
         <TodaysWeatherItem
           title="Precipitation"
-          value="0 mm"
+          value={precipitation}
           isLoading={isLoading}
+          isMetric={isMetric}
         />
       </ul>
     </main>
