@@ -9,6 +9,9 @@ export const getDayName = (day: number) => {
     "Saturday",
   ][day];
 };
+export const getDayShortName = (day: number) => {
+  return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][day];
+};
 
 export const getMonthShortName = (month: number) => {
   return [
