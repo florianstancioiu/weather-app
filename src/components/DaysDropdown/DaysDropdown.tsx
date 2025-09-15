@@ -46,6 +46,7 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
       <div
         onClick={toggleOpenHandler}
         className="bg-lighter-blue px-[1.25rem] flex gap-[0.813rem] items-center py-[0.5rem] rounded-[0.625rem] cursor-pointer"
+        tabIndex={0}
       >
         <p>{activeDay !== undefined ? activeDay.title : "Select a day"}</p>
         <img src={DropdownIcon} alt="" />
