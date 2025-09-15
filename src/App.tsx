@@ -10,15 +10,21 @@ import DailyForecast from "./components/DailyForecast/DailyForecast";
 import HourlyForecast from "./components/HourlyForecast/HourlyForecast";
 
 import { type TodaysWeather as TodaysWeatherType } from "./components/TodaysWeather/TodaysWeather";
+import { type ForecastDailyData } from "./components/DailyForecast/DailyForecast";
 
 type TodaysData = Omit<TodaysWeatherType, "isLoading">;
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isMetric, _setIsMetric] = useState(true);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [todaysData, setTodaysData] = useState<
-    TodaysData["data"] | undefined
+  const [todaysPrimaryData, setTodaysPrimaryData] = useState<
+    TodaysData["primaryData"] | undefined
   >();
+  const [todaysSecondaryData, setTodaysSecondaryData] = useState<
+    TodaysData["secondaryData"] | undefined
+  >();
+  const [dailyData, setDailyData] = useState<ForecastDailyData>();
 
   useEffect(() => {
     const getMeteoData = async () => {
@@ -123,8 +129,7 @@ const App = () => {
       };
 
       const currentTime = weatherData.current.time;
-
-      let dataForToday: TodaysData["data"] = {
+      setTodaysPrimaryData({
         city: name,
         country: country,
         date: `${getDayName(currentTime.getDay())}, ${getMonthShortName(
@@ -132,24 +137,20 @@ const App = () => {
         )} ${currentTime.getDate()}, ${currentTime.getFullYear()}`,
         temperature: weatherData.current.temperature_2m,
         weatherCode: weatherData.current.weather_code,
-      };
-      setTodaysData(dataForToday);
+      });
 
-      // 'weatherData' now contains a simple structure with arrays with datetime and weather data
-      console.log(
-        `\nCurrent time: ${weatherData.current.time}`,
-        `\nCurrent temperature_2m: ${weatherData.current.temperature_2m}`,
-        `\nCurrent weather_code: ${weatherData.current.weather_code}`,
-        `\nCurrent precipitation: ${weatherData.current.precipitation}`,
-        `\nCurrent wind_speed_10m: ${weatherData.current.wind_speed_10m}`,
-        `\nCurrent relative_humidity_2m: ${weatherData.current.relative_humidity_2m}`,
-        `\nCurrent apparent_temperature: ${weatherData.current.apparent_temperature}`
-      );
+      setTodaysSecondaryData({
+        precipitation: weatherData.current.precipitation,
+        wind: weatherData.current.wind_speed_10m,
+        humidity: current.variables(4)!.value(),
+        feelsLike: current.variables(5)!.value(),
+      });
+
+      setDailyData(weatherData.daily);
+
       console.log("\nHourly data", weatherData.hourly);
-      console.log("\nDaily data", weatherData.daily);
 
       setIsLoading(false);
-      console.log(todaysData);
     };
 
     getMeteoData();
@@ -172,8 +173,17 @@ const App = () => {
       />
       <div className="dsktp:w-[75.75rem] dsktp:mx-auto dsktp:grid dsktp:grid-cols-3 dsktp:items-start dsktp:gap-[2rem]">
         <div className="dsktp:col-span-2">
-          <TodaysWeather data={todaysData} isLoading={isLoading} />
-          <DailyForecast isLoading={isLoading} />
+          <TodaysWeather
+            primaryData={todaysPrimaryData}
+            secondaryData={todaysSecondaryData}
+            isMetric={isMetric}
+            isLoading={isLoading}
+          />
+          <DailyForecast
+            data={dailyData}
+            isMetric={isMetric}
+            isLoading={isLoading}
+          />
         </div>
         <HourlyForecast isLoading={isLoading} />
       </div>
