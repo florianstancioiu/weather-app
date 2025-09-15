@@ -18,7 +18,7 @@ export type DayDropdownValue = {
 };
 
 export type DaysDropdown = {
-  days: DayDropdownValue[];
+  days?: DayDropdownValue[];
   onChange: (value: DayDropdownValue) => void;
 };
 
@@ -35,7 +35,11 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
     setIsOpen(false);
   });
 
-  const activeDay = days.find((value) => value.isActive === true);
+  let activeDay;
+
+  if (days !== undefined) {
+    activeDay = days.find((value) => value.isActive === true);
+  }
 
   return (
     <div ref={wrapperRef} className="relative">
@@ -43,26 +47,27 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
         onClick={toggleOpenHandler}
         className="bg-lighter-blue px-[1.25rem] flex gap-[0.813rem] items-center py-[0.5rem] rounded-[0.625rem] cursor-pointer"
       >
-        <p>{activeDay ? activeDay.title : "Select a day"}</p>
+        <p>{activeDay !== undefined ? activeDay.title : "Select a day"}</p>
         <img src={DropdownIcon} alt="" />
       </div>
 
       {isOpen && (
         <ul className="absolute bg-background-2 top-[3.313rem] right-0 w-[13.375rem] border-light-blue border-[1px] p-[0.5rem] rounded-[0.75rem]">
-          {days.map((day) => (
-            <li
-              key={day.id}
-              onClick={() => {
-                onChange(day);
-                setIsOpen(false);
-              }}
-              className={`${
-                day.isActive ? "bg-background-3" : ""
-              } px-[0.5rem] h-[2.5rem] flex items-center rounded-[0.75rem] cursor-pointer hover:bg-background-3`}
-            >
-              {day.title}
-            </li>
-          ))}
+          {days !== undefined &&
+            days.map((day) => (
+              <li
+                key={day.id}
+                onClick={() => {
+                  onChange(day);
+                  setIsOpen(false);
+                }}
+                className={`${
+                  day.isActive ? "bg-background-3" : ""
+                } px-[0.5rem] h-[2.5rem] flex items-center rounded-[0.75rem] cursor-pointer hover:bg-background-3`}
+              >
+                {day.title}
+              </li>
+            ))}
         </ul>
       )}
     </div>
