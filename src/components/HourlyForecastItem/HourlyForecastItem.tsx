@@ -16,7 +16,7 @@ const HourlyForecastItem = ({
   return (
     <>
       {!isLoading && (
-        <li className="bg-background-3 rounded-[0.313rem] flex justify-between items-center h-[3.75rem] px-[1.125rem] border-[1px] border-light-blue dsktp:h-[3.75rem]">
+        <li className="bg-background-3 rounded-[0.313rem] flex justify-between items-center h-[3.75rem] px-[1.125rem] border-[1px] border-light-blue xl:h-[3.75rem]">
           <div className="flex items-center gap-[1rem]">
             <WeatherCode code={weatherCode} className="w-[2.5rem]" />
             <p>{hour}</p>
@@ -25,7 +25,7 @@ const HourlyForecastItem = ({
         </li>
       )}
       {isLoading && (
-        <li className="bg-background-3 rounded-[0.313rem] flex justify-between items-center h-[3.75rem] px-[1.125rem] border-[1px] border-light-blue dsktp:h-[3.75rem]"></li>
+        <li className="bg-background-3 rounded-[0.313rem] flex justify-between items-center h-[3.75rem] px-[1.125rem] border-[1px] border-light-blue xl:h-[3.75rem]"></li>
       )}
     </>
   );

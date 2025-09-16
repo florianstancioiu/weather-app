@@ -60,7 +60,7 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
   };
 
   return (
-    <aside className="mt-[2rem] py-[1.25rem] px-[1rem] bg-background-2 rounded-[0.625rem] dsktp:mt-0 dsktp:h-[43.25rem]">
+    <aside className="mt-[2rem] py-[1.25rem] px-[1rem] bg-background-2 rounded-[0.625rem] xl:mt-0 xl:h-[43.25rem]">
       <div className="flex justify-between items-center mb-[1.5rem]">
         <h3>Hourly forecast</h3>
         <DaysDropdown days={days} onChange={onDaysDropdownChangeHandler} />

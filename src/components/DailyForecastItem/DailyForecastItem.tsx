@@ -23,10 +23,10 @@ const DailyForecastItem = ({
   return (
     <>
       {!isLoading && (
-        <li className="px-[0.75rem] py-[1.5rem] bg-background-2 rounded-[0.625rem] border-[2px] border-dark-blue dsktp:h-[10.25rem] dsktp:py-[1rem] dsktp:px-[0.625rem]">
+        <li className="px-[0.75rem] py-[1.5rem] bg-background-2 rounded-[0.625rem] border-[2px] border-dark-blue xl:h-[10.25rem] xl:py-[1rem] xl:px-[0.625rem]">
           {day !== undefined && (
             <p
-              className="mb-[2.125rem] text-center dsktp:mb-[1rem] dsktp:leading-[120%]"
+              className="mb-[2.125rem] text-center xl:mb-[1rem] xl:leading-[120%]"
               title={getDayName(day)}
             >
               {getDayShortName(day)}
@@ -35,7 +35,7 @@ const DailyForecastItem = ({
           {day !== undefined ? (
             <WeatherCode
               code={weatherCode}
-              className="mb-[2.125rem] mx-auto w-[3.125rem] dsktp:mb-[1rem]"
+              className="mb-[2.125rem] mx-auto w-[3.125rem] xl:mb-[1rem]"
             />
           ) : (
             <></>
@@ -64,7 +64,7 @@ const DailyForecastItem = ({
         </li>
       )}
       {isLoading && (
-        <li className="px-[0.75rem] py-[1.5rem] bg-background-2 rounded-[0.625rem] border-[2px] border-dark-blue h-[10.313rem] dsktp:h-[10.25rem] dsktp:py-[1rem] dsktp:px-[0.625rem]"></li>
+        <li className="px-[0.75rem] py-[1.5rem] bg-background-2 rounded-[0.625rem] border-[2px] border-dark-blue h-[10.313rem] xl:h-[10.25rem] xl:py-[1rem] xl:px-[0.625rem]"></li>
       )}
     </>
   );
