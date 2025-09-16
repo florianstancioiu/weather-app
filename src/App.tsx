@@ -8,6 +8,7 @@ import SearchCity from "./components/SearchCity/SearchCity";
 import TodaysWeather from "./components/TodaysWeather/TodaysWeather";
 import DailyForecast from "./components/DailyForecast/DailyForecast";
 import HourlyForecast from "./components/HourlyForecast/HourlyForecast";
+import NoSearchResults from "./components/NoSearchResults/NoSearchResults";
 
 import { type TodaysWeather as TodaysWeatherType } from "./components/TodaysWeather/TodaysWeather";
 import { type ForecastDailyData } from "./components/DailyForecast/DailyForecast";
@@ -17,6 +18,7 @@ type TodaysData = Omit<TodaysWeatherType, "isLoading">;
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [noSearchResults, setNoSearchResults] = useState(false);
   const [isMetric, _setIsMetric] = useState(true);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [todaysPrimaryData, setTodaysPrimaryData] = useState<
@@ -40,6 +42,14 @@ const App = () => {
         `https://geocoding-api.open-meteo.com/v1/search?name=${searchKeyword}&count=1&language=en&format=json`
       );
 
+      if (
+        geocodedCity?.results === undefined ||
+        geocodedCity?.results.length === 0
+      ) {
+        setNoSearchResults(true);
+        return;
+      }
+
       const { longitude, latitude, name, country } = geocodedCity?.results[0];
 
       const params = {
@@ -59,6 +69,11 @@ const App = () => {
       };
       const url = "https://api.open-meteo.com/v1/forecast";
       const responses = await fetchWeatherApi(url, params);
+
+      if (responses.length === 0) {
+        setNoSearchResults(true);
+        return;
+      }
 
       // Process first location. Add a for-loop for multiple locations or weather models
       const response = responses[0];
@@ -167,22 +182,25 @@ const App = () => {
         onChange={onSearchCityChangeHandler}
         onSearch={onSearchCitySearchHandler}
       />
-      <div className="dsktp:w-[75.75rem] dsktp:mx-auto dsktp:grid dsktp:grid-cols-3 dsktp:items-start dsktp:gap-[2rem]">
-        <div className="dsktp:col-span-2">
-          <TodaysWeather
-            primaryData={todaysPrimaryData}
-            secondaryData={todaysSecondaryData}
-            isMetric={isMetric}
-            isLoading={isLoading}
-          />
-          <DailyForecast
-            data={dailyData}
-            isMetric={isMetric}
-            isLoading={isLoading}
-          />
+      {noSearchResults && <NoSearchResults />}
+      {!noSearchResults && (
+        <div className="dsktp:w-[75.75rem] dsktp:mx-auto dsktp:grid dsktp:grid-cols-3 dsktp:items-start dsktp:gap-[2rem]">
+          <div className="dsktp:col-span-2">
+            <TodaysWeather
+              primaryData={todaysPrimaryData}
+              secondaryData={todaysSecondaryData}
+              isMetric={isMetric}
+              isLoading={isLoading}
+            />
+            <DailyForecast
+              data={dailyData}
+              isMetric={isMetric}
+              isLoading={isLoading}
+            />
+          </div>
+          <HourlyForecast data={hourlyData} isLoading={isLoading} />
         </div>
-        <HourlyForecast data={hourlyData} isLoading={isLoading} />
-      </div>
+      )}
     </>
   );
 };
