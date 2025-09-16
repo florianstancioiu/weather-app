@@ -18,14 +18,8 @@ const App = () => {
     hourlyData,
     noSearchResults,
     isError,
-    setIsLoading,
-    setNoSearchResults,
-    setIsError,
     setSearchKeyword,
-    setTodaysPrimaryData,
-    setTodaysSecondaryData,
-    setDailyData,
-    setHourlyData,
+    resetState,
   } = useMeteoData();
 
   const onSearchCityChangeHandler = (keyword: string) => {
@@ -37,14 +31,7 @@ const App = () => {
   };
 
   const onSomethingWrongRetryHandler = () => {
-    setIsLoading(false);
-    setNoSearchResults(false);
-    setIsError(false);
-    setSearchKeyword("");
-    setTodaysPrimaryData(undefined);
-    setTodaysSecondaryData(undefined);
-    setDailyData(undefined);
-    setHourlyData(undefined);
+    resetState();
   };
 
   return (
