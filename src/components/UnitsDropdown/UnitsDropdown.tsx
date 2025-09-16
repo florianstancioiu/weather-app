@@ -36,7 +36,7 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
     <div ref={wrapperRef} className="relative">
       <div
         onClick={toggleDropdown}
-        className="flex justify-between items-center cursor-pointer bg-background-2 py-[0.438rem] px-[0.625rem] rounded-[0.375rem] gap-[0.375rem]"
+        className="flex justify-between items-center cursor-pointer bg-background-2 py-[0.438rem] px-[0.625rem] rounded-[0.375rem] gap-[0.375rem] select-none"
         tabIndex={0}
       >
         <img src={UnitsIcon} alt="" />

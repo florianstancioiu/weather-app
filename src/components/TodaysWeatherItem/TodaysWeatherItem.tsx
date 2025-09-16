@@ -36,6 +36,7 @@ const TodaysWeatherItem = ({
           </p>
           <p className="font-light text-[2rem] leading-none">
             {value !== undefined ? `${Math.round(value)}${titleSuffix}` : ""}
+            {value === undefined ? "-" : ""}
           </p>
         </li>
       )}
