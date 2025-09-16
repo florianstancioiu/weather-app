@@ -48,6 +48,7 @@ Users should be able to:
 - **September 12th, 2025:** I added a `isLoading` prop for every single component that needed one, I also began work on implementing the API fetch calls.
 - **September 14th, 2025:** I made the existing HTML code more accessible and I also implemented the Search functionality for the Main area (I still have to work on displaying the _Feels Like_, _Humidity_, _Wind_ and _Precipitation_ sections)
 - **September 15th, 2025:** I completed the functionality for today's weather section, the daily forecast section and the hourly forecast section. I still have some doubts about the hourly forecast section, it has been by far the trickiest of them all.
+- **September 16th, 2025:** I implemented the no search results and the API error screens, I worked on the tablet version of the app and I also completed some TODOs that were left in the code base.
 
 ### Built with
 
@@ -76,6 +77,7 @@ I would also add [storybook](https://storybook.js.org/) to this project, I don't
 - [Get all unique values in a JavaScript array (remove duplicates) [duplicate]](https://stackoverflow.com/a/14438954/12159189) - This helped me make an array with unique values
 - [How do you display JavaScript datetime in 12 hour AM/PM format?](https://stackoverflow.com/a/36822046/12159189) - This helped me display hours in AM/PM format
 - [Scroll back to the top of scrollable div](https://stackoverflow.com/a/10744324/12159189) - This helped me reset the scroll to the top of the hourly forecast section when selecting a different day
+- [The Only Accessibility Video You Will Ever Need - Youtube](https://www.youtube.com/watch?v=2oiBKSjOOFE) - This helped me understand accessibility for web pages
 
 ## Author
 
