@@ -7,7 +7,7 @@ import { type TodaysWeather as TodaysWeatherType } from "../components/TodaysWea
 import { type ForecastDailyData } from "../components/DailyForecast/DailyForecast";
 import { type ForecastHourlyData } from "../components/HourlyForecast/HourlyForecast";
 
-const useGetMeteoData = () => {
+const useMeteoData = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [noSearchResults, setNoSearchResults] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -183,4 +183,4 @@ const useGetMeteoData = () => {
   };
 };
 
-export default useGetMeteoData;
+export default useMeteoData;

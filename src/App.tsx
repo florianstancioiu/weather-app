@@ -1,4 +1,4 @@
-import useGetMeteoData from "./hooks/useGetMeteoData";
+import useMeteoData from "./hooks/useMeteoData";
 
 import Header from "./components/Header/Header";
 import SearchCity from "./components/SearchCity/SearchCity";
@@ -26,7 +26,7 @@ const App = () => {
     setTodaysSecondaryData,
     setDailyData,
     setHourlyData,
-  } = useGetMeteoData();
+  } = useMeteoData();
 
   const onSearchCityChangeHandler = (keyword: string) => {
     setSearchKeyword(keyword);
