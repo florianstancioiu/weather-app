@@ -206,7 +206,7 @@ const App = () => {
           />
           {noSearchResults && <NoSearchResults />}
           {!noSearchResults && (
-            <div className="xl:w-[75.75rem] xl:mx-auto xl:grid xl:grid-cols-3 xl:items-start xl:gap-[2rem]">
+            <div className="md:mx-auto md:w-[45rem] xl:w-[75.75rem] xl:grid xl:grid-cols-3 xl:items-start xl:gap-[2rem]">
               <div className="xl:col-span-2">
                 <TodaysWeather
                   primaryData={todaysPrimaryData}

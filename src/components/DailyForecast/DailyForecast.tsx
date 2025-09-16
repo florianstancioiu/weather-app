@@ -17,7 +17,7 @@ const DailyForecast = ({ data, isMetric, isLoading }: DailyForecast) => {
   return (
     <section>
       <h3 className="mb-[1.5rem]">Daily forecast</h3>
-      <ul className="grid grid-cols-3 gap-[1rem] xl:grid-cols-7">
+      <ul className="grid grid-cols-3 gap-[1rem] md:grid-cols-7">
         {data !== undefined &&
           data.time.map((time, index) => {
             const maximum = data.temperature_2m_max![index];

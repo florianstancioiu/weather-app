@@ -18,12 +18,12 @@ const SearchCity = ({ onChange, onSearch }: SearchCity) => {
   };
 
   return (
-    <section className="mb-[2rem] pt-[4.25rem] xl:w-[75.75rem] xl:mx-auto xl:pt-0">
-      <h1 className="font-bricolage-grotesque text-6xl text-center mb-[4.25rem] font-bold xl:mb-[4rem] xl:text-[3.25rem] xl:leading-[120%]">
+    <section className="mb-[2rem] pt-[4.25rem] md:mx-auto md:pt-0 xl:w-[75.75rem] md:w-[45rem]">
+      <h1 className="font-bricolage-grotesque text-6xl text-center mb-[4.25rem] font-bold md:mb-[4rem] md:text-[3.25rem] md:leading-[120%] md:w-[30.125rem] md:mx-auto xl:w-[45.688rem]">
         How's the sky looking today?
       </h1>
-      <div className="xl:flex xl:justify-center xl:items-center xl:gap-[1rem]">
-        <div className="bg-neutral-2 mb-[0.75rem] relative rounded-[0.625rem] xl:w-[32rem] xl:mb-0">
+      <div className="md:flex md:justify-center md:items-center md:gap-[1rem] md:w-full">
+        <div className="bg-neutral-2 mb-[0.75rem] relative rounded-[0.625rem] md:mb-0 md:w-full xl:w-[32rem]">
           <SearchIcon className="absolute top-[1.125rem] left-[1.5rem] text-grayish-white" />
           <input
             type="text"
