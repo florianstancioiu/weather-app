@@ -1,14 +1,13 @@
-export default async (url: string) => {
+// TODO: figure out what the type for options should be
+export default async (url: string, options?: any) => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, options);
 
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
 
-    const result = await response.json();
-
-    return result;
+    return await response.json();
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
