@@ -81,6 +81,10 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
               />
             );
           })}
+        {((hours !== undefined && hours.length === 0) || isLoading === true) &&
+          [...Array(24).keys()].map((_dummy, index) => {
+            return <HourlyForecastItem key={index} isLoading={true} />;
+          })}
       </ul>
     </aside>
   );
