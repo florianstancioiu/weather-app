@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type KeyboardEvent } from "react";
 import SearchIcon from "../../images/icon-search.svg?react";
 
 import Button from "../Button/Button";
@@ -10,6 +10,12 @@ export type SearchCity = {
 
 const SearchCity = ({ onChange, onSearch }: SearchCity) => {
   const [keyword, setKeyword] = useState("");
+
+  const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      onSearch(keyword);
+    }
+  };
 
   return (
     <section className="mb-[2rem] pt-[4.25rem] xl:w-[75.75rem] xl:mx-auto xl:pt-0">
@@ -24,6 +30,7 @@ const SearchCity = ({ onChange, onSearch }: SearchCity) => {
             id="search-input"
             value={keyword}
             onChange={(event) => setKeyword(event.target.value)}
+            onKeyDown={onKeyDownHandler}
             autoFocus
             aria-label="Search for a place..."
             placeholder="Search for a place..."
