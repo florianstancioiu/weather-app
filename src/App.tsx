@@ -15,20 +15,16 @@ import { type TodaysWeather as TodaysWeatherType } from "./components/TodaysWeat
 import { type ForecastDailyData } from "./components/DailyForecast/DailyForecast";
 import { type ForecastHourlyData } from "./components/HourlyForecast/HourlyForecast";
 
-type TodaysData = Omit<TodaysWeatherType, "isLoading">;
-
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [noSearchResults, setNoSearchResults] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isMetric, _setIsMetric] = useState(true);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [todaysPrimaryData, setTodaysPrimaryData] = useState<
-    TodaysData["primaryData"] | undefined
-  >();
-  const [todaysSecondaryData, setTodaysSecondaryData] = useState<
-    TodaysData["secondaryData"] | undefined
-  >();
+  const [todaysPrimaryData, setTodaysPrimaryData] =
+    useState<TodaysWeatherType["primaryData"]>();
+  const [todaysSecondaryData, setTodaysSecondaryData] =
+    useState<TodaysWeatherType["secondaryData"]>();
   const [dailyData, setDailyData] = useState<ForecastDailyData>();
   const [hourlyData, setHourlyData] = useState<ForecastHourlyData>();
 
