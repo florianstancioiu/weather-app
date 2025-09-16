@@ -63,7 +63,7 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
       </div>
 
       {isOpen && (
-        <ul className="absolute bg-background-2 top-[3.313rem] right-0 w-[13.375rem] border-light-blue border-[1px] p-[0.5rem] rounded-[0.75rem]">
+        <ul className="absolute bg-neutral-2 top-[3.313rem] right-0 w-[13.375rem] border-light-blue border-[1px] p-[0.5rem] rounded-[0.75rem]">
           {days !== undefined &&
             days.map((day) => (
               <li
@@ -73,8 +73,8 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
                   setIsOpen(false);
                 }}
                 className={`${
-                  day.isActive ? "bg-background-3" : ""
-                } px-[0.5rem] h-[2.5rem] flex items-center rounded-[0.75rem] cursor-pointer hover:bg-background-3`}
+                  day.isActive ? "bg-neutral-3" : ""
+                } px-[0.5rem] h-[2.5rem] flex items-center rounded-[0.75rem] cursor-pointer hover:bg-neutral-3`}
               >
                 {day.title}
               </li>

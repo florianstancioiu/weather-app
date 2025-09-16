@@ -18,7 +18,7 @@ const SomethingWrong = ({ onRetry }: SomethingWrong) => {
       </p>
       <button
         onClick={() => onRetry()}
-        className="bg-background-2 py-[0.75rem] px-[1.125rem] flex gap-[0.625rem] items-center cursor-pointer mx-auto rounded-[0.5rem]"
+        className="bg-neutral-2 py-[0.75rem] px-[1.125rem] flex gap-[0.625rem] items-center cursor-pointer mx-auto rounded-[0.5rem]"
       >
         <IconRetry />
         <span>Retry</span>

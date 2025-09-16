@@ -51,7 +51,7 @@ const TodaysWeather = ({
           </div>
         )}
         {isLoading && (
-          <div className="bg-background-2 rounded-[1rem] h-[17.875rem] grid place-items-center xl:px-[1.625rem] xl:text-center">
+          <div className="bg-neutral-2 rounded-[1rem] h-[17.875rem] grid place-items-center xl:px-[1.625rem] xl:text-center">
             <div>
               <p>Loading...</p>
             </div>

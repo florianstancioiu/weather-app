@@ -5,11 +5,9 @@
   --font-bricolage-grotesque: "Bricolage Grotesque", sans-serif;
   --font-dm-sans: "DM Sans", sans-serif;
 
-  /* TODO: Rename these colors */
-  --color-background: #02012b;
-  --color-background-2: #262540;
-  --color-background-3: #2f2f49;
-
+  --color-neutral-1: #02012b;
+  --color-neutral-2: #262540;
+  --color-neutral-3: #2f2f49;
   --color-white: #f4f2f5;
   --color-grayish-white: #cbcddc;
   --color-blue: #4657d9;

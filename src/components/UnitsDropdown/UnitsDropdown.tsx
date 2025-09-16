@@ -36,7 +36,7 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
     <div ref={wrapperRef} className="relative">
       <div
         onClick={toggleDropdown}
-        className="flex justify-between items-center cursor-pointer bg-background-2 py-[0.438rem] px-[0.625rem] rounded-[0.375rem] gap-[0.375rem] select-none"
+        className="flex justify-between items-center cursor-pointer bg-neutral-2 py-[0.438rem] px-[0.625rem] rounded-[0.375rem] gap-[0.375rem] select-none"
         tabIndex={0}
       >
         <img src={UnitsIcon} alt="" />
@@ -44,7 +44,7 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
         <img src={DropdownIcon} alt="" />
       </div>
       {isOpen && (
-        <div className="z-20 absolute bg-background-2 top-[3.313rem] right-0 w-[13.375rem] border-light-blue border-[1px] p-[0.5rem] rounded-[0.75rem]">
+        <div className="z-20 absolute bg-neutral-2 top-[3.313rem] right-0 w-[13.375rem] border-light-blue border-[1px] p-[0.5rem] rounded-[0.75rem]">
           <div className="mb-[0.625rem]">
             <button
               className="cursor-pointer w-full text-left px-[0.625rem] h-[2.625rem]"
@@ -60,7 +60,7 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
               </p>
               <div
                 className={`${
-                  isMetric ? "bg-background-3" : ""
+                  isMetric ? "bg-neutral-3" : ""
                 } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
               >
                 <p>Celsius (°C)</p>
@@ -68,7 +68,7 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
               </div>
               <div
                 className={`${
-                  !isMetric ? "bg-background-3" : ""
+                  !isMetric ? "bg-neutral-3" : ""
                 } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
               >
                 <p>Fahrenheit (°F)</p>
@@ -81,7 +81,7 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
               </p>
               <div
                 className={`${
-                  isMetric ? "bg-background-3" : ""
+                  isMetric ? "bg-neutral-3" : ""
                 } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
               >
                 <p>km/h</p>
@@ -89,7 +89,7 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
               </div>
               <div
                 className={`${
-                  !isMetric ? "bg-background-3" : ""
+                  !isMetric ? "bg-neutral-3" : ""
                 } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
               >
                 <p>mph</p>
@@ -102,7 +102,7 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
               </p>
               <div
                 className={`${
-                  isMetric ? "bg-background-3" : ""
+                  isMetric ? "bg-neutral-3" : ""
                 } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
               >
                 <p>Millimeters (mm)</p>
@@ -110,7 +110,7 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
               </div>
               <div
                 className={`${
-                  !isMetric ? "bg-background-3" : ""
+                  !isMetric ? "bg-neutral-3" : ""
                 } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
               >
                 <p>Inches (in)</p>

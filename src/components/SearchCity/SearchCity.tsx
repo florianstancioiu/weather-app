@@ -17,7 +17,7 @@ const SearchCity = ({ onChange, onSearch }: SearchCity) => {
         How's the sky looking today?
       </h1>
       <div className="xl:flex xl:justify-center xl:items-center xl:gap-[1rem]">
-        <div className="bg-background-2 mb-[0.75rem] relative rounded-[0.625rem] xl:w-[32rem] xl:mb-0">
+        <div className="bg-neutral-2 mb-[0.75rem] relative rounded-[0.625rem] xl:w-[32rem] xl:mb-0">
           <SearchIcon className="absolute top-[1.125rem] left-[1.5rem] text-grayish-white" />
           <input
             type="text"
