@@ -48,7 +48,7 @@ Users should be able to:
 - **September 12th, 2025:** I added a `isLoading` prop for every single component that needed one, I also began work on implementing the API fetch calls.
 - **September 14th, 2025:** I made the existing HTML code more accessible and I also implemented the Search functionality for the Main area (I still have to work on displaying the _Feels Like_, _Humidity_, _Wind_ and _Precipitation_ sections)
 - **September 15th, 2025:** I completed the functionality for today's weather section, the daily forecast section and the hourly forecast section. I still have some doubts about the hourly forecast section, it has been by far the trickiest of them all.
-- **September 16th, 2025:** I implemented the no search results and the API error screens, I worked on the tablet version of the app and I also completed some TODOs that were left in the code base.
+- **September 16th, 2025:** I implemented the no search results and the API error screens, I worked on the tablet version of the app and I also completed some TODOs that were left in the code base. I extracted all the fetch logic from the App.tsx into a custom hook named _useMeteoData_, also, I updated the said hook with the Geolocation API so that users can allow for their position to be read and used in fetch requests.
 
 ### Built with
 
