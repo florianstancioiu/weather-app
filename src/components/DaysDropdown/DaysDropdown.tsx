@@ -27,7 +27,9 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
   const wrapperRef = createRef<HTMLDivElement>();
 
   const toggleOpenHandler = () => {
-    setIsOpen((val) => !val);
+    if (days !== undefined && days.length !== 0) {
+      setIsOpen((val) => !val);
+    }
   };
 
   // Close the dropdown on blur
@@ -45,10 +47,18 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
     <div ref={wrapperRef} className="relative">
       <div
         onClick={toggleOpenHandler}
-        className="bg-lighter-blue px-[1.25rem] flex gap-[0.813rem] items-center py-[0.5rem] rounded-[0.625rem] cursor-pointer"
+        className={`bg-lighter-blue px-[1.25rem] flex gap-[0.813rem] items-center py-[0.5rem] rounded-[0.625rem] select-none ${
+          days !== undefined && days.length === 0
+            ? "cursor-not-allowed"
+            : "cursor-pointer"
+        }`}
         tabIndex={0}
       >
-        <p>{activeDay !== undefined ? activeDay.title : "Select a day"}</p>
+        {days !== undefined && days.length > 0 && (
+          <p>{activeDay !== undefined ? activeDay.title : "Select a day"}</p>
+        )}
+        {days === undefined ||
+          (days !== undefined && days.length === 0 && <p>No options</p>)}
         <img src={DropdownIcon} alt="" />
       </div>
 
