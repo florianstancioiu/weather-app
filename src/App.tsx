@@ -166,6 +166,7 @@ const App = () => {
         setHourlyData(weatherData.hourly);
 
         setIsLoading(false);
+        setNoSearchResults(false);
       } catch {
         setIsError(true);
       }

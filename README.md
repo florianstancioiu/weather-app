@@ -75,6 +75,7 @@ I would also add [storybook](https://storybook.js.org/) to this project, I don't
 - [Destructuring nullable objects](https://stackoverflow.com/a/45210379/12159189) - This helped me solve a TS issue with destructuring nullable objects
 - [Get all unique values in a JavaScript array (remove duplicates) [duplicate]](https://stackoverflow.com/a/14438954/12159189) - This helped me make an array with unique values
 - [How do you display JavaScript datetime in 12 hour AM/PM format?](https://stackoverflow.com/a/36822046/12159189) - This helped me display hours in AM/PM format
+- [Scroll back to the top of scrollable div](https://stackoverflow.com/a/10744324/12159189) - This helped me reset the scroll to the top of the hourly forecast section when selecting a different day
 
 ## Author
 
