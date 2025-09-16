@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import DaysDropdown from "../DaysDropdown/DaysDropdown";
 import HourlyForecastItem from "../HourlyForecastItem/HourlyForecastItem";
 import { type DayDropdownValue, type Day } from "../DaysDropdown/DaysDropdown";
@@ -21,6 +21,7 @@ export type HourlyForecast = {
 };
 
 const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
+  const hourlyItemsRef = useRef<HTMLUListElement>(null);
   const [days, setDays] =
     useState<{ id: number; title: Day; isActive: boolean }[]>();
   const [hours, setHours] = useState<{ index: number; hour: Date }[]>();
@@ -52,6 +53,10 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
 
     setHours(getActiveFormattedHoursFromHourly(value.id, data));
     setDays(newDays);
+
+    if (hourlyItemsRef.current) {
+      hourlyItemsRef.current.scrollTop = 0;
+    }
   };
 
   return (
@@ -60,7 +65,10 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
         <h3>Hourly forecast</h3>
         <DaysDropdown days={days} onChange={onDaysDropdownChangeHandler} />
       </div>
-      <ul className="max-h-[37.125rem] overflow-y-scroll grid gap-[1rem] grid-cols-1">
+      <ul
+        ref={hourlyItemsRef}
+        className="max-h-[37.125rem] overflow-y-scroll grid gap-[1rem] grid-cols-1"
+      >
         {hours !== undefined &&
           hours.map((hour) => {
             const index = hour.index;
