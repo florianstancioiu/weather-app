@@ -12,7 +12,7 @@ const useMeteoData = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [noSearchResults, setNoSearchResults] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [isMetric, _setIsMetric] = useState(true);
+  const [isMetric, setIsMetric] = useState(true);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [todaysPrimaryData, setTodaysPrimaryData] =
     useState<TodaysWeatherType["primaryData"]>();
@@ -184,13 +184,14 @@ const useMeteoData = () => {
     noSearchResults,
     isError,
     setIsLoading,
-    setNoSearchResults,
-    setIsError,
-    setSearchKeyword,
+    setIsMetric,
     setTodaysPrimaryData,
     setTodaysSecondaryData,
     setDailyData,
     setHourlyData,
+    setNoSearchResults,
+    setIsError,
+    setSearchKeyword,
     resetState,
   };
 };
