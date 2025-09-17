@@ -40,7 +40,7 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
     });
 
     setDays(actualDays);
-    setHours(getActiveFormattedHoursFromHourly(0, data));
+    setHours(getActiveFormattedHoursFromHourly(numericDays[0], data));
   }, [data]);
 
   const onDaysDropdownChangeHandler = (value: DayDropdownValue) => {
