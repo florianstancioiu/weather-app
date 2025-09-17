@@ -35,7 +35,11 @@ const TodaysWeather = ({
           <div className="bg-[url('/images/bg-today-small.svg')] bg-cover bg-center rounded-[1rem] md:h-[17.875rem] md:flex md:justify-between md:items-center md:px-[1.625rem] md:bg-[url('/images/bg-today-large.svg')]">
             <div className="text-center pt-[3.375rem] mb-[2.75rem] md:pt-0 md:mb-0 md:text-left">
               <h2 className="mb-[1.5rem] font-bold text-[1.5rem] md:text-[1.75rem] md:leading-[120%]">
-                {city ? `${city}, ${country}` : "Please search for a place"}
+                {city && city === "Current location"
+                  ? city
+                  : city
+                  ? `${city}, ${country}`
+                  : "Please search for a place"}
               </h2>
               <p className="text-grayish-white">{date}</p>
             </div>
