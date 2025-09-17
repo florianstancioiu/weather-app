@@ -4,33 +4,121 @@ import DropdownIcon from "../../images/icon-dropdown.svg";
 import CheckmarkIcon from "../../images/icon-checkmark.svg?react";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 
-export type UnitsDropdown = {
-  onChangeSystem?: (isMetric: boolean) => void;
+export type DataInnerValue = {
+  id: number;
+  title: string;
+  isMetric: boolean;
+  isActive: boolean;
 };
 
-const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
+export type DataValue = {
+  id: number;
+  title: string;
+  values: [DataInnerValue, DataInnerValue];
+};
+
+export type UnitsDropdown = {
+  onChangeSystem?: (isMetric: boolean) => void;
+  onChangeUnit?: (unitType: string, unitValue: string) => void;
+};
+
+const UnitsDropdown = ({ onChangeSystem, onChangeUnit }: UnitsDropdown) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMetric, setIsMetric] = useState(true);
   const wrapperRef = createRef<HTMLDivElement | null>();
-
-  const toggleDropdown = () => {
-    setIsOpen((val) => !val);
-  };
-
-  const toggleMetricOrImperial = () => {
-    setIsMetric((val) => {
-      if (onChangeSystem) {
-        onChangeSystem(!val);
-      }
-
-      return !val;
-    });
-  };
+  const [data, setData] = useState<DataValue[]>([
+    {
+      id: 1,
+      title: "Temperature",
+      values: [
+        {
+          id: 1,
+          title: "Celsius (°C)",
+          isMetric: true,
+          isActive: true,
+        },
+        {
+          id: 2,
+          title: "Fahrenheit (°F)",
+          isMetric: false,
+          isActive: false,
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "Wind Speed",
+      values: [
+        {
+          id: 1,
+          title: "km/h",
+          isMetric: true,
+          isActive: true,
+        },
+        {
+          id: 2,
+          title: "mph",
+          isMetric: false,
+          isActive: false,
+        },
+      ],
+    },
+    {
+      id: 3,
+      title: "Precipitation",
+      values: [
+        {
+          id: 1,
+          title: "Millimeters (mm)",
+          isMetric: true,
+          isActive: true,
+        },
+        {
+          id: 2,
+          title: "Inches (in)",
+          isMetric: false,
+          isActive: false,
+        },
+      ],
+    },
+  ]);
 
   // Close the dropdown on blur
   useOnClickOutside(wrapperRef, () => {
     setIsOpen(false);
   });
+
+  const toggleDropdown = () => {
+    setIsOpen((val) => !val);
+  };
+
+  const toggleMetricOrImperial = (isMetric: boolean) => {
+    setIsMetric((val) => !val);
+
+    const newData = data.map((unit) => {
+      return {
+        ...unit,
+        values: unit.values.map((unitValue) => {
+          return {
+            ...unitValue,
+            isActive: isMetric === unitValue.isMetric,
+          };
+        }),
+      };
+    });
+
+    setData(newData as DataValue[]);
+
+    if (onChangeSystem) {
+      onChangeSystem(!isMetric);
+    }
+  };
+
+  const onLeafOptionClick = (dataValueTitle: string, valueTitle: string) => {
+    if (onChangeUnit) {
+      onChangeUnit(dataValueTitle, valueTitle);
+    }
+  };
 
   return (
     <div ref={wrapperRef} className="relative">
@@ -47,76 +135,43 @@ const UnitsDropdown = ({ onChangeSystem }: UnitsDropdown) => {
         <div className="z-20 absolute bg-neutral-2 top-[3.313rem] right-0 w-[13.375rem] border-light-blue border-[1px] p-[0.5rem] rounded-[0.75rem]">
           <div className="mb-[0.625rem]">
             <button
-              className="cursor-pointer w-full text-left px-[0.625rem] h-[2.625rem]"
-              onClick={toggleMetricOrImperial}
+              className="cursor-pointer w-full text-left px-[0.625rem] h-[2.625rem] rounded-[0.75rem] hover:bg-neutral-3 focus:bg-neutral-3"
+              onClick={() => toggleMetricOrImperial(isMetric)}
             >
               {isMetric ? "Switch to Imperial" : "Switch to Metric"}
             </button>
           </div>
           <ul className="select-none">
-            <li className="border-b-[1px] border-light-blue pb-[0.5rem] mb-[1rem]">
-              <p className="text-grayish-white rounded-[0.75rem] px-[0.625rem] h-[2.5rem]">
-                Temperature
-              </p>
-              <div
-                className={`${
-                  isMetric ? "bg-neutral-3" : ""
-                } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
-              >
-                <p>Celsius (°C)</p>
-                {isMetric && <CheckmarkIcon />}
-              </div>
-              <div
-                className={`${
-                  !isMetric ? "bg-neutral-3" : ""
-                } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
-              >
-                <p>Fahrenheit (°F)</p>
-                {!isMetric && <CheckmarkIcon />}
-              </div>
-            </li>
-            <li className="border-b-[1px] border-light-blue pb-[0.5rem] mb-[1rem]">
-              <p className="text-grayish-white rounded-[0.75rem] px-[0.625rem] h-[2.5rem]">
-                Wind Speed
-              </p>
-              <div
-                className={`${
-                  isMetric ? "bg-neutral-3" : ""
-                } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
-              >
-                <p>km/h</p>
-                {isMetric && <CheckmarkIcon />}
-              </div>
-              <div
-                className={`${
-                  !isMetric ? "bg-neutral-3" : ""
-                } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
-              >
-                <p>mph</p>
-                {!isMetric && <CheckmarkIcon />}
-              </div>
-            </li>
-            <li>
-              <p className="text-grayish-white rounded-[0.75rem] px-[0.625rem] h-[2.5rem]">
-                Precipitation
-              </p>
-              <div
-                className={`${
-                  isMetric ? "bg-neutral-3" : ""
-                } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
-              >
-                <p>Millimeters (mm)</p>
-                {isMetric && <CheckmarkIcon />}
-              </div>
-              <div
-                className={`${
-                  !isMetric ? "bg-neutral-3" : ""
-                } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
-              >
-                <p>Inches (in)</p>
-                {!isMetric && <CheckmarkIcon />}
-              </div>
-            </li>
+            {data.map((dataValue, index) => {
+              const dataValueClasses =
+                index === data.length - 1
+                  ? ""
+                  : "border-b-[1px] border-light-blue pb-[0.5rem] mb-[1rem]";
+
+              return (
+                <li key={dataValue.id} className={dataValueClasses}>
+                  <p className="text-grayish-white rounded-[0.75rem] px-[0.625rem] h-[2.5rem]">
+                    {dataValue.title}
+                  </p>
+                  {dataValue.values.map((value) => {
+                    return (
+                      <div
+                        key={value.id}
+                        onClick={() =>
+                          onLeafOptionClick(dataValue.title, value.title)
+                        }
+                        className={`${
+                          value.isActive ? "bg-neutral-3" : ""
+                        } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem] cursor-pointer hover:bg-neutral-3`}
+                      >
+                        <p>{value.title}</p>
+                        {value.isActive && <CheckmarkIcon />}
+                      </div>
+                    );
+                  })}
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
