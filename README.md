@@ -78,7 +78,7 @@ I would also add [storybook](https://storybook.js.org/) to this project, I don't
 - [How do you display JavaScript datetime in 12 hour AM/PM format?](https://stackoverflow.com/a/36822046/12159189) - This helped me display hours in AM/PM format
 - [Scroll back to the top of scrollable div](https://stackoverflow.com/a/10744324/12159189) - This helped me reset the scroll to the top of the hourly forecast section when selecting a different day
 - [The Only Accessibility Video You Will Ever Need - Youtube](https://www.youtube.com/watch?v=2oiBKSjOOFE) - This helped me understand accessibility for web pages
-- [Geoapify Location Platform: Maps, Geocoding, Routing, and APIs](https://www.geoapify.com/) - This helped me do a reverse geocode (turn latitude and longitude into an address) when using the Geolocation Web API
+- ~~[Geoapify Location Platform: Maps, Geocoding, Routing, and APIs](https://www.geoapify.com/) - This helped me do a reverse geocode (turn latitude and longitude into an address) when using the Geolocation Web API~~ I ended up not using this
 
 ## Author
 
