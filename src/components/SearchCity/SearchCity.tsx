@@ -23,7 +23,7 @@ const SearchCity = ({ onChange, onSearch }: SearchCity) => {
         How's the sky looking today?
       </h1>
       <div className="md:flex md:justify-center md:items-center md:gap-[1rem] md:w-full">
-        <div className="bg-neutral-2 mb-[0.75rem] relative rounded-[0.625rem] md:mb-0 md:w-full xl:w-[32rem]">
+        <div className="bg-neutral-2 mb-[0.75rem] relative rounded-[0.625rem] md:mb-0 md:w-full xl:w-[32rem] hover:bg-neutral-4">
           <SearchIcon className="absolute top-[1.125rem] left-[1.5rem] text-grayish-white" />
           <input
             type="text"
@@ -34,7 +34,7 @@ const SearchCity = ({ onChange, onSearch }: SearchCity) => {
             autoFocus
             aria-label="Search for a place..."
             placeholder="Search for a place..."
-            className="w-full h-[3.625rem] pl-[3.875rem]"
+            className="w-full h-[3.625rem] pl-[3.875rem] border-[2px] border-neutral-1 rounded-[0.75rem] focus:rounded-[0.75rem] focus:border-[2px] focus:border-white outline-none focus-visible:border-white cursor-pointer"
           />
         </div>
         <Button
