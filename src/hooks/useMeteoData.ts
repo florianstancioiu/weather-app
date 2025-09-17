@@ -31,20 +31,6 @@ const useMeteoData = () => {
     setHourlyData(undefined);
   };
 
-  const reverseGeocoding = async (latitude: number, longitude: number) => {
-    console.info("Retrieve the address from a given latitude and longitude");
-    try {
-      return await fetchJson(
-        `https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&apiKey=69b0b69ed6d341a8b1f49b3f6c89764a`,
-        {
-          method: "GET",
-        }
-      );
-    } catch {
-      setIsError(true);
-    }
-  };
-
   const retriveDataFromOpenMeteo = async (
     latitude: number,
     longitude: number,
@@ -56,15 +42,8 @@ const useMeteoData = () => {
       let theCountry = country;
 
       if (city === undefined || country === undefined) {
-        const reverseGeocodingData = await reverseGeocoding(
-          latitude,
-          longitude
-        );
-
-        const feature = reverseGeocodingData.features[0];
-        const properties = feature.properties;
-        theCity = properties.city as string;
-        theCountry = properties.country as string;
+        theCity = "Current location";
+        theCountry = "";
       }
 
       const params = {
@@ -184,6 +163,8 @@ const useMeteoData = () => {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
 
+            setIsLoading(true);
+            setIsError(false);
             retriveDataFromOpenMeteo(latitude, longitude);
           },
           () => {
