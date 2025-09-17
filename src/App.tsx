@@ -19,6 +19,7 @@ const App = () => {
     noSearchResults,
     isError,
     setSearchKeyword,
+    setIsMetric,
     resetState,
   } = useMeteoData();
 
@@ -34,9 +35,19 @@ const App = () => {
     resetState();
   };
 
+  const onChangeSystemHandler = (isMetric: boolean) => {
+    console.log("this is the system: ", isMetric ? "metric" : "imperial");
+    setIsMetric(isMetric);
+  };
+
+  const onChangeUnitHandler = () => {};
+
   return (
     <>
-      <Header />
+      <Header
+        onChangeSystem={onChangeSystemHandler}
+        onChangeUnit={onChangeUnitHandler}
+      />
       {isError && <SomethingWrong onRetry={onSomethingWrongRetryHandler} />}
       {!isError && (
         <div>
