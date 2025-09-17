@@ -1,5 +1,4 @@
-// TODO: figure out what the type for options should be
-export default async (url: string, options?: any) => {
+export default async (url: string, options?: RequestInit) => {
   try {
     const response = await fetch(url, options);
 
