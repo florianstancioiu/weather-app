@@ -47,9 +47,12 @@ const useMeteoData = () => {
         theCountry = "";
       }
 
-      const params = {
+      let params = {
         latitude,
         longitude,
+        wind_speed_unit: "mph",
+        temperature_unit: "fahrenheit",
+        precipitation_unit: "inch",
         daily: ["weather_code", "temperature_2m_max", "temperature_2m_min"],
         hourly: ["temperature_2m", "weather_code"],
         current: [
@@ -62,6 +65,15 @@ const useMeteoData = () => {
         ],
         timezone: "auto",
       };
+
+      // Delete/Remove the wind_speed_unit, temperature_unit, precipitation_unit
+      // from the params object
+      if (isMetric) {
+        delete (params as { wind_speed_unit?: string }).wind_speed_unit;
+        delete (params as { temperature_unit?: string }).temperature_unit;
+        delete (params as { precipitation_unit?: string }).precipitation_unit;
+      }
+
       const url = "https://api.open-meteo.com/v1/forecast";
       const responses = await fetchWeatherApi(url, params);
 
@@ -137,7 +149,7 @@ const useMeteoData = () => {
   }, []);
 
   useEffect(() => {
-    const getMeteoDataOnKeywordChange = async () => {
+    const getMeteoDataOnDependencyChange = async () => {
       try {
         if (searchKeyword.trim() === "") {
           return;
@@ -171,8 +183,8 @@ const useMeteoData = () => {
       }
     };
 
-    getMeteoDataOnKeywordChange();
-  }, [searchKeyword]);
+    getMeteoDataOnDependencyChange();
+  }, [searchKeyword, isMetric]);
 
   return {
     isLoading,
