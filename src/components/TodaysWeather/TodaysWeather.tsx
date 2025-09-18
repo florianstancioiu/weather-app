@@ -49,7 +49,7 @@ const TodaysWeather = ({
                 className="w-[6rem] h-[6rem] md:w-[7.5rem] md:h-[7.5rem]"
               />
               <p className="text-[4.25rem] italic md:text-[6rem] md:font-semibold">
-                {temperature ? Math.floor(temperature) : "NA"}°
+                {temperature ? `${Math.floor(temperature)}°` : "NA"}
               </p>
             </div>
           </div>
