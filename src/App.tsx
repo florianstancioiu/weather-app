@@ -35,19 +35,13 @@ const App = () => {
     resetState();
   };
 
-  const onChangeSystemHandler = (isMetric: boolean) => {
-    console.log("this is the system: ", isMetric ? "metric" : "imperial");
+  const onChangeUnitSystemHandler = (isMetric: boolean) => {
     setIsMetric(isMetric);
   };
 
-  const onChangeUnitHandler = () => {};
-
   return (
     <>
-      <Header
-        onChangeSystem={onChangeSystemHandler}
-        onChangeUnit={onChangeUnitHandler}
-      />
+      <Header onChangeUnitSystem={onChangeUnitSystemHandler} />
       {isError && <SomethingWrong onRetry={onSomethingWrongRetryHandler} />}
       {!isError && (
         <div>

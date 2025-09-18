@@ -27,8 +27,8 @@ Users should be able to:
 - [x] Browse a 7-day weather forecast with daily high/low temperatures and weather icons
 - [x] View an hourly forecast showing temperature changes throughout the day
 - [x] Switch between different days of the week using the day selector in the hourly forecast section
-- [ ] Toggle between Imperial and Metric measurement units via the units dropdown
-- [ ] Switch between specific temperature units (Celsius and Fahrenheit) and measurement units for wind speed (km/h and mph) and precipitation (millimeters) via the units dropdown
+- [x] Toggle between Imperial and Metric measurement units via the units dropdown
+- [ ] ~~Switch between specific temperature units (Celsius and Fahrenheit) and measurement units for wind speed (km/h and mph) and precipitation (millimeters) via the units dropdown~~ I decided to not implement this feature because it would complicate the code base and the same functionality can be achieved using the imperial-metric toggle
 - [x] View the optimal layout for the interface depending on their device's screen size
 - [ ] See hover and focus states for all interactive elements on the page
 
@@ -81,6 +81,7 @@ I would also add [storybook](https://storybook.js.org/) to this project, I don't
 - [The Only Accessibility Video You Will Ever Need - Youtube](https://www.youtube.com/watch?v=2oiBKSjOOFE) - This helped me understand accessibility for web pages
 - ~~[Geoapify Location Platform: Maps, Geocoding, Routing, and APIs](https://www.geoapify.com/) - This helped me do a reverse geocode (turn latitude and longitude into an address) when using the Geolocation Web API~~ I ended up not using this
 - [Bug: too hard to fix "Cannot update a component from inside the function body of a different component."](https://github.com/facebook/react/issues/18178#issuecomment-595846312) - I keep on seeing this bug when I'm trying to set the data of the UnitsDropdown as a prop instead of a state call, more specifically when I'm trying to update the state that is passed as a prop, it might prove useful to read about it in the future.
+- [TypeScript: Remove a Property from an Object](https://stackabuse.com/bytes/typescript-remove-a-property-from-an-object/) - This helped me remove a property from an object in Typescript
 
 ## Author
 

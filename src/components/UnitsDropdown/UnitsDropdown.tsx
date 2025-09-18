@@ -19,11 +19,10 @@ export type DataValue = {
 };
 
 export type UnitsDropdown = {
-  onChangeSystem?: (isMetric: boolean) => void;
-  onChangeUnit?: (unitType: string, unitValue: string) => void;
+  onChangeUnitSystem?: (isMetric: boolean) => void;
 };
 
-const UnitsDropdown = ({ onChangeSystem, onChangeUnit }: UnitsDropdown) => {
+const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMetric, setIsMetric] = useState(true);
   const wrapperRef = createRef<HTMLDivElement | null>();
@@ -110,16 +109,10 @@ const UnitsDropdown = ({ onChangeSystem, onChangeUnit }: UnitsDropdown) => {
 
     setData(newData as DataValue[]);
 
-    if (onChangeSystem) {
-      onChangeSystem(!isMetric);
+    if (onChangeUnitSystem) {
+      onChangeUnitSystem(!isMetric);
     }
   }, 400);
-
-  const onLeafOptionClick = (dataValueTitle: string, valueTitle: string) => {
-    if (onChangeUnit) {
-      onChangeUnit(dataValueTitle, valueTitle);
-    }
-  };
 
   return (
     <div ref={wrapperRef} className="relative">
@@ -158,9 +151,6 @@ const UnitsDropdown = ({ onChangeSystem, onChangeUnit }: UnitsDropdown) => {
                     return (
                       <div
                         key={value.id}
-                        onClick={() =>
-                          onLeafOptionClick(dataValue.title, value.title)
-                        }
                         className={`${
                           value.isActive ? "bg-neutral-3" : ""
                         } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
