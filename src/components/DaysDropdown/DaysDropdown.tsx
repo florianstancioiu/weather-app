@@ -74,7 +74,11 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
         aria-expanded={isOpen}
         aria-owns={dropdownId}
         aria-haspopup="listbox"
-        aria-label="Select a day."
+        aria-label={
+          days === undefined || (days !== undefined && days.length === 0)
+            ? "There are no days to select."
+            : "Select a day."
+        }
         className={`bg-lighter-blue px-[1.25rem] flex gap-[0.813rem] items-center py-[0.5rem] rounded-[0.625rem] select-none ${
           days !== undefined && days.length === 0
             ? "cursor-not-allowed"

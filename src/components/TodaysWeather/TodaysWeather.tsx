@@ -39,7 +39,7 @@ const TodaysWeather = ({
                   ? city
                   : city
                   ? `${city}, ${country}`
-                  : "Please search for a place"}
+                  : "Please search for a place."}
               </h2>
               <p className="text-grayish-white">{date}</p>
             </div>
