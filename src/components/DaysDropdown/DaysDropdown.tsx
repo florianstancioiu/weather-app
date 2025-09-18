@@ -1,6 +1,6 @@
 import DropdownIcon from "../../images/icon-dropdown.svg";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
-import { createRef, useState } from "react";
+import { createRef, useState, type KeyboardEvent } from "react";
 
 export type Day =
   | "Monday"
@@ -26,16 +26,36 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = createRef<HTMLDivElement>();
 
+  // Close the dropdown on blur
+  useOnClickOutside(wrapperRef, () => {
+    setIsOpen(false);
+  });
+
   const toggleOpenHandler = () => {
     if (days !== undefined && days.length !== 0) {
       setIsOpen((val) => !val);
     }
   };
 
-  // Close the dropdown on blur
-  useOnClickOutside(wrapperRef, () => {
+  const onDropdownOptionClickHandler = (day: DayDropdownValue) => {
+    onChange(day);
     setIsOpen(false);
-  });
+  };
+
+  const onDropdownKeyDownHandler = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter") {
+      toggleOpenHandler();
+    }
+  };
+
+  const onDropdownOptionKeyDownHandler = (
+    event: KeyboardEvent,
+    day: DayDropdownValue
+  ) => {
+    if (event.key === "Enter") {
+      onDropdownOptionClickHandler(day);
+    }
+  };
 
   let activeDay;
 
@@ -47,12 +67,14 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
     <div ref={wrapperRef} className="relative">
       <div
         onClick={toggleOpenHandler}
+        onKeyDown={onDropdownKeyDownHandler}
+        tabIndex={0}
+        role="listbox"
         className={`bg-lighter-blue px-[1.25rem] flex gap-[0.813rem] items-center py-[0.5rem] rounded-[0.625rem] select-none ${
           days !== undefined && days.length === 0
             ? "cursor-not-allowed"
             : "cursor-pointer"
         }`}
-        tabIndex={0}
       >
         {days !== undefined && days.length > 0 && (
           <p>{activeDay !== undefined ? activeDay.title : "Select a day"}</p>
@@ -68,13 +90,16 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
             days.map((day) => (
               <li
                 key={day.id}
-                onClick={() => {
-                  onChange(day);
-                  setIsOpen(false);
-                }}
+                onClick={() => onDropdownOptionClickHandler(day)}
+                onKeyDown={(event: KeyboardEvent) =>
+                  onDropdownOptionKeyDownHandler(event, day)
+                }
+                role="option"
+                tabIndex={0}
+                aria-selected={day.isActive}
                 className={`${
                   day.isActive ? "bg-neutral-3" : ""
-                } px-[0.5rem] h-[2.5rem] flex items-center rounded-[0.75rem] cursor-pointer hover:bg-neutral-3`}
+                } px-[0.5rem] h-[2.5rem] flex items-center rounded-[0.75rem] cursor-pointer hover:bg-neutral-3 focus:bg-neutral-3`}
               >
                 {day.title}
               </li>
