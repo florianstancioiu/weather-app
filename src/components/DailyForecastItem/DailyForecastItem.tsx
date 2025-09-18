@@ -23,7 +23,7 @@ const DailyForecastItem = ({
   return (
     <>
       {!isLoading && (
-        <li className="px-[0.75rem] py-[1.5rem] bg-neutral-2 rounded-[0.625rem] border-[2px] border-dark-blue h-[10.313rem] xl:h-[10.25rem] md:py-[1rem] xl:px-[0.625rem]">
+        <li className="px-[0.75rem] py-[1.5rem] bg-neutral-2 text-white rounded-[0.625rem] border-[2px] border-dark-blue h-[10.313rem] xl:h-[10.25rem] md:py-[1rem] xl:px-[0.625rem]">
           {day !== undefined && (
             <p
               className="mb-[2.125rem] text-center md:mb-[1rem] xl:leading-[120%]"
