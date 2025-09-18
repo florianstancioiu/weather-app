@@ -28,7 +28,7 @@ Users should be able to:
 - [x] View an hourly forecast showing temperature changes throughout the day
 - [x] Switch between different days of the week using the day selector in the hourly forecast section
 - [x] Toggle between Imperial and Metric measurement units via the units dropdown
-- [ ] ~~Switch between specific temperature units (Celsius and Fahrenheit) and measurement units for wind speed (km/h and mph) and precipitation (millimeters) via the units dropdown~~ I decided to not implement this feature because it would complicate the code base and the same functionality can be achieved using the imperial-metric toggle
+- [ ] ~~Switch between specific temperature units (Celsius and Fahrenheit) and measurement units for wind speed (km/h and mph) and precipitation (millimeters) via the units dropdown~~ I decided to not implement this feature because it would complicate the code base and almost the same functionality can be achieved using the imperial-metric toggle
 - [x] View the optimal layout for the interface depending on their device's screen size
 - [ ] See hover and focus states for all interactive elements on the page
 
@@ -39,6 +39,7 @@ Users should be able to:
 ### Links
 
 - URL: [https://florianstancioiu.github.io/weather-app/](https://florianstancioiu.github.io/weather-app/)
+- Storybook URL: [https://florianstancioiu.github.io/weather-app/storybook/](https://florianstancioiu.github.io/weather-app/storybook/)
 
 ## My process
 
@@ -50,6 +51,7 @@ Users should be able to:
 - **September 15th, 2025:** I completed the functionality for today's weather section, the daily forecast section and the hourly forecast section. I still have some doubts about the hourly forecast section, it has been by far the trickiest of them all.
 - **September 16th, 2025:** I implemented the no search results and the API error screens, I worked on the tablet version of the app and I also completed some TODOs that were left in the code base. I extracted all the fetch logic from the App.tsx into a custom hook named _useMeteoData_, also, I updated the said hook with the Geolocation API so that users can allow for their position to be read and used in fetch requests.
 - **September 17th, 2025:** I removed the _reversedGeocoding_ function - the one that turned lat and long into human readable addresses. I fixed a problem with the _HourlyForecast_ component, on the initial load it was showing the wrong data, it was showing data for Sunday instead of the current day. I also started to work on the UnitsDropdown component but it's still not done, I wanted to make it as dynamic as possible but I think that's a bad idea and I should focus on other stuff in the next couple of days, like, on testing the components.
+- **September 18th, 2025:** I added a debounce hook, I implemented the metric/imperial switch, I made the dropdowns keyboard accessible, I used chatgpt to create a github actions workflow that builds the app to the `root` dir of github pages, and the storybook build is placed in the `root/storybook` dir, also, I wrote a few _\*.stories.tsx_ files for my components.
 
 ### Built with
 
@@ -61,6 +63,7 @@ Users should be able to:
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
 - [TypeScript](https://www.typescriptlang.org/) - JavaScript with types
+- [Storybook](https://storybook.js.org/) - Build, test & document components
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) - For testing
 - [TailwindCSS](https://tailwindcss.com/) - For styles
 - [Vite](https://vite.dev/) - Build tool
