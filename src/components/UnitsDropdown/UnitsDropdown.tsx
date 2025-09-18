@@ -3,6 +3,7 @@ import UnitsIcon from "../../images/icon-units.svg";
 import DropdownIcon from "../../images/icon-dropdown.svg";
 import CheckmarkIcon from "../../images/icon-checkmark.svg?react";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
+import useDebounce from "../../hooks/useDebounce";
 
 export type DataInnerValue = {
   id: number;
@@ -92,7 +93,7 @@ const UnitsDropdown = ({ onChangeSystem, onChangeUnit }: UnitsDropdown) => {
     setIsOpen((val) => !val);
   };
 
-  const toggleMetricOrImperial = (isMetric: boolean) => {
+  const toggleMetricOrImperial = useDebounce((isMetric: boolean) => {
     setIsMetric((val) => !val);
 
     const newData = data.map((unit) => {
@@ -101,7 +102,7 @@ const UnitsDropdown = ({ onChangeSystem, onChangeUnit }: UnitsDropdown) => {
         values: unit.values.map((unitValue) => {
           return {
             ...unitValue,
-            isActive: isMetric === unitValue.isMetric,
+            isActive: !isMetric === unitValue.isMetric,
           };
         }),
       };
@@ -112,7 +113,7 @@ const UnitsDropdown = ({ onChangeSystem, onChangeUnit }: UnitsDropdown) => {
     if (onChangeSystem) {
       onChangeSystem(!isMetric);
     }
-  };
+  }, 400);
 
   const onLeafOptionClick = (dataValueTitle: string, valueTitle: string) => {
     if (onChangeUnit) {
@@ -162,7 +163,7 @@ const UnitsDropdown = ({ onChangeSystem, onChangeUnit }: UnitsDropdown) => {
                         }
                         className={`${
                           value.isActive ? "bg-neutral-3" : ""
-                        } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem] cursor-pointer hover:bg-neutral-3`}
+                        } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
                       >
                         <p>{value.title}</p>
                         {value.isActive && <CheckmarkIcon />}
