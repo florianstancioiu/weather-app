@@ -1,4 +1,4 @@
-import { useState, createRef } from "react";
+import { useState, createRef, useId, type KeyboardEvent } from "react";
 import UnitsIcon from "../../images/icon-units.svg";
 import DropdownIcon from "../../images/icon-dropdown.svg";
 import CheckmarkIcon from "../../images/icon-checkmark.svg?react";
@@ -26,6 +26,7 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMetric, setIsMetric] = useState(true);
   const wrapperRef = createRef<HTMLDivElement | null>();
+  const dropdownId = useId();
   const [data, setData] = useState<DataValue[]>([
     {
       id: 1,
@@ -114,12 +115,33 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
     }
   }, 400);
 
+  const onDropdownKeyDownHandler = (event: KeyboardEvent) => {
+    if (event.key === "Enter") {
+      toggleDropdown();
+    }
+  };
+
+  const onDropdownOptionKeyDownHandler = (
+    event: KeyboardEvent,
+    isMetric: boolean
+  ) => {
+    if (event.key === "Enter") {
+      toggleMetricOrImperial(isMetric);
+      setIsOpen(false);
+    }
+  };
+
   return (
     <div ref={wrapperRef} className="relative">
       <div
         onClick={toggleDropdown}
+        onKeyDown={onDropdownKeyDownHandler}
         className="flex justify-between items-center cursor-pointer bg-neutral-2 py-[0.438rem] px-[0.625rem] rounded-[0.375rem] gap-[0.375rem] select-none"
         tabIndex={0}
+        role="combobox"
+        aria-expanded={isOpen}
+        aria-owns={dropdownId}
+        aria-haspopup="listbox"
       >
         <img src={UnitsIcon} alt="" />
         <p>Units</p>
@@ -127,10 +149,15 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
       </div>
       {isOpen && (
         <div className="z-20 absolute bg-neutral-2 top-[3.313rem] right-0 w-[13.375rem] border-light-blue border-[1px] p-[0.5rem] rounded-[0.75rem]">
-          <div className="mb-[0.625rem]">
+          <div id={dropdownId} role="listbox" className="mb-[0.625rem]">
             <button
+              role="option"
               className="cursor-pointer w-full text-left px-[0.625rem] h-[2.625rem] rounded-[0.75rem] hover:bg-neutral-3 focus:bg-neutral-3"
               onClick={() => toggleMetricOrImperial(isMetric)}
+              onKeyDown={(event: KeyboardEvent) =>
+                onDropdownOptionKeyDownHandler(event, isMetric)
+              }
+              aria-selected={isMetric}
             >
               {isMetric ? "Switch to Imperial" : "Switch to Metric"}
             </button>
