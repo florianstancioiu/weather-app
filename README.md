@@ -82,6 +82,7 @@ I would also add [storybook](https://storybook.js.org/) to this project, I don't
 - ~~[Geoapify Location Platform: Maps, Geocoding, Routing, and APIs](https://www.geoapify.com/) - This helped me do a reverse geocode (turn latitude and longitude into an address) when using the Geolocation Web API~~ I ended up not using this
 - [Bug: too hard to fix "Cannot update a component from inside the function body of a different component."](https://github.com/facebook/react/issues/18178#issuecomment-595846312) - I keep on seeing this bug when I'm trying to set the data of the UnitsDropdown as a prop instead of a state call, more specifically when I'm trying to update the state that is passed as a prop, it might prove useful to read about it in the future.
 - [TypeScript: Remove a Property from an Object](https://stackabuse.com/bytes/typescript-remove-a-property-from-an-object/) - This helped me remove a property from an object in Typescript
+- [useId](https://react.dev/reference/react/useId) - This helped me create ids for making the custom dropdowns more accessible
 
 ## Author
 

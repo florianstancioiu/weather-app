@@ -1,6 +1,6 @@
 import DropdownIcon from "../../images/icon-dropdown.svg";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
-import { createRef, useState, type KeyboardEvent } from "react";
+import { createRef, useState, useId, type KeyboardEvent } from "react";
 
 export type Day =
   | "Monday"
@@ -25,6 +25,7 @@ export type DaysDropdown = {
 const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = createRef<HTMLDivElement>();
+  const dropdownId = useId();
 
   // Close the dropdown on blur
   useOnClickOutside(wrapperRef, () => {
@@ -69,7 +70,10 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
         onClick={toggleOpenHandler}
         onKeyDown={onDropdownKeyDownHandler}
         tabIndex={0}
-        role="listbox"
+        role="combobox"
+        aria-expanded={isOpen}
+        aria-owns={dropdownId}
+        aria-haspopup="listbox"
         className={`bg-lighter-blue px-[1.25rem] flex gap-[0.813rem] items-center py-[0.5rem] rounded-[0.625rem] select-none ${
           days !== undefined && days.length === 0
             ? "cursor-not-allowed"
@@ -85,7 +89,11 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
       </div>
 
       {isOpen && (
-        <ul className="absolute bg-neutral-2 top-[3.313rem] right-0 w-[13.375rem] border-light-blue border-[1px] p-[0.5rem] rounded-[0.75rem]">
+        <ul
+          id={dropdownId}
+          role="listbox"
+          className="absolute bg-neutral-2 top-[3.313rem] right-0 w-[13.375rem] border-light-blue border-[1px] p-[0.5rem] rounded-[0.75rem]"
+        >
           {days !== undefined &&
             days.map((day) => (
               <li
