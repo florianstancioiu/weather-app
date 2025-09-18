@@ -142,6 +142,7 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
         aria-expanded={isOpen}
         aria-owns={dropdownId}
         aria-haspopup="listbox"
+        aria-label="Select metric or imperial units."
       >
         <img src={UnitsIcon} alt="" />
         <p>Units</p>

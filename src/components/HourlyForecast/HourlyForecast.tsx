@@ -68,6 +68,7 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
       <ul
         ref={hourlyItemsRef}
         className="max-h-[37.125rem] overflow-y-scroll grid gap-[1rem] grid-cols-1"
+        aria-label="Hourly forecast items."
       >
         {hours !== undefined &&
           hours.map((hour) => {
