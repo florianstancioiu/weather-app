@@ -145,7 +145,7 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
         aria-label="Select metric or imperial units."
       >
         <img src={UnitsIcon} alt="" />
-        <p>Units</p>
+        <p className="text-white">Units</p>
         <img src={DropdownIcon} alt="" />
       </div>
       {isOpen && (
@@ -153,7 +153,7 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
           <div id={dropdownId} role="listbox" className="mb-[0.625rem]">
             <button
               role="option"
-              className="cursor-pointer w-full text-left px-[0.625rem] h-[2.625rem] rounded-[0.75rem] hover:bg-neutral-3 focus:bg-neutral-3"
+              className="cursor-pointer w-full text-left text-white px-[0.625rem] h-[2.625rem] rounded-[0.75rem] hover:bg-neutral-3 focus:bg-neutral-3"
               onClick={() => toggleMetricOrImperial(isMetric)}
               onKeyDown={(event: KeyboardEvent) =>
                 onDropdownOptionKeyDownHandler(event, isMetric)
@@ -183,7 +183,7 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
                           value.isActive ? "bg-neutral-3" : ""
                         } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
                       >
-                        <p>{value.title}</p>
+                        <p className="text-white">{value.title}</p>
                         {value.isActive && <CheckmarkIcon />}
                       </div>
                     );
