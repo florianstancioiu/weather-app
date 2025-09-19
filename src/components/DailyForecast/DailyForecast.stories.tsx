@@ -21,7 +21,7 @@ type Story = StoryObj<typeof meta>;
 
 // TODO: Add dummy data for data arg
 
-export const Loading: Story = {
+export const LoadingState: Story = {
   args: {
     isMetric: false,
     isLoading: true,
