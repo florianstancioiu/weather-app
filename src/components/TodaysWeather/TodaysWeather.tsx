@@ -29,12 +29,12 @@ const TodaysWeather = ({
   const { feelsLike, humidity, wind, precipitation } = secondaryData || {};
 
   return (
-    <main className="mb-[2.5rem] xl:mb-[3.25rem]">
+    <main className="mb-[2.5rem] xl:mb-[3.25rem] md:min-w-md lg:min-w-lg">
       <div className="mb-[1.25rem]">
         {!isLoading && (
           <div className="bg-[url('/images/bg-today-small.svg')] bg-cover bg-center rounded-[1rem] md:h-[17.875rem] md:flex md:justify-between md:items-center md:px-[1.625rem] md:bg-[url('/images/bg-today-large.svg')]">
             <div className="text-center pt-[3.375rem] mb-[2.75rem] md:pt-0 md:mb-0 md:text-left">
-              <h2 className="mb-[1.5rem] font-bold text-[1.5rem] md:text-[1.75rem] md:leading-[120%]">
+              <h2 className="text-white mb-[1.5rem] font-bold text-[1.5rem] md:text-[1.75rem] md:leading-[120%]">
                 {city && city === "Current location"
                   ? city
                   : city
@@ -48,7 +48,7 @@ const TodaysWeather = ({
                 code={weatherCode || 100}
                 className="w-[6rem] h-[6rem] md:w-[7.5rem] md:h-[7.5rem]"
               />
-              <p className="text-[4.25rem] italic md:text-[6rem] md:font-semibold">
+              <p className="text-white text-[4.25rem] italic md:text-[6rem] md:font-semibold">
                 {temperature ? `${Math.floor(temperature)}°` : "NA"}
               </p>
             </div>
@@ -57,12 +57,12 @@ const TodaysWeather = ({
         {isLoading && (
           <div className="bg-neutral-2 rounded-[1rem] h-[17.875rem] grid place-items-center md:px-[1.625rem] md:text-center">
             <div>
-              <p>Loading...</p>
+              <p className="text-white">Loading...</p>
             </div>
           </div>
         )}
       </div>
-      <ul className="grid gap-[1rem] grid-cols-2 md:grid-cols-4">
+      <ul className="list-none grid gap-[1rem] grid-cols-2 md:grid-cols-4">
         <TodaysWeatherItem
           title="Feels Like"
           value={feelsLike}
