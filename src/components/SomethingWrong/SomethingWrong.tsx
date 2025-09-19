@@ -9,7 +9,7 @@ const SomethingWrong = ({ onRetry }: SomethingWrong) => {
   return (
     <div className="text-center mt-[4rem]">
       <IconError className="w-[3.125rem] h-[2.625rem] mx-auto mb-[1.5rem]" />
-      <h1 className="font-bold leading-[120%] text-[3.25rem] mb-[1.5rem]">
+      <h1 className="font-bold leading-[120%] text-[3.25rem] mb-[1.5rem] text-white">
         Something went wrong
       </h1>
       <p className="font-medium text-[1.25rem] text-neutral leading-[120%] mb-[1.5rem] max-w-[34.625rem] mx-auto">
@@ -21,7 +21,7 @@ const SomethingWrong = ({ onRetry }: SomethingWrong) => {
         className="bg-neutral-2 py-[0.75rem] px-[1.125rem] flex gap-[0.625rem] items-center cursor-pointer mx-auto rounded-[0.5rem]"
       >
         <IconRetry />
-        <span>Retry</span>
+        <span className="text-white">Retry</span>
       </button>
     </div>
   );
