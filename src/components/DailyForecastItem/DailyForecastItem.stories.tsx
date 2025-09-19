@@ -10,8 +10,8 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {
-    day: { control: "number" },
-    weatherCode: { control: "number" },
+    day: { control: { type: "number", min: 0, max: 6 } },
+    weatherCode: { control: { type: "number", min: 0 } },
     minimum: { control: "number" },
     maximum: { control: "number" },
     isMetric: { control: "boolean" },
@@ -33,7 +33,7 @@ export const Monday: Story = {
   },
 };
 
-export const MondayWithImperialUnits: Story = {
+export const ImperialUnits: Story = {
   args: {
     day: 1,
     weatherCode: 0,
