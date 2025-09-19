@@ -20,6 +20,8 @@ const useMeteoData = () => {
     useState<TodaysWeatherType["secondaryData"]>();
   const [dailyData, setDailyData] = useState<ForecastDailyData>();
   const [hourlyData, setHourlyData] = useState<ForecastHourlyData>();
+  const [lat, setLatitude] = useState<number>();
+  const [lon, setLongitude] = useState<number>();
 
   const resetState = () => {
     setIsLoading(false);
@@ -38,6 +40,10 @@ const useMeteoData = () => {
     city?: string,
     country?: string
   ) => {
+    // set the variables from the function level scope
+    setLatitude(latitude);
+    setLongitude(longitude);
+
     try {
       let theCity = city;
       let theCountry = country;
@@ -131,12 +137,17 @@ const useMeteoData = () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position: GeolocationPosition) => {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
+            const { latitude, longitude } = position.coords;
 
             setIsLoading(true);
             setIsError(false);
-            retriveDataFromOpenMeteo(latitude, longitude);
+
+            retriveDataFromOpenMeteo(
+              latitude,
+              longitude,
+              "Current location",
+              ""
+            );
           },
           () => {
             resetState();
@@ -151,31 +162,39 @@ const useMeteoData = () => {
   useEffect(() => {
     const getMeteoDataOnDependencyChange = async () => {
       try {
-        if (searchKeyword.trim() === "") {
-          return;
+        let city = "Current location";
+        let country = "";
+        let latitude = lat;
+        let longitude = lon;
+
+        if (searchKeyword.trim() !== "") {
+          setIsLoading(true);
+          setIsError(false);
+
+          const geocodedCity = await fetchJson(
+            `https://geocoding-api.open-meteo.com/v1/search?name=${searchKeyword}&count=1&language=en&format=json`
+          );
+
+          if (
+            geocodedCity?.results === undefined ||
+            geocodedCity?.results.length === 0
+          ) {
+            setNoSearchResults(true);
+            return;
+          }
+
+          latitude = geocodedCity?.results[0].latitude;
+          longitude = geocodedCity?.results[0].longitude;
+          city = geocodedCity?.results[0].name;
+          country = geocodedCity?.results[0].country;
+
+          setLatitude(latitude);
+          setLongitude(longitude);
         }
 
-        setIsLoading(true);
-        setIsError(false);
-
-        const geocodedCity = await fetchJson(
-          `https://geocoding-api.open-meteo.com/v1/search?name=${searchKeyword}&count=1&language=en&format=json`
-        );
-
-        if (
-          geocodedCity?.results === undefined ||
-          geocodedCity?.results.length === 0
-        ) {
-          setNoSearchResults(true);
+        if (latitude === undefined || longitude === undefined) {
           return;
         }
-
-        const {
-          longitude,
-          latitude,
-          name: city,
-          country,
-        } = geocodedCity?.results[0];
 
         retriveDataFromOpenMeteo(latitude, longitude, city, country);
       } catch {
