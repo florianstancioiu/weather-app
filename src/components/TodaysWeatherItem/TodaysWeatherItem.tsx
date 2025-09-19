@@ -1,5 +1,11 @@
+export type TodaysWeatherItemTitle =
+  | "Feels Like"
+  | "Humidity"
+  | "Wind"
+  | "Precipitation";
+
 export type TodaysWeatherItem = {
-  title: string;
+  title: TodaysWeatherItemTitle;
   value?: number;
   isMetric: boolean;
   isLoading: boolean;
@@ -30,11 +36,11 @@ const TodaysWeatherItem = ({
   return (
     <>
       {!isLoading && (
-        <li className="p-[1.625rem] bg-neutral-2 rounded-[0.625rem] border-[2px] border-dark-blue xl:h-[7.5rem] xl:p-[1.25rem]">
+        <li className="list-none p-[1.625rem] bg-neutral-2 rounded-[0.625rem] border-[2px] border-dark-blue xl:h-[7.5rem] xl:p-[1.25rem] md:min-w-[10.5rem]">
           <p className="text-grayish-white font-medium mb-[1.875rem] xl:mb-[1.5rem] text-[1.125rem] leading-[120%]">
             {title}
           </p>
-          <p className="font-light text-[2rem] leading-none">
+          <p className="text-white font-light text-[2rem] leading-none">
             {value !== undefined ? `${Math.round(value)}${titleSuffix}` : ""}
             {value === undefined ? "-" : ""}
           </p>
@@ -42,7 +48,7 @@ const TodaysWeatherItem = ({
       )}
 
       {isLoading && (
-        <li className="p-[1.625rem] bg-neutral-2 rounded-[0.625rem] border-[2px] border-dark-blue h-[7.375rem] xl:h-[7.5rem] xl:p-[1.25rem]"></li>
+        <li className="list-none p-[1.625rem] bg-neutral-2 rounded-[0.625rem] border-[2px] border-dark-blue h-[7.375rem] xl:h-[7.5rem] xl:p-[1.25rem] md:min-w-[10.5rem]"></li>
       )}
     </>
   );
