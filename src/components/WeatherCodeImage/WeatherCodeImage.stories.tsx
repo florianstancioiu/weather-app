@@ -25,7 +25,13 @@ export const Primary: Story = {
   },
 };
 
-export const PartylCloudy: Story = {
+export const UnknownWeather: Story = {
+  args: {
+    code: 100,
+  },
+};
+
+export const PartlyCloudy: Story = {
   args: {
     code: 1,
   },
@@ -64,11 +70,5 @@ export const Snow: Story = {
 export const Storm: Story = {
   args: {
     code: 95,
-  },
-};
-
-export const UnknownWeather: Story = {
-  args: {
-    code: 100,
   },
 };
