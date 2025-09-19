@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import WeatherCode from "./WeatherCode";
+import WeatherCodeImage from "./WeatherCodeImage";
 
 const meta = {
-  title: "Components/WeatherCode",
-  component: WeatherCode,
+  title: "Components/WeatherCodeImage",
+  component: WeatherCodeImage,
   parameters: {
     layout: "centered",
   },
@@ -14,7 +14,7 @@ const meta = {
     className: { control: { type: "text" } },
   },
   args: {},
-} satisfies Meta<typeof WeatherCode>;
+} satisfies Meta<typeof WeatherCodeImage>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
