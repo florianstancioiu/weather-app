@@ -9,10 +9,10 @@ import IconStorm from "../../images/icon-storm.webp";
 
 export type WeatherCode = {
   code?: number;
-  className: string;
+  className?: string;
 };
 
-const WeatherCode = ({ code, className }: WeatherCode) => {
+const WeatherCode = ({ code, className = "" }: WeatherCode) => {
   switch (code) {
     case 0:
       return (
