@@ -52,6 +52,7 @@ Users should be able to:
 - **September 16th, 2025:** I implemented the no search results and the API error screens, I worked on the tablet version of the app and I also completed some TODOs that were left in the code base. I extracted all the fetch logic from the App.tsx into a custom hook named _useMeteoData_, also, I updated the said hook with the Geolocation API so that users can allow for their position to be read and used in fetch requests.
 - **September 17th, 2025:** I removed the _reversedGeocoding_ function - the one that turned lat and long into human readable addresses. I fixed a problem with the _HourlyForecast_ component, on the initial load it was showing the wrong data, it was showing data for Sunday instead of the current day. I also started to work on the UnitsDropdown component but it's still not done, I wanted to make it as dynamic as possible but I think that's a bad idea and I should focus on other stuff in the next couple of days, like, on testing the components.
 - **September 18th, 2025:** I added a debounce hook, I implemented the metric/imperial switch, I made the dropdowns keyboard accessible, I used chatgpt to create a github actions workflow that builds the app to the `root` dir of github pages, and the storybook build is placed in the `root/storybook` dir, also, I wrote a few _\*.stories.tsx_ files for my components.
+- **September 19th, 2025:** I fixed a bug that occured when the user allows the page to retrieve the current location and then he/she switches to imperial units - the request to the API was not made - it is fixed now. I also added `*.stories.tsx` files to each and every single component, I still have to create some dummy data for DailyForecast and HourlyForecast stories, I leave that for another day (I tried to create the dummy data and it's more difficult to create than I initially thought).
 
 ### Built with
 
@@ -86,6 +87,7 @@ I would also add [storybook](https://storybook.js.org/) to this project, I don't
 - [Bug: too hard to fix "Cannot update a component from inside the function body of a different component."](https://github.com/facebook/react/issues/18178#issuecomment-595846312) - I keep on seeing this bug when I'm trying to set the data of the UnitsDropdown as a prop instead of a state call, more specifically when I'm trying to update the state that is passed as a prop, it might prove useful to read about it in the future.
 - [TypeScript: Remove a Property from an Object](https://stackabuse.com/bytes/typescript-remove-a-property-from-an-object/) - This helped me remove a property from an object in Typescript
 - [useId](https://react.dev/reference/react/useId) - This helped me create ids for making the custom dropdowns more accessible
+- [Wrap stories with extra markup](https://storybook.js.org/docs/writing-stories/decorators#wrap-stories-with-extra-markup) - This helped me pass accessibility for single list elements in Storybook
 
 ## Author
 
