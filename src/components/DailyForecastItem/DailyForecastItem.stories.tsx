@@ -8,6 +8,13 @@ const meta = {
   parameters: {
     layout: "centered",
   },
+  decorators: [
+    (Story) => (
+      <ul>
+        <Story />
+      </ul>
+    ),
+  ],
   tags: ["autodocs"],
   argTypes: {
     day: { control: { type: "number", min: 0, max: 6 } },
@@ -22,7 +29,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Monday: Story = {
+export const Primary: Story = {
   args: {
     day: 1,
     weatherCode: 0,
@@ -35,7 +42,7 @@ export const Monday: Story = {
 
 export const ImperialUnits: Story = {
   args: {
-    day: 1,
+    day: 2,
     weatherCode: 0,
     minimum: 28,
     maximum: 35,
