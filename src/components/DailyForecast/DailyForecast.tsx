@@ -16,7 +16,7 @@ export type DailyForecast = {
 const DailyForecast = ({ data, isMetric, isLoading }: DailyForecast) => {
   return (
     <section>
-      <h3 className="mb-[1.5rem]">Daily forecast</h3>
+      <h3 className="mb-[1.5rem] text-white">Daily forecast</h3>
       <ul className="grid grid-cols-3 gap-[1rem] md:grid-cols-7 list-none">
         {data !== undefined &&
           data.time.map((time, index) => {

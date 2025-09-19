@@ -19,6 +19,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// TODO: Add dummy data for data arg
+
 export const Loading: Story = {
   args: {
     isMetric: false,
