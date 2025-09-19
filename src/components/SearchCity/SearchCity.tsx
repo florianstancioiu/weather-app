@@ -19,7 +19,7 @@ const SearchCity = ({ onChange, onSearch }: SearchCity) => {
 
   return (
     <section className="mb-[2rem] pt-[4.25rem] md:mx-auto md:pt-0 xl:w-[75.75rem] md:w-[45rem]">
-      <h1 className="font-bricolage-grotesque text-6xl text-center mb-[4.25rem] font-bold md:mb-[4rem] md:text-[3.25rem] md:leading-[120%] md:w-[30.125rem] md:mx-auto xl:w-[45.688rem]">
+      <h1 className="font-bricolage-grotesque text-white text-6xl text-center mb-[4.25rem] font-bold md:mb-[4rem] md:text-[3.25rem] md:leading-[120%] md:w-[30.125rem] md:mx-auto xl:w-[45.688rem]">
         How's the sky looking today?
       </h1>
       <div className="md:flex md:justify-center md:items-center md:gap-[1rem] md:w-full">
@@ -34,7 +34,7 @@ const SearchCity = ({ onChange, onSearch }: SearchCity) => {
             autoFocus
             aria-label="Search for a place..."
             placeholder="Search for a place..."
-            className="w-full h-[3.625rem] pl-[3.875rem] border-[2px] border-neutral-1 rounded-[0.75rem] focus:rounded-[0.75rem] focus:border-[2px] focus:border-white outline-none focus-visible:border-white cursor-pointer"
+            className="w-full text-white h-[3.625rem] pl-[3.875rem] border-[2px] border-neutral-1 rounded-[0.75rem] focus:rounded-[0.75rem] focus:border-[2px] focus:border-white outline-none focus-visible:border-white cursor-pointer"
           />
         </div>
         <Button
