@@ -65,7 +65,7 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
   }
 
   return (
-    <div ref={wrapperRef} className="relative">
+    <div ref={wrapperRef} className="relative text-white">
       <div
         onClick={toggleOpenHandler}
         onKeyDown={onDropdownKeyDownHandler}
