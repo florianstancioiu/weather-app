@@ -1,5 +1,5 @@
 import TodaysWeatherItem from "../TodaysWeatherItem/TodaysWeatherItem";
-import WeatherCode from "../WeatherCode/WeatherCode";
+import WeatherCodeImage from "../WeatherCodeImage/WeatherCodeImage";
 
 export type TodaysWeather = {
   primaryData?: {
@@ -44,7 +44,7 @@ const TodaysWeather = ({
               <p className="text-grayish-white">{date}</p>
             </div>
             <div className="flex justify-center items-center px-[1.25rem] pb-[4.25rem] md:pb-0">
-              <WeatherCode
+              <WeatherCodeImage
                 code={weatherCode || 100}
                 className="w-[6rem] h-[6rem] md:w-[7.5rem] md:h-[7.5rem]"
               />

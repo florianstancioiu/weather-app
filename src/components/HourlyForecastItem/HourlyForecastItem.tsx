@@ -1,4 +1,4 @@
-import WeatherCode from "../WeatherCode/WeatherCode";
+import WeatherCode from "../WeatherCodeImage/WeatherCodeImage";
 
 export type HourlyForecastItem = {
   hour?: string;

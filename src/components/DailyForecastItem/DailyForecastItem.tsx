@@ -1,4 +1,4 @@
-import WeatherCode from "../WeatherCode/WeatherCode";
+import WeatherCodeImage from "../WeatherCodeImage/WeatherCodeImage";
 import { getDayShortName, getDayName } from "../../utils/date";
 
 export type DailyForecastItem = {
@@ -33,7 +33,7 @@ const DailyForecastItem = ({
             </p>
           )}
           {day !== undefined ? (
-            <WeatherCode
+            <WeatherCodeImage
               code={weatherCode}
               className="mb-[1rem] mx-auto w-[3.125rem]"
             />
