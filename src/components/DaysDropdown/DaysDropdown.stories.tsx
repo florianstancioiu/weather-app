@@ -21,7 +21,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const SundayActive: Story = {
+export const Primary: Story = {
   args: {
     days: days
       .map((day) => ({ ...day, isActive: false }))
