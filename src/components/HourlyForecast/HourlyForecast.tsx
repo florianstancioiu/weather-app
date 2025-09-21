@@ -20,6 +20,7 @@ export type HourlyForecast = {
   isLoading: boolean;
 };
 
+// TODO: add isMetric prop
 const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
   const hourlyItemsRef = useRef<HTMLUListElement>(null);
   const [days, setDays] =

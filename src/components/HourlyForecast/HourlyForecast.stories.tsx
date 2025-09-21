@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import HourlyForecast from "./HourlyForecast";
+import HourlyForecast, { type ForecastHourlyData } from "./HourlyForecast";
+import { data, fahrenheitData } from "../../utils/stories/hourlyForecast";
 
 const meta = {
   title: "Components/HourlyForecast",
@@ -18,7 +19,21 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// TODO: Add dummy data for data arg
+export const Primary: Story = {
+  args: {
+    data: data as ForecastHourlyData,
+    isLoading: false,
+  },
+};
+
+// TODO: Add isMetric prop
+// First in the component and then here too
+export const ImperialUnits: Story = {
+  args: {
+    data: fahrenheitData as ForecastHourlyData,
+    isLoading: false,
+  },
+};
 
 export const LoadingState: Story = {
   args: {
