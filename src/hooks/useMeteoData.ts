@@ -8,6 +8,7 @@ import { type ForecastDailyData } from "../components/DailyForecast/DailyForecas
 import { type ForecastHourlyData } from "../components/HourlyForecast/HourlyForecast";
 import getWeatherData from "../utils/getWeatherData";
 
+// TODO: Extract this hook into smaller hooks if possible
 const useMeteoData = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [noSearchResults, setNoSearchResults] = useState(false);
@@ -22,6 +23,7 @@ const useMeteoData = () => {
   const [hourlyData, setHourlyData] = useState<ForecastHourlyData>();
   const [lat, setLatitude] = useState<number>();
   const [lon, setLongitude] = useState<number>();
+  const [historyOfSearches, setHistoryOfSearches] = useState<string[]>();
 
   const resetState = () => {
     setIsLoading(false);
@@ -133,6 +135,16 @@ const useMeteoData = () => {
   };
 
   useEffect(() => {
+    const getHistoryOfSearchesFromLocalstorage = () => {
+      if (localStorage.getItem("searchHistory")) {
+        const existingHistory = JSON.parse(
+          localStorage.getItem("searchHistory") ?? JSON.stringify([])
+        ) as string[];
+
+        setHistoryOfSearches(existingHistory);
+      }
+    };
+
     const getMeteoDataOnPageLoad = () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -156,6 +168,7 @@ const useMeteoData = () => {
       }
     };
 
+    getHistoryOfSearchesFromLocalstorage();
     getMeteoDataOnPageLoad();
   }, []);
 
@@ -202,7 +215,30 @@ const useMeteoData = () => {
       }
     };
 
+    const setSearchHistoryInLocalStorage = () => {
+      const existingHistory =
+        localStorage.getItem("searchHistory") !== undefined
+          ? (JSON.parse(
+              localStorage.getItem("searchHistory") || JSON.stringify([])
+            ) as string[])
+          : [];
+
+      if (
+        !existingHistory.find((val) => val === searchKeyword) &&
+        searchKeyword.trim() !== ""
+      ) {
+        existingHistory.unshift(searchKeyword);
+
+        localStorage.setItem(
+          "searchHistory",
+          JSON.stringify(existingHistory.slice(0, 4))
+        );
+      }
+    };
+
     getMeteoDataOnDependencyChange();
+
+    setSearchHistoryInLocalStorage();
   }, [searchKeyword, isMetric]);
 
   return {
@@ -214,6 +250,7 @@ const useMeteoData = () => {
     hourlyData,
     noSearchResults,
     isError,
+    historyOfSearches,
     setIsLoading,
     setIsMetric,
     setTodaysPrimaryData,

@@ -18,6 +18,7 @@ const App = () => {
     hourlyData,
     noSearchResults,
     isError,
+    historyOfSearches,
     setSearchKeyword,
     setIsMetric,
     resetState,
@@ -46,6 +47,7 @@ const App = () => {
       {!isError && (
         <div>
           <SearchCity
+            dropdownData={historyOfSearches}
             onChange={onSearchCityChangeHandler}
             onSearch={onSearchCitySearchHandler}
           />
