@@ -25,11 +25,11 @@ const App = () => {
   } = useMeteoData();
 
   const onSearchCityChangeHandler = (keyword: string) => {
-    setSearchKeyword(keyword);
+    setSearchKeyword(keyword.trim());
   };
 
   const onSearchCitySearchHandler = (keyword: string) => {
-    setSearchKeyword(keyword);
+    setSearchKeyword(keyword.trim());
   };
 
   const onSomethingWrongRetryHandler = () => {
