@@ -22,6 +22,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    title: "Lorem Ipsum",
+    title: "Primary CTA",
   },
 };
