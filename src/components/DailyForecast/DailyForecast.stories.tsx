@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import DailyForecast from "./DailyForecast";
+import DailyForecast, { type ForecastDailyData } from "./DailyForecast";
+
+import { data, fahrenheitData } from "../../utils/stories/dailyForecast";
 
 const meta = {
   title: "Components/DailyForecast",
@@ -19,7 +21,21 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// TODO: Add dummy data for data arg
+export const Primary: Story = {
+  args: {
+    data: data as ForecastDailyData,
+    isMetric: true,
+    isLoading: false,
+  },
+};
+
+export const ImperialUnits: Story = {
+  args: {
+    data: fahrenheitData as ForecastDailyData,
+    isMetric: false,
+    isLoading: false,
+  },
+};
 
 export const LoadingState: Story = {
   args: {
