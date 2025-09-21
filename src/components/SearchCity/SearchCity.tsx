@@ -52,7 +52,7 @@ const SearchCity = ({ onChange, onSearch, dropdownData }: SearchCity) => {
             />
           </div>
           {dropdownIsOpen && dropdownData && (
-            <ul className="absolute left-0 top-[4.625rem] list-none text-white bg-neutral-2 w-full rounded-[12px] p-[0.5rem] border-[1px] border-neutral-4">
+            <ul className="hidden md:block absolute left-0 top-[4.625rem] list-none text-white bg-neutral-2 w-full rounded-[12px] p-[0.5rem] border-[1px] border-neutral-4">
               {dropdownData.map((val, index) => (
                 <li
                   key={index}
