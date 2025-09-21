@@ -18,6 +18,7 @@ const SearchCity = ({ onChange, onSearch, dropdownData }: SearchCity) => {
   const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       onSearch(keyword);
+      setDropdownIsOpen(false);
     }
   };
 

@@ -233,6 +233,8 @@ const useMeteoData = () => {
           "searchHistory",
           JSON.stringify(existingHistory.slice(0, 4))
         );
+
+        setHistoryOfSearches(existingHistory.slice(0, 4));
       }
     };
 
