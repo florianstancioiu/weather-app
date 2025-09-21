@@ -88,6 +88,7 @@ I would also add [storybook](https://storybook.js.org/) to this project, I don't
 - [TypeScript: Remove a Property from an Object](https://stackabuse.com/bytes/typescript-remove-a-property-from-an-object/) - This helped me remove a property from an object in Typescript
 - [useId](https://react.dev/reference/react/useId) - This helped me create ids for making the custom dropdowns more accessible
 - [Wrap stories with extra markup](https://storybook.js.org/docs/writing-stories/decorators#wrap-stories-with-extra-markup) - This helped me pass accessibility for single list elements in Storybook
+- [How to set <body> classes? ](https://github.com/storybookjs/storybook/issues/1672#issuecomment-1520635802) - This helped me add custom classes to the body tag in storybook
 
 ## Author
 
