@@ -1,12 +1,17 @@
 export type Button = {
   title: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const Button = ({ title, onClick }: Button) => {
   return (
     <button
-      onClick={onClick}
+      onClick={() => {
+        if (onClick) {
+          onClick();
+        }
+      }}
+      data-testid="button.button"
       className="bg-blue text-white rounded-[0.625rem] w-full h-[3.5rem] cursor-pointer md:w-auto md:px-[1.5rem] hover:bg-intense-blue focus:outline-[2px]"
     >
       {title}
