@@ -30,4 +30,29 @@ describe("<TodaysWeather> component", () => {
     expect(detailsElement.children).toHaveLength(4);
     expect(isLoadingElement).not.toBeInTheDocument();
   });
+
+  test("renders the is loading screen", async () => {
+    render(
+      <TodaysWeather
+        primaryData={primaryData}
+        secondaryData={secondaryData}
+        isMetric={true}
+        isLoading={true}
+      />
+    );
+
+    const titleElement = screen.queryByTestId("todaysWeather.title");
+    const dateElement = screen.queryByTestId("todaysWeather.date");
+    const temperatureElement = screen.queryByTestId(
+      "todaysWeather.temperature"
+    );
+    const isLoadingElement = screen.getByTestId("todaysWeather.isLoadingState");
+    const detailsElement = screen.getByTestId("todaysWeather.details");
+
+    expect(isLoadingElement).toBeInTheDocument();
+    expect(titleElement).not.toBeInTheDocument();
+    expect(dateElement).not.toBeInTheDocument();
+    expect(temperatureElement).not.toBeInTheDocument();
+    expect(detailsElement.children).toHaveLength(4);
+  });
 });
