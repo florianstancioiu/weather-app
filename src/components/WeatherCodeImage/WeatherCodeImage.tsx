@@ -16,13 +16,19 @@ const WeatherCode = ({ code, className = "" }: WeatherCode) => {
   switch (code) {
     case 0:
       return (
-        <img src={IconSunny} className={className} alt="Outside is sunny." />
+        <img
+          data-testid="weatherCodeImage.weatherCodeImage"
+          src={IconSunny}
+          className={className}
+          alt="Outside is sunny."
+        />
       );
       break;
     case 1:
     case 2:
       return (
         <img
+          data-testid="weatherCodeImage.weatherCodeImage"
           src={IconPartlyClody}
           className={className}
           alt="Outside is partly cloudy."
@@ -32,6 +38,7 @@ const WeatherCode = ({ code, className = "" }: WeatherCode) => {
     case 3:
       return (
         <img
+          data-testid="weatherCodeImage.weatherCodeImage"
           src={IconOvercast}
           className={className}
           alt="Outside is cloudy."
@@ -41,7 +48,12 @@ const WeatherCode = ({ code, className = "" }: WeatherCode) => {
     case 45:
     case 48:
       return (
-        <img src={IconFog} className={className} alt="Outside is foggy." />
+        <img
+          data-testid="weatherCodeImage.weatherCodeImage"
+          src={IconFog}
+          className={className}
+          alt="Outside is foggy."
+        />
       );
       break;
     case 51:
@@ -49,6 +61,7 @@ const WeatherCode = ({ code, className = "" }: WeatherCode) => {
     case 55:
       return (
         <img
+          data-testid="weatherCodeImage.weatherCodeImage"
           src={IconDrizzle}
           className={className}
           alt="Outside is drizzling."
@@ -64,7 +77,12 @@ const WeatherCode = ({ code, className = "" }: WeatherCode) => {
     case 81:
     case 82:
       return (
-        <img src={IconRain} className={className} alt="Outside is raining." />
+        <img
+          data-testid="weatherCodeImage.weatherCodeImage"
+          src={IconRain}
+          className={className}
+          alt="Outside is raining."
+        />
       );
       break;
     case 71:
@@ -74,19 +92,30 @@ const WeatherCode = ({ code, className = "" }: WeatherCode) => {
     case 85:
     case 86:
       return (
-        <img src={IconSnow} className={className} alt="Outside is snowing." />
+        <img
+          data-testid="weatherCodeImage.weatherCodeImage"
+          src={IconSnow}
+          className={className}
+          alt="Outside is snowing."
+        />
       );
       break;
     case 95:
     case 96:
     case 99:
       return (
-        <img src={IconStorm} className={className} alt="Outside is a storm." />
+        <img
+          data-testid="weatherCodeImage.weatherCodeImage"
+          src={IconStorm}
+          className={className}
+          alt="Outside is a storm."
+        />
       );
       break;
     default:
       return (
         <img
+          data-testid="weatherCodeImage.weatherCodeImage"
           src={IconOvercast}
           className={className}
           alt="We don't know how the weather is outside."
