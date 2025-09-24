@@ -1,13 +1,11 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { vi } from "vitest";
+import { render, screen } from "@testing-library/react";
 
 import TodaysWeather from "./TodaysWeather";
 import { primaryData, secondaryData } from "../../utils/stories/todaysWeather";
 
 describe("<TodaysWeather> component", () => {
-  // TODO: Split this test in 2 tests
   test("renders the component", async () => {
-    const onChangeMock = vi.fn();
+    const { city, country, date, temperature } = primaryData;
 
     render(
       <TodaysWeather
@@ -18,16 +16,18 @@ describe("<TodaysWeather> component", () => {
       />
     );
 
-    const titleElement = screen.getByTestId("daysDropdown.title");
+    const titleElement = screen.getByTestId("todaysWeather.title");
+    const dateElement = screen.getByTestId("todaysWeather.date");
+    const temperatureElement = screen.getByTestId("todaysWeather.temperature");
+    const isLoadingElement = screen.queryByTestId(
+      "todaysWeather.isLoadingState"
+    );
+    const detailsElement = screen.getByTestId("todaysWeather.details");
 
-    fireEvent.click(titleElement);
-
-    const listElement = await screen.findByTestId("daysDropdown.list");
-    const listItemElement = listElement.children[1];
-
-    fireEvent.click(listItemElement);
-
-    expect(listElement.children).toHaveLength(7);
-    expect(onChangeMock).toHaveBeenCalledTimes(1);
+    expect(titleElement).toContainHTML(`${city}, ${country}`);
+    expect(dateElement).toContainHTML(date);
+    expect(temperatureElement).toContainHTML(`${Math.floor(temperature)}°`);
+    expect(detailsElement.children).toHaveLength(4);
+    expect(isLoadingElement).not.toBeInTheDocument();
   });
 });

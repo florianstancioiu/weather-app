@@ -34,35 +34,52 @@ const TodaysWeather = ({
         {!isLoading && (
           <div className="bg-[url('/images/bg-today-small.svg')] bg-cover bg-center rounded-[1rem] md:h-[17.875rem] md:flex md:justify-between md:items-center md:px-[1.625rem] md:bg-[url('/images/bg-today-large.svg')]">
             <div className="text-center pt-[3.375rem] mb-[2.75rem] md:pt-0 md:mb-0 md:text-left">
-              <h2 className="text-white mb-[1.5rem] font-bold text-[1.5rem] md:text-[1.75rem] md:leading-[120%]">
+              <h2
+                data-testid="todaysWeather.title"
+                className="text-white mb-[1.5rem] font-bold text-[1.5rem] md:text-[1.75rem] md:leading-[120%]"
+              >
                 {city && city === "Current location"
                   ? city
                   : city
                   ? `${city}, ${country}`
                   : "Please search for a place."}
               </h2>
-              <p className="text-grayish-white">{date}</p>
+              <p
+                data-testid="todaysWeather.date"
+                className="text-grayish-white"
+              >
+                {date}
+              </p>
             </div>
             <div className="flex justify-center items-center px-[1.25rem] pb-[4.25rem] md:pb-0">
               <WeatherCodeImage
                 code={weatherCode || 100}
                 className="w-[6rem] h-[6rem] md:w-[7.5rem] md:h-[7.5rem]"
               />
-              <p className="text-white text-[4.25rem] italic md:text-[6rem] md:font-semibold">
+              <p
+                data-testid="todaysWeather.temperature"
+                className="text-white text-[4.25rem] italic md:text-[6rem] md:font-semibold"
+              >
                 {temperature ? `${Math.floor(temperature)}°` : "NA"}
               </p>
             </div>
           </div>
         )}
         {isLoading && (
-          <div className="bg-neutral-2 rounded-[1rem] h-[17.875rem] grid place-items-center md:px-[1.625rem] md:text-center">
+          <div
+            data-testid="todaysWeather.isLoadingState"
+            className="bg-neutral-2 rounded-[1rem] h-[17.875rem] grid place-items-center md:px-[1.625rem] md:text-center"
+          >
             <div>
               <p className="text-white">Loading...</p>
             </div>
           </div>
         )}
       </div>
-      <ul className="list-none grid gap-[1rem] grid-cols-2 md:grid-cols-4">
+      <ul
+        data-testid="todaysWeather.details"
+        className="list-none grid gap-[1rem] grid-cols-2 md:grid-cols-4"
+      >
         <TodaysWeatherItem
           title="Feels Like"
           value={feelsLike}
