@@ -5,6 +5,7 @@ import DaysDropdown from "./DaysDropdown";
 import days from "../../utils/stories/days";
 
 describe("<DaysDropdown> component", () => {
+  // TODO: Split this test in 2 tests
   test("renders the component && onChange works", async () => {
     const onChangeMock = vi.fn();
 

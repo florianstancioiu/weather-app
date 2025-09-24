@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import HourlyForecast from "./HourlyForecast";
 import { data } from "../../utils/stories/hourlyForecast";
 
+// TODO: test the dropdown as well
 describe("<HourlyForecast> component", () => {
   test("renders the component", async () => {
     render(<HourlyForecast data={data} isLoading={false} />);
