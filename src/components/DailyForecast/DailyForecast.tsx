@@ -1,4 +1,6 @@
-import DailyForecastItem from "../DailyForecastItem/DailyForecastItem";
+import DailyForecastItem, {
+  type NumericDay,
+} from "../DailyForecastItem/DailyForecastItem";
 
 export type ForecastDailyData = {
   temperature_2m_max: Float32Array<ArrayBufferLike> | null;
@@ -16,7 +18,9 @@ export type DailyForecast = {
 const DailyForecast = ({ data, isMetric, isLoading }: DailyForecast) => {
   return (
     <section>
-      <h3 className="mb-[1.5rem] text-white">Daily forecast</h3>
+      <h3 data-testid="dailyForecast.title" className="mb-[1.5rem] text-white">
+        Daily forecast
+      </h3>
       <ul className="grid grid-cols-3 gap-[1rem] md:grid-cols-7 list-none">
         {data !== undefined &&
           data.time.map((time, index) => {
@@ -27,7 +31,7 @@ const DailyForecast = ({ data, isMetric, isLoading }: DailyForecast) => {
             return (
               <DailyForecastItem
                 key={index}
-                day={time.getDay()}
+                day={time.getDay() as NumericDay}
                 maximum={maximum}
                 minimum={minimum}
                 weatherCode={weatherCode}
