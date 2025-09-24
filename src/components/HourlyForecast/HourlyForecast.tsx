@@ -63,15 +63,19 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
   return (
     <aside className="mt-[2rem] py-[1.25rem] px-[1rem] bg-neutral-2 rounded-[0.625rem] xl:mt-0 xl:h-[43.25rem]">
       <div className="flex justify-between items-center mb-[1.5rem]">
-        <h3 className="text-white mr-2">Hourly forecast</h3>
+        <h3 data-testid="hourlyForecast.title" className="text-white mr-2">
+          Hourly forecast
+        </h3>
         <DaysDropdown days={days} onChange={onDaysDropdownChangeHandler} />
       </div>
       <ul
         ref={hourlyItemsRef}
+        data-testid="hourlyForecast.list"
         className="max-h-[37.125rem] overflow-y-scroll grid gap-[1rem] grid-cols-1 list-none"
         aria-label="Hourly forecast items."
       >
         {hours !== undefined &&
+          isLoading === false &&
           hours.map((hour) => {
             const index = hour.index;
             const actualHour = hour.hour.toLocaleString("en-US", {
