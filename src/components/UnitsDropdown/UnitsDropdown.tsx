@@ -138,6 +138,7 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
         onKeyDown={onDropdownKeyDownHandler}
         className="flex justify-between items-center cursor-pointer bg-neutral-2 py-[0.438rem] px-[0.625rem] rounded-[0.375rem] gap-[0.375rem] select-none"
         tabIndex={0}
+        data-testid="unitsDropdown.toggle"
         role="combobox"
         aria-expanded={isOpen}
         aria-owns={dropdownId}
@@ -154,6 +155,7 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
             <button
               role="option"
               className="cursor-pointer w-full text-left text-white px-[0.625rem] h-[2.625rem] rounded-[0.75rem] hover:bg-neutral-3 focus:bg-neutral-3"
+              data-testid="unitsDropdown.switchButton"
               onClick={() => toggleMetricOrImperial(isMetric)}
               onKeyDown={(event: KeyboardEvent) =>
                 onDropdownOptionKeyDownHandler(event, isMetric)
@@ -163,7 +165,7 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
               {isMetric ? "Switch to Imperial" : "Switch to Metric"}
             </button>
           </div>
-          <ul className="select-none">
+          <ul data-testid="unitsDropdown.list" className="select-none">
             {data.map((dataValue, index) => {
               const dataValueClasses =
                 index === data.length - 1
@@ -183,7 +185,14 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
                           value.isActive ? "bg-neutral-3" : ""
                         } flex justify-between items-center rounded-[0.75rem] px-[0.625rem] h-[2.5rem]`}
                       >
-                        <p className="text-white">{value.title}</p>
+                        <p
+                          {...(value.isActive === true && {
+                            "data-testid": "unitsDropdown.activeListItem",
+                          })}
+                          className="text-white"
+                        >
+                          {value.title}
+                        </p>
                         {value.isActive && <CheckmarkIcon />}
                       </div>
                     );

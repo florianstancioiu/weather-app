@@ -93,6 +93,8 @@ I would also add [storybook](https://storybook.js.org/) to this project, I don't
 - [What's the best way to convert a number to a string in JavaScript?](https://stackoverflow.com/a/5765406/12159189) - This helped turn a number variable to string
 - [Pressing enter to submit form in react-testing-library does not work](https://stackoverflow.com/a/79562298/12159189) - This helped me change the text of an input element in tests
 - [fireEvent.keyDown not working as expected on my Jest + React Testing Library test](https://stackoverflow.com/a/59590889/12159189) - This helped fire an enter key in a input in tests
+- [Dynamic attribute in ReactJS](https://stackoverflow.com/a/47425958/12159189) - This helped me add a dynamic attribute in JSX
+- [How to make a test that will wait 5 seconds before check element appearance (React testing lib)](https://stackoverflow.com/a/70881371/12159189) - This helped me wait for a timer in test files
 
 ## Author
 
