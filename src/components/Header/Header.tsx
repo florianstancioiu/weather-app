@@ -9,7 +9,11 @@ const Header = ({ onChangeUnitSystem }: Header) => {
   return (
     <header className="flex justify-between items-center text-white md:mb-[4rem] md:min-w-md">
       <a href="#">
-        <img src={WeatherNowLogo} alt="Weather Now Logo" />
+        <img
+          data-testid="header.logo"
+          src={WeatherNowLogo}
+          alt="Weather Now Logo"
+        />
       </a>
       <UnitsDropdown onChangeUnitSystem={onChangeUnitSystem} />
     </header>
