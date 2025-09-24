@@ -28,7 +28,10 @@ const SearchCity = ({ onChange, onSearch, dropdownData }: SearchCity) => {
 
   return (
     <section className="mb-[2rem] pt-[4.25rem] md:mx-auto md:pt-0 xl:w-[75.75rem] md:w-[45rem]">
-      <h1 className="font-bricolage-grotesque text-white text-6xl text-center mb-[4.25rem] font-bold md:mb-[4rem] md:text-[3.25rem] md:leading-[120%] md:w-[30.125rem] md:mx-auto xl:w-[45.688rem]">
+      <h1
+        data-testid="searchCity.title"
+        className="font-bricolage-grotesque text-white text-6xl text-center mb-[4.25rem] font-bold md:mb-[4rem] md:text-[3.25rem] md:leading-[120%] md:w-[30.125rem] md:mx-auto xl:w-[45.688rem]"
+      >
         How's the sky looking today?
       </h1>
       <div className="md:flex md:justify-center md:items-center md:gap-[1rem] md:w-full">
@@ -41,6 +44,7 @@ const SearchCity = ({ onChange, onSearch, dropdownData }: SearchCity) => {
             <input
               type="text"
               id="search-input"
+              data-testid="searchCity.input"
               value={keyword}
               onChange={(event) => setKeyword(event.target.value)}
               onKeyDown={onKeyDownHandler}
@@ -51,7 +55,10 @@ const SearchCity = ({ onChange, onSearch, dropdownData }: SearchCity) => {
             />
           </div>
           {dropdownIsOpen && dropdownData && (
-            <ul className="hidden md:block absolute left-0 top-[4.625rem] list-none text-white bg-neutral-2 w-full rounded-[12px] p-[0.5rem] border-[1px] border-neutral-4">
+            <ul
+              data-testid="searchCity.list"
+              className="hidden md:block absolute left-0 top-[4.625rem] list-none text-white bg-neutral-2 w-full rounded-[12px] p-[0.5rem] border-[1px] border-neutral-4"
+            >
               {dropdownData.map((val, index) => (
                 <li
                   key={index}

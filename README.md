@@ -91,6 +91,8 @@ I would also add [storybook](https://storybook.js.org/) to this project, I don't
 - [Wrap stories with extra markup](https://storybook.js.org/docs/writing-stories/decorators#wrap-stories-with-extra-markup) - This helped me pass accessibility for single list elements in Storybook
 - [How to set <body> classes?](https://github.com/storybookjs/storybook/issues/1672#issuecomment-1520635802) - This helped me add custom classes to the body tag in storybook
 - [What's the best way to convert a number to a string in JavaScript?](https://stackoverflow.com/a/5765406/12159189) - This helped turn a number variable to string
+- [Pressing enter to submit form in react-testing-library does not work](https://stackoverflow.com/a/79562298/12159189) - This helped me change the text of an input element in tests
+- [fireEvent.keyDown not working as expected on my Jest + React Testing Library test](https://stackoverflow.com/a/59590889/12159189) - This helped fire an enter key in a input in tests
 
 ## Author
 
