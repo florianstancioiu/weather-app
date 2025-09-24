@@ -12,7 +12,7 @@ export type SearchCity = {
 
 const SearchCity = ({ onChange, onSearch, dropdownData }: SearchCity) => {
   const [keyword, setKeyword] = useState("");
-  const [dropdownIsOpen, setDropdownIsOpen] = useState(true);
+  const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
   const searchRef = useRef(null);
 
   const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -45,7 +45,6 @@ const SearchCity = ({ onChange, onSearch, dropdownData }: SearchCity) => {
               onChange={(event) => setKeyword(event.target.value)}
               onKeyDown={onKeyDownHandler}
               onFocus={() => setDropdownIsOpen(true)}
-              autoFocus
               aria-label="Search for a place..."
               placeholder="Search for a place..."
               className="w-full text-white h-[3.625rem] pl-[3.875rem] border-[2px] border-neutral-1 rounded-[0.75rem] focus:rounded-[0.75rem] focus:border-[2px] focus:border-white outline-none focus-visible:border-white cursor-pointer"
