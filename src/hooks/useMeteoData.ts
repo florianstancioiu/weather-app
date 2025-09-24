@@ -145,26 +145,28 @@ const useMeteoData = () => {
       }
     };
 
-    const getMeteoDataOnPageLoad = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position: GeolocationPosition) => {
-            const { latitude, longitude } = position.coords;
-
-            setIsLoading(true);
-            setIsError(false);
-
-            retriveDataFromOpenMeteo(
-              latitude,
-              longitude,
-              "Current location",
-              ""
+    const getMeteoDataOnPageLoad = async () => {
+      try {
+        if (navigator.geolocation) {
+          const { latitude, longitude } = await new Promise<{
+            latitude: number;
+            longitude: number;
+          }>((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(
+              (position) => {
+                setIsLoading(true);
+                return resolve(position.coords);
+              },
+              (error) => reject(error)
             );
-          },
-          () => {
-            resetState();
-          }
-        );
+          });
+
+          await retriveDataFromOpenMeteo(latitude, longitude);
+        }
+      } catch (e: unknown) {
+        const error = e as Error;
+
+        console.error(error.message);
       }
     };
 
