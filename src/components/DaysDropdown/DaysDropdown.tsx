@@ -69,6 +69,7 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
       <div
         onClick={toggleOpenHandler}
         onKeyDown={onDropdownKeyDownHandler}
+        data-testid="daysDropdown.title"
         tabIndex={0}
         role="combobox"
         aria-expanded={isOpen}
@@ -97,6 +98,7 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
         <ul
           id={dropdownId}
           role="listbox"
+          data-testid="daysDropdown.list"
           className="absolute bg-neutral-2 top-[3.313rem] right-0 w-[13.375rem] border-light-blue border-[1px] p-[0.5rem] rounded-[0.75rem]"
         >
           {days !== undefined &&
