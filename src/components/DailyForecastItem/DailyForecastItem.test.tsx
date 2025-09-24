@@ -38,7 +38,7 @@ describe("<DailyForecastItem> component", () => {
     expect(isLoadingStateElement).not.toBeInTheDocument();
   });
 
-  test("renders the isLoading state", () => {
+  test("renders the is loading screen", () => {
     const day = 1;
     const weatherCode = 1;
     const maximumTemperature = 30;

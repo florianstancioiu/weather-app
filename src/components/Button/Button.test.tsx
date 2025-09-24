@@ -11,7 +11,7 @@ describe("<Button> component", () => {
     expect(buttonElement).toBeInTheDocument();
   });
 
-  test("click triggers onClick", () => {
+  test("triggers the onClick handler", () => {
     const onClickMock = vi.fn();
 
     render(<Button title="Click me" onClick={onClickMock} />);

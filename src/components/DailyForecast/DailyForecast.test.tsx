@@ -16,7 +16,7 @@ describe("<DailyForecast> component", () => {
     expect(dailyForecastItemElement).toHaveLength(7);
   });
 
-  test("renders the isLoading state", () => {
+  test("renders the is loading screen", () => {
     render(<DailyForecast data={data} isMetric={true} isLoading={true} />);
 
     const buttonElement = screen.getByTestId("dailyForecast.title");
