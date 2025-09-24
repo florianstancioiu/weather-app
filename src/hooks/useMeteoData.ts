@@ -148,22 +148,27 @@ const useMeteoData = () => {
     const getMeteoDataOnPageLoad = async () => {
       try {
         if (navigator.geolocation) {
-          const { latitude, longitude } = await new Promise<{
+          setIsLoading(true);
+          const response = new Promise<{
             latitude: number;
             longitude: number;
           }>((resolve, reject) => {
             navigator.geolocation.getCurrentPosition(
               (position) => {
-                setIsLoading(true);
                 return resolve(position.coords);
               },
               (error) => reject(error)
             );
           });
 
-          await retriveDataFromOpenMeteo(latitude, longitude);
+          response
+            .then(({ latitude, longitude }) => {
+              retriveDataFromOpenMeteo(latitude, longitude);
+            })
+            .catch(() => setIsLoading(false));
         }
       } catch (e: unknown) {
+        setIsLoading(false);
         const error = e as Error;
 
         console.error(error.message);
