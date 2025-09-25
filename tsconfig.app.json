@@ -24,5 +24,6 @@
     "noUncheckedSideEffectImports": true
   },
   "types": ["node", "jest", "@testing-library/jest-dom"],
-  "include": ["src", "setupTests.js"]
+  "include": ["src", "setupTests.js"],
+  "exclude": ["src/utils/tests/openmeteo_sdk"]
 }

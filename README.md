@@ -84,7 +84,8 @@ Users should be able to:
 - [fireEvent.keyDown not working as expected on my Jest + React Testing Library test](https://stackoverflow.com/a/59590889/12159189) - This helped fire an enter key in a input in tests
 - [Dynamic attribute in ReactJS](https://stackoverflow.com/a/47425958/12159189) - This helped me add a dynamic attribute in JSX
 - [How to make a test that will wait 5 seconds before check element appearance (React testing lib)](https://stackoverflow.com/a/70881371/12159189) - This helped me wait for a timer in test files
-- [A Complete Guide to Testing React Hooks](https://www.toptal.com/react/testing-react-hooks-tutorial)
+- [Mocking Fetch And Network Requests With Vitest](https://stevekinney.com/courses/testing/mocking-fetch-and-network-requests) - This helped me mock fetch
+- [How to "mock" navigator.geolocation in a React Jest Test](https://stackoverflow.com/a/67019816/12159189) - This helped me mock navigator.geolocation
 
 ## Author
 

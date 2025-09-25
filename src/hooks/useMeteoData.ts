@@ -154,7 +154,10 @@ const useMeteoData = () => {
       setNoSearchResults(false);
 
       setSearchHistoryInLocalStorage();
-    } catch {
+    } catch (e) {
+      const error = e as Error;
+
+      console.error(error.message);
       setIsError(true);
     }
   };
