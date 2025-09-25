@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import App from "./App";
+import Index from "./Index";
 
 const meta = {
   title: "Pages/Index",
-  component: App,
+  component: Index,
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
     layout: "fullscreen",
@@ -16,7 +16,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof App>;
+} satisfies Meta<typeof Index>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

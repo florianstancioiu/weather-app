@@ -1,14 +1,14 @@
-import useMeteoData from "./hooks/useMeteoData";
+import useMeteoData from "../hooks/useMeteoData";
 
-import Header from "./components/Header/Header";
-import SearchCity from "./components/SearchCity/SearchCity";
-import TodaysWeather from "./components/TodaysWeather/TodaysWeather";
-import DailyForecast from "./components/DailyForecast/DailyForecast";
-import HourlyForecast from "./components/HourlyForecast/HourlyForecast";
-import NoSearchResults from "./components/NoSearchResults/NoSearchResults";
-import SomethingWrong from "./components/SomethingWrong/SomethingWrong";
+import Header from "../components/Header/Header";
+import SearchCity from "../components/SearchCity/SearchCity";
+import TodaysWeather from "../components/TodaysWeather/TodaysWeather";
+import DailyForecast from "../components/DailyForecast/DailyForecast";
+import HourlyForecast from "../components/HourlyForecast/HourlyForecast";
+import NoSearchResults from "../components/NoSearchResults/NoSearchResults";
+import SomethingWrong from "../components/SomethingWrong/SomethingWrong";
 
-const App = () => {
+const IndexPage = () => {
   const {
     isLoading,
     isError,
@@ -76,4 +76,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default IndexPage;
