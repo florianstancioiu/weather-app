@@ -24,7 +24,13 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./setupTests.js"],
     coverage: {
-      exclude: ["**/*.stories.tsx", ".storybook", "storybook-static", "dist"],
+      exclude: [
+        "**/*.stories.tsx",
+        ".storybook",
+        "storybook-static",
+        "dist",
+        "src/main.tsx",
+      ],
       provider: "istanbul", // or 'v8'
       reporter: ["text", "html"],
     },
