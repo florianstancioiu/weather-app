@@ -11,13 +11,13 @@ import SomethingWrong from "./components/SomethingWrong/SomethingWrong";
 const App = () => {
   const {
     isLoading,
+    isError,
     isMetric,
     todaysPrimaryData,
     todaysSecondaryData,
     dailyData,
     hourlyData,
     noSearchResults,
-    isError,
     historyOfSearches,
     setSearchKeyword,
     setIsMetric,

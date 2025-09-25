@@ -36,6 +36,29 @@ const useMeteoData = () => {
     setHourlyData(undefined);
   };
 
+  const setSearchHistoryInLocalStorage = () => {
+    const existingHistory =
+      localStorage.getItem("searchHistory") !== undefined
+        ? (JSON.parse(
+            localStorage.getItem("searchHistory") || JSON.stringify([])
+          ) as string[])
+        : [];
+
+    if (
+      !existingHistory.find((val) => val === searchKeyword) &&
+      searchKeyword.trim() !== ""
+    ) {
+      existingHistory.unshift(searchKeyword);
+
+      localStorage.setItem(
+        "searchHistory",
+        JSON.stringify(existingHistory.slice(0, 4))
+      );
+
+      setHistoryOfSearches(existingHistory.slice(0, 4));
+    }
+  };
+
   const retriveDataFromOpenMeteo = async (
     latitude: number,
     longitude: number,
@@ -129,6 +152,8 @@ const useMeteoData = () => {
 
       setIsLoading(false);
       setNoSearchResults(false);
+
+      setSearchHistoryInLocalStorage();
     } catch {
       setIsError(true);
     }
@@ -222,32 +247,7 @@ const useMeteoData = () => {
       }
     };
 
-    const setSearchHistoryInLocalStorage = () => {
-      const existingHistory =
-        localStorage.getItem("searchHistory") !== undefined
-          ? (JSON.parse(
-              localStorage.getItem("searchHistory") || JSON.stringify([])
-            ) as string[])
-          : [];
-
-      if (
-        !existingHistory.find((val) => val === searchKeyword) &&
-        searchKeyword.trim() !== ""
-      ) {
-        existingHistory.unshift(searchKeyword);
-
-        localStorage.setItem(
-          "searchHistory",
-          JSON.stringify(existingHistory.slice(0, 4))
-        );
-
-        setHistoryOfSearches(existingHistory.slice(0, 4));
-      }
-    };
-
     getMeteoDataOnDependencyChange();
-
-    setSearchHistoryInLocalStorage();
   }, [searchKeyword, isMetric]);
 
   return {
