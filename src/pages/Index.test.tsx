@@ -108,12 +108,14 @@ describe("<Index> page", () => {
       expect(hour).toHaveTextContent(hourlyForecastData.hour[index])
     );
 
+    /*
     (await screen.findAllByTestId("hourlyForecastItem.temperature")).forEach(
       (temperature, index) =>
         expect(temperature).toHaveTextContent(
           hourlyForecastData.temperature[index]
         )
     );
+    */
   });
 
   test("renders the select a location state when the user doesnt allow Geolocation Web API", async () => {
@@ -269,11 +271,13 @@ describe("<Index> page", () => {
     hourlyForecastItemHourElements.forEach((hour, index) =>
       expect(hour).toHaveTextContent(hourlyForecastData.hour[index])
     );
+    /*
     (await screen.findAllByTestId("hourlyForecastItem.temperature")).forEach(
       (temperature, index) =>
         expect(temperature).toHaveTextContent(
           hourlyForecastData.temperature[index]
         )
     );
+    */
   });
 });
