@@ -30,6 +30,9 @@ export default defineConfig({
         "storybook-static",
         "dist",
         "src/main.tsx",
+        "src/utils/tests/openmeteo_sdk",
+        "src/utils/tests",
+        "src/utils/stories",
       ],
       provider: "istanbul", // or 'v8'
       reporter: ["text", "html"],
