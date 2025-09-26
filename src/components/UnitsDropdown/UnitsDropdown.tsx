@@ -113,7 +113,7 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
     if (onChangeUnitSystem) {
       onChangeUnitSystem(!isMetric);
     }
-  }, 400);
+  }, 300);
 
   const onDropdownKeyDownHandler = (event: KeyboardEvent) => {
     if (event.key === "Enter") {

@@ -1,4 +1,10 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  act,
+  waitFor,
+} from "@testing-library/react";
 import { vi } from "vitest";
 
 import UnitsDropdown from "./UnitsDropdown";
@@ -50,18 +56,14 @@ describe("<UnitsDropdown> component", () => {
 
     render(<UnitsDropdown onChangeUnitSystem={onChangeUnitSystemMock} />);
 
-    const toggleElement = screen.getByTestId("unitsDropdown.toggle");
-
-    fireEvent.click(toggleElement);
-
-    const switchButtonElement = await screen.findByTestId(
-      "unitsDropdown.switchButton"
-    );
-
-    fireEvent.click(switchButtonElement);
+    await act(async () => {
+      fireEvent.click(screen.getByTestId("unitsDropdown.toggle"));
+      fireEvent.click(await screen.findByTestId("unitsDropdown.switchButton"));
+    });
 
     await waitFor(async () => {
       expect(onChangeUnitSystemMock).toHaveBeenCalledTimes(1);
+      expect(onChangeUnitSystemMock).toHaveBeenCalledWith(false);
     });
 
     const listElement = screen.queryByTestId("unitsDropdown.list");
@@ -75,9 +77,13 @@ describe("<UnitsDropdown> component", () => {
       expect(element.innerHTML).toContain(expectedActiveListItemsValues[index])
     );
 
-    expect(toggleElement).toBeInTheDocument();
-    expect(switchButtonElement).toBeInTheDocument();
-    expect(switchButtonElement.innerHTML).toEqual("Switch to Metric");
+    expect(screen.getByTestId("unitsDropdown.toggle")).toBeInTheDocument();
+    expect(
+      await screen.findByTestId("unitsDropdown.switchButton")
+    ).toBeInTheDocument();
+    expect(
+      await screen.findByTestId("unitsDropdown.switchButton")
+    ).toHaveTextContent("Switch to Metric");
     expect(listElement).toBeInTheDocument();
     expect(onChangeUnitSystemMock).toHaveBeenCalledWith(false);
   });
