@@ -1,4 +1,10 @@
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  act,
+  waitFor,
+} from "@testing-library/react";
 import { vi, type Mock } from "vitest";
 
 import mockNavigatorGeolocation from "../utils/tests/mockNavigatorGeolocation";
@@ -122,7 +128,9 @@ describe("<Index> page", () => {
     );
 
     const renderedTexts = temperatures.map((el) => el.textContent?.trim());
-    expect(renderedTexts).toEqual(hourlyForecastData.temperature);
+    await waitFor(async () => {
+      expect(renderedTexts).toEqual(hourlyForecastData.temperature);
+    });
   });
 
   test("renders the select a location state when the user doesnt allow Geolocation Web API", async () => {

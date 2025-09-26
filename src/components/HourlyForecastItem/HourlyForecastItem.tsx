@@ -21,7 +21,7 @@ const HourlyForecastItem = ({
             <WeatherCode code={weatherCode} className="w-[2.5rem]" />
             <p data-testid="hourlyForecastItem.hour">{hour}</p>
           </div>
-          <p data-testid="hourlyForecastItem.temperature">{temperature}°</p>
+          <p data-testid="hourlyForecastItem.temperature">{`${temperature}°`}</p>
         </li>
       )}
       {isLoading && (
