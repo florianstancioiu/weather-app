@@ -8,14 +8,10 @@ import {
   dailyForecastData,
   hourlyForecastData,
   geocodingData,
-} from "../utils/tests/dummyData";
+} from "../utils/tests/dummyData2";
 import Index from "./Index";
 
 describe("<Index> page", () => {
-  afterEach(() => {
-    vi.clearAllMocks();
-  });
-
   test("renders the component", () => {
     render(<Index />);
 
