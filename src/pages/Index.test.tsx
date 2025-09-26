@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import { render, screen, fireEvent, act, within } from "@testing-library/react";
 import { vi, type Mock } from "vitest";
 
 import mockNavigatorGeolocation from "../utils/tests/mockNavigatorGeolocation";
@@ -17,7 +17,9 @@ describe("<Index> page", () => {
   beforeEach(() => {
     // Always mock fetch with deterministic responses
     fetchMock = vi.fn();
-    global.fetch = fetchMock as unknown as typeof global.fetch;
+    //global.fetch = fetchMock as unknown as typeof global.fetch;
+
+    vi.stubGlobal("fetch", fetchMock);
   });
 
   afterEach(() => {
@@ -33,6 +35,16 @@ describe("<Index> page", () => {
   });
 
   test("renders the dummy data when the user allows Geolocation Web API", async () => {
+    /*
+    (globalThis.fetch as any) = vi.fn(async () => {
+      console.log("fetch called"); // will print in CI logs
+      return {
+        ok: true,
+        json: async () => ({ data: "whatever" }),
+      };
+    });
+    */
+
     fetchMock.mockResolvedValueOnce(bucharestData);
 
     const { getCurrentPositionMock } = mockNavigatorGeolocation();
@@ -117,7 +129,8 @@ describe("<Index> page", () => {
     );
     */
 
-    const temperatures = await screen.findAllByTestId(
+    const container = screen.getByTestId("hourlyForecast.list");
+    const temperatures = await within(container).findAllByTestId(
       "hourlyForecastItem.temperature"
     );
 
