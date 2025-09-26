@@ -13,6 +13,7 @@ export default () => {
 
   Object.defineProperty(global.navigator, "geolocation", {
     value: geolocation,
+    configurable: true,
   });
 
   return { clearWatchMock, getCurrentPositionMock, watchPositionMock };
