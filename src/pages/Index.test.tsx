@@ -81,23 +81,85 @@ describe("<Index> page", () => {
     expect(temperatureElement).toContainHTML(todaysWeatherData.temperature);
 
     // DailyForecast section check
-    dailyForecastTitleElements.map((title, index) =>
+    dailyForecastTitleElements.forEach((title, index) =>
       expect(title).toContainHTML(dailyForecastData.title[index])
     );
-    dailyForecastMaximumTemperatureElements.map((temp, index) =>
+    dailyForecastMaximumTemperatureElements.forEach((temp, index) =>
       expect(temp).toContainHTML(dailyForecastData.maximumTemperature[index])
     );
-    dailyForecastMinimumTemperatureElements.map((temp, index) =>
+    dailyForecastMinimumTemperatureElements.forEach((temp, index) =>
       expect(temp).toContainHTML(dailyForecastData.minimumTemperature[index])
     );
 
     // HourlyForecast section check
     expect(daysDropdownTitleElement).toContainHTML(hourlyForecastData.title);
-    hourlyForecastItemHourElements.map((hour, index) =>
+    hourlyForecastItemHourElements.forEach((hour, index) =>
       expect(hour).toContainHTML(hourlyForecastData.hour[index])
     );
-    hourlyForecastItemTemperatureElements.map((temperature, index) =>
+    hourlyForecastItemTemperatureElements.forEach((temperature, index) =>
       expect(temperature).toContainHTML(hourlyForecastData.temperature[index])
+    );
+  });
+
+  test("renders the select a location state when the Geolocation Web API is turned off", async () => {
+    // Instruct vitest to mock fetch on the `window` object.
+    global.fetch = vi.fn(
+      () => new Promise((resolve) => resolve(BucharestDummyData))
+    ) as Mock;
+
+    const { getCurrentPositionMock } = mockNavigatorGeolocation();
+
+    getCurrentPositionMock.mockImplementationOnce((_success, reject) => {
+      return Promise.reject(reject("The user didnt share the location"));
+    });
+
+    render(<Index />);
+
+    // TodaysWeather elements
+    const titleElement = await screen.findByTestId("todaysWeather.title");
+    const weatherCodeImageElement = await screen.findAllByTestId(
+      "weatherCodeImage.weatherCodeImage"
+    );
+    const temperatureElement = await screen.findByTestId(
+      "todaysWeather.temperature"
+    );
+    const weatherItemValueElements = await screen.findAllByTestId(
+      "todaysWeatherItem.value"
+    );
+
+    // DailyForecast elements
+    const dailyForecastItemElements = await screen.findAllByTestId(
+      "dailyForecastItem.dailyForecastItem"
+    );
+
+    // HourlyForecast elements
+    const daysDropdownTitleElement = await screen.findByTestId(
+      "daysDropdown.title"
+    );
+    const hourlyForecastItemIsLoadingStateElements =
+      await screen.findAllByTestId("hourlyForecastItem.isLoadingState");
+
+    // TodaysWeather section check
+    expect(titleElement).toContainHTML("Please search for a place.");
+    expect(weatherCodeImageElement[0].getAttribute("alt")).toEqual(
+      "We don't know how the weather is outside."
+    );
+    expect(temperatureElement).toContainHTML("NA");
+    weatherItemValueElements.forEach((value) =>
+      expect(value).toHaveTextContent("-")
+    );
+
+    // DailyForecast section check
+    expect(dailyForecastItemElements).toHaveLength(7);
+    dailyForecastItemElements.forEach((element) =>
+      expect(element).toHaveTextContent("")
+    );
+
+    // HourlyForecast section check
+    expect(daysDropdownTitleElement).toHaveTextContent("No options");
+    expect(hourlyForecastItemIsLoadingStateElements).toHaveLength(24);
+    hourlyForecastItemIsLoadingStateElements.forEach((element) =>
+      expect(element).toHaveTextContent("")
     );
   });
 });
