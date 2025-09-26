@@ -1,4 +1,4 @@
-export default {
+export const BucharestDummyData = {
   status: 200,
   arrayBuffer: () =>
     Promise.resolve(
@@ -1984,4 +1984,72 @@ export default {
       ).buffer
     ),
   json: () => Promise.resolve({ test: 100 }),
+};
+
+export const todaysWeatherData = {
+  title: "Current location",
+  weatherCodeImage: "Outside is cloudy.",
+  temperature: "17°",
+};
+
+export const dailyForecastData = {
+  title: ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"],
+  maximumTemperature: ["18°", "16°", "19°", "19°", "14°", "16°", "19°"],
+  minimumTemperature: ["14°", "13°", "11°", "10°", "12°", "10°", "8°"],
+};
+
+export const hourlyForecastData = {
+  title: "Thursday",
+  hour: [
+    "3 AM",
+    "4 AM",
+    "5 AM",
+    "6 AM",
+    "7 AM",
+    "8 AM",
+    "9 AM",
+    "10 AM",
+    "11 AM",
+    "12 PM",
+    "1 PM",
+    "2 PM",
+    "3 PM",
+    "4 PM",
+    "5 PM",
+    "6 PM",
+    "7 PM",
+    "8 PM",
+    "9 PM",
+    "10 PM",
+    "11 PM",
+    "12 AM",
+    "1 AM",
+    "2 AM",
+  ],
+  temperature: [
+    "17°",
+    "16°",
+    "16°",
+    "16°",
+    "15°",
+    "15°",
+    "15°",
+    "15°",
+    "15°",
+    "15°",
+    "16°",
+    "17°",
+    "17°",
+    "18°",
+    "18°",
+    "18°",
+    "18°",
+    "17°",
+    "17°",
+    "16°",
+    "16°",
+    "13°",
+    "12°",
+    "11°",
+  ],
 };
