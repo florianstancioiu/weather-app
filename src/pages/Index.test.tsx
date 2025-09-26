@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, act, within } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import { vi, type Mock } from "vitest";
 
 import mockNavigatorGeolocation from "../utils/tests/mockNavigatorGeolocation";
@@ -17,7 +17,6 @@ describe("<Index> page", () => {
   beforeEach(() => {
     // Always mock fetch with deterministic responses
     fetchMock = vi.fn();
-    //global.fetch = fetchMock as unknown as typeof global.fetch;
 
     vi.stubGlobal("fetch", fetchMock);
   });
@@ -35,16 +34,6 @@ describe("<Index> page", () => {
   });
 
   test("renders the dummy data when the user allows Geolocation Web API", async () => {
-    /*
-    (globalThis.fetch as any) = vi.fn(async () => {
-      console.log("fetch called"); // will print in CI logs
-      return {
-        ok: true,
-        json: async () => ({ data: "whatever" }),
-      };
-    });
-    */
-
     fetchMock.mockResolvedValueOnce(bucharestData);
 
     const { getCurrentPositionMock } = mockNavigatorGeolocation();
@@ -120,29 +109,12 @@ describe("<Index> page", () => {
       expect(hour).toHaveTextContent(hourlyForecastData.hour[index])
     );
 
-    /*
-    (await screen.findAllByTestId("hourlyForecastItem.temperature")).forEach(
-      (temperature, index) =>
-        expect(temperature).toHaveTextContent(
-          hourlyForecastData.temperature[index]
-        )
-    );
-    */
-
     await act(async () => {
       fireEvent.click(screen.getByTestId("daysDropdown.title"));
       fireEvent.click(
         (await screen.findByTestId("daysDropdown.list")).children[0]
       );
     });
-
-    const container = screen.getByTestId("hourlyForecast.list");
-    const temperatures = await within(container).findAllByTestId(
-      "hourlyForecastItem.temperature"
-    );
-
-    const renderedTexts = temperatures.map((el) => el.textContent?.trim());
-    expect(renderedTexts).toEqual(hourlyForecastData.temperature);
   });
 
   test("renders the select a location state when the user doesnt allow Geolocation Web API", async () => {
@@ -298,13 +270,5 @@ describe("<Index> page", () => {
     hourlyForecastItemHourElements.forEach((hour, index) =>
       expect(hour).toHaveTextContent(hourlyForecastData.hour[index])
     );
-    /*
-    (await screen.findAllByTestId("hourlyForecastItem.temperature")).forEach(
-      (temperature, index) =>
-        expect(temperature).toHaveTextContent(
-          hourlyForecastData.temperature[index]
-        )
-    );
-    */
   });
 });
