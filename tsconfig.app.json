@@ -23,7 +23,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "types": ["node", "jest", "@testing-library/jest-dom"],
+  "types": ["node", "jest", "@testing-library/jest-dom", "vitest/globals"],
   "include": ["src", "setupTests.js"],
   "exclude": ["src/utils/tests/openmeteo_sdk"]
 }
