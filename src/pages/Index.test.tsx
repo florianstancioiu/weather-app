@@ -129,13 +129,20 @@ describe("<Index> page", () => {
     );
     */
 
+    await act(async () => {
+      fireEvent.click(screen.getByTestId("daysDropdown.title"));
+      fireEvent.click(
+        (await screen.findByTestId("daysDropdown.list")).children[0]
+      );
+    });
+
     const container = screen.getByTestId("hourlyForecast.list");
     const temperatures = await within(container).findAllByTestId(
       "hourlyForecastItem.temperature"
     );
 
     const renderedTexts = temperatures.map((el) => el.textContent?.trim());
-    expect(renderedTexts.sort()).toEqual(hourlyForecastData.temperature.sort());
+    expect(renderedTexts).toEqual(hourlyForecastData.temperature);
   });
 
   test("renders the select a location state when the user doesnt allow Geolocation Web API", async () => {
