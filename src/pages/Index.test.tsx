@@ -193,14 +193,6 @@ describe("<Index> page", () => {
         target: { value: searchkeyword },
       });
       fireEvent.click(buttonElement);
-      /*
-        fireEvent.keyDown(searchInputElement, {
-          key: "Enter",
-          code: "Enter",
-          keyCode: 13,
-          charCode: 13,
-        });
-        */
     });
 
     expect(global.fetch).toHaveBeenCalledTimes(2);
