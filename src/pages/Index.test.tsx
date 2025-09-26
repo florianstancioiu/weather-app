@@ -74,6 +74,8 @@ describe("<Index> page", () => {
       "hourlyForecastItem.temperature"
     );
 
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+
     // TodaysWeather section check
     expect(titleElement).toHaveTextContent(todaysWeatherData.title);
     expect(weatherCodeImageElement[0].getAttribute("alt")).toEqual(
