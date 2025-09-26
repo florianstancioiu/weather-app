@@ -8,10 +8,22 @@ import {
   dailyForecastData,
   hourlyForecastData,
   geocodingData,
-} from "../utils/tests/dummyData2";
+} from "../utils/tests/dummyData";
 import Index from "./Index";
 
 describe("<Index> page", () => {
+  let fetchMock: Mock;
+
+  beforeEach(() => {
+    // Always mock fetch with deterministic responses
+    fetchMock = vi.fn();
+    global.fetch = fetchMock as unknown as typeof global.fetch;
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   test("renders the component", () => {
     render(<Index />);
 
@@ -21,10 +33,7 @@ describe("<Index> page", () => {
   });
 
   test("renders the dummy data when the user allows Geolocation Web API", async () => {
-    // Instruct vitest to mock fetch on the `window` object.
-    global.fetch = vi.fn(
-      () => new Promise((resolve) => resolve(bucharestData))
-    ) as Mock;
+    fetchMock.mockResolvedValueOnce(bucharestData);
 
     const { getCurrentPositionMock } = mockNavigatorGeolocation();
 
@@ -70,7 +79,7 @@ describe("<Index> page", () => {
       "hourlyForecastItem.temperature"
     );
 
-    expect(global.fetch).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
 
     // TodaysWeather section check
     expect(titleElement).toHaveTextContent(todaysWeatherData.title);
@@ -109,10 +118,7 @@ describe("<Index> page", () => {
   });
 
   test("renders the select a location state when the user doesnt allow Geolocation Web API", async () => {
-    // Instruct vitest to mock fetch on the `window` object.
-    global.fetch = vi.fn(
-      () => new Promise((resolve) => resolve(bucharestData))
-    ) as Mock;
+    fetchMock.mockResolvedValueOnce(bucharestData);
 
     const { getCurrentPositionMock } = mockNavigatorGeolocation();
 
@@ -180,7 +186,7 @@ describe("<Index> page", () => {
     });
 
     // Mock fetch
-    global.fetch = (vi.fn() as Mock)
+    fetchMock
       .mockReturnValueOnce({
         ok: true,
         json: () => Promise.resolve(geocodingData),
@@ -201,9 +207,9 @@ describe("<Index> page", () => {
       fireEvent.click(buttonElement);
     });
 
-    expect(global.fetch).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
     expect(searchInputElement).toHaveValue(searchkeyword);
-    expect(global.fetch).toHaveBeenNthCalledWith(
+    expect(fetchMock).toHaveBeenNthCalledWith(
       1,
       "https://geocoding-api.open-meteo.com/v1/search?name=Bucharest, Romania&count=1&language=en&format=json",
       undefined
