@@ -75,9 +75,6 @@ describe("<Index> page", () => {
     const hourlyForecastItemHourElements = await screen.findAllByTestId(
       "hourlyForecastItem.hour"
     );
-    const hourlyForecastItemTemperatureElements = await screen.findAllByTestId(
-      "hourlyForecastItem.temperature"
-    );
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
 
@@ -110,10 +107,12 @@ describe("<Index> page", () => {
     hourlyForecastItemHourElements.forEach((hour, index) =>
       expect(hour).toHaveTextContent(hourlyForecastData.hour[index])
     );
-    hourlyForecastItemTemperatureElements.forEach((temperature, index) =>
-      expect(temperature).toHaveTextContent(
-        hourlyForecastData.temperature[index]
-      )
+
+    (await screen.findAllByTestId("hourlyForecastItem.temperature")).forEach(
+      (temperature, index) =>
+        expect(temperature).toHaveTextContent(
+          hourlyForecastData.temperature[index]
+        )
     );
   });
 
@@ -240,9 +239,6 @@ describe("<Index> page", () => {
     const hourlyForecastItemHourElements = await screen.findAllByTestId(
       "hourlyForecastItem.hour"
     );
-    const hourlyForecastItemTemperatureElements = await screen.findAllByTestId(
-      "hourlyForecastItem.temperature"
-    );
 
     // TodaysWeather section check
     expect(titleElement).toHaveTextContent(searchkeyword);
@@ -273,10 +269,11 @@ describe("<Index> page", () => {
     hourlyForecastItemHourElements.forEach((hour, index) =>
       expect(hour).toHaveTextContent(hourlyForecastData.hour[index])
     );
-    hourlyForecastItemTemperatureElements.forEach((temperature, index) =>
-      expect(temperature).toHaveTextContent(
-        hourlyForecastData.temperature[index]
-      )
+    (await screen.findAllByTestId("hourlyForecastItem.temperature")).forEach(
+      (temperature, index) =>
+        expect(temperature).toHaveTextContent(
+          hourlyForecastData.temperature[index]
+        )
     );
   });
 });
