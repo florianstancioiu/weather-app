@@ -7,7 +7,7 @@ export type Header = {
 
 const Header = ({ onChangeUnitSystem }: Header) => {
   return (
-    <header className="flex justify-between items-center text-white md:mb-[4rem] md:min-w-md">
+    <header className="flex justify-between items-center text-white md:mb-[4rem] md:min-w-md xl:min-w-xl">
       <a href="#">
         <img
           data-testid="header.logo"
