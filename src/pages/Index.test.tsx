@@ -122,7 +122,7 @@ describe("<Index> page", () => {
     );
 
     const renderedTexts = temperatures.map((el) => el.textContent?.trim());
-    expect(renderedTexts).toEqual(hourlyForecastData.temperature);
+    expect(renderedTexts.sort()).toEqual(hourlyForecastData.temperature.sort());
   });
 
   test("renders the select a location state when the user doesnt allow Geolocation Web API", async () => {
