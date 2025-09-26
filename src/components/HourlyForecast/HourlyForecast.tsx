@@ -87,7 +87,7 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
 
             return (
               <HourlyForecastItem
-                key={index}
+                key={actualHour}
                 hour={actualHour}
                 temperature={Math.round(temperature!)}
                 weatherCode={weatherCode}
