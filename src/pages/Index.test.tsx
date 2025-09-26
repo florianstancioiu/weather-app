@@ -116,6 +116,16 @@ describe("<Index> page", () => {
         )
     );
     */
+
+    const temperatures = await screen.findAllByTestId(
+      "hourlyForecastItem.temperature"
+    );
+
+    for (const [index, temperature] of temperatures.entries()) {
+      expect(temperature).toHaveTextContent(
+        hourlyForecastData.temperature[index]
+      );
+    }
   });
 
   test("renders the select a location state when the user doesnt allow Geolocation Web API", async () => {
