@@ -245,7 +245,10 @@ const useMeteoData = () => {
         }
 
         retriveDataFromOpenMeteo(latitude, longitude, city, country);
-      } catch {
+      } catch (e) {
+        const error = e as Error;
+
+        console.error(error.message);
         setIsError(true);
       }
     };

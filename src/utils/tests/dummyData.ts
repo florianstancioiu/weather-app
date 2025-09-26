@@ -1,4 +1,4 @@
-export const BucharestDummyData = {
+export const bucharestData = {
   status: 200,
   arrayBuffer: () =>
     Promise.resolve(
@@ -2052,4 +2052,32 @@ export const hourlyForecastData = {
     "12°",
     "11°",
   ],
+};
+
+export const geocodingData = {
+  results: [
+    {
+      id: 683506,
+      name: "Bucharest",
+      latitude: 44.43225,
+      longitude: 26.10626,
+      elevation: {
+        source: "83.0",
+        parsedValue: 83,
+      },
+      feature_code: "PPLC",
+      country_code: "RO",
+      admin1_id: 683504,
+      admin2_id: 8335003,
+      admin3_id: 11055044,
+      timezone: "Europe/Bucharest",
+      population: 1877155,
+      country_id: 798549,
+      country: "Romania",
+      admin1: "București",
+      admin2: "Municipiul Bucureşti",
+      admin3: "Sector 3",
+    },
+  ],
+  generationtime_ms: 1.9702911,
 };
