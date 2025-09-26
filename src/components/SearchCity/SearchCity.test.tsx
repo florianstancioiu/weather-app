@@ -21,7 +21,7 @@ describe("<SearchCity> component", () => {
     const inputElement = screen.getByTestId("searchCity.input");
     const listElement = screen.queryByTestId("searchCity.list");
 
-    expect(titleElement).toContainHTML("How's the sky looking today?");
+    expect(titleElement).toHaveTextContent("How's the sky looking today?");
     expect(inputElement).toBeInTheDocument();
     expect(listElement).not.toBeInTheDocument();
 

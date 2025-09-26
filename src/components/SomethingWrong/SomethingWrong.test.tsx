@@ -13,7 +13,7 @@ describe("<SomethingWrong> component", () => {
     const buttonElement = screen.getByTestId("somethingWrong.button");
 
     expect(titleElement).toBeInTheDocument();
-    expect(titleElement).toContainHTML("Something went wrong");
+    expect(titleElement).toHaveTextContent("Something went wrong");
     expect(buttonElement).toBeInTheDocument();
     expect(onRetryMock).toHaveBeenCalledTimes(0);
   });

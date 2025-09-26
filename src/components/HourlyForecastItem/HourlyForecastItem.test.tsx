@@ -29,8 +29,8 @@ describe("<HourlyForecastItem> component", () => {
       "hourlyForecastItem.isLoadingState"
     );
 
-    expect(hourElement).toContainHTML(hour);
-    expect(temperatureElement).toContainHTML(temperature.toString());
+    expect(hourElement).toHaveTextContent(hour);
+    expect(temperatureElement).toHaveTextContent(temperature.toString());
     expect(weatherCodeImageElement).toBeInTheDocument();
     expect(isLoadingElement).not.toBeInTheDocument();
   });

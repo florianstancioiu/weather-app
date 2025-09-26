@@ -34,7 +34,7 @@ describe("<UnitsDropdown> component", () => {
 
     expect(toggleElement).toBeInTheDocument();
     expect(switchButtonElement).toBeInTheDocument();
-    expect(switchButtonElement).toContainHTML("Switch to Imperial");
+    expect(switchButtonElement).toHaveTextContent("Switch to Imperial");
     expect(listElement).toBeInTheDocument();
 
     expect(onChangeUnitSystemMock).toHaveBeenCalledTimes(0);

@@ -24,9 +24,9 @@ describe("<TodaysWeather> component", () => {
     );
     const detailsElement = screen.getByTestId("todaysWeather.details");
 
-    expect(titleElement).toContainHTML(`${city}, ${country}`);
-    expect(dateElement).toContainHTML(date);
-    expect(temperatureElement).toContainHTML(`${Math.floor(temperature)}°`);
+    expect(titleElement).toHaveTextContent(`${city}, ${country}`);
+    expect(dateElement).toHaveTextContent(date);
+    expect(temperatureElement).toHaveTextContent(`${Math.floor(temperature)}°`);
     expect(detailsElement.children).toHaveLength(4);
     expect(isLoadingElement).not.toBeInTheDocument();
   });

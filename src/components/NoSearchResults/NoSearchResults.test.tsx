@@ -12,6 +12,6 @@ describe("<NoSearchResults> component", () => {
       "noSearchResults.noSearchResults"
     );
 
-    expect(noSearchResultsElement).toContainHTML(title);
+    expect(noSearchResultsElement).toHaveTextContent(title);
   });
 });

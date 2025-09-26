@@ -24,8 +24,8 @@ describe("<TodaysWeatherItem> component", () => {
       "todaysWeatherItem.isLoadingState"
     );
 
-    expect(titleElement).toContainHTML(title);
-    expect(valueElement).toContainHTML(value.toString());
+    expect(titleElement).toHaveTextContent(title);
+    expect(valueElement).toHaveTextContent(value.toString());
     expect(isLoadingElement).not.toBeInTheDocument();
   });
 
@@ -50,8 +50,8 @@ describe("<TodaysWeatherItem> component", () => {
       "todaysWeatherItem.isLoadingState"
     );
 
-    expect(titleElement).toContainHTML(title);
-    expect(valueElement).toContainHTML(value + "mph");
+    expect(titleElement).toHaveTextContent(title);
+    expect(valueElement).toHaveTextContent(value + "mph");
     expect(isLoadingElement).not.toBeInTheDocument();
   });
 
@@ -76,8 +76,8 @@ describe("<TodaysWeatherItem> component", () => {
       "todaysWeatherItem.isLoadingState"
     );
 
-    expect(titleElement).toContainHTML(title);
-    expect(valueElement).toContainHTML(value + "mm");
+    expect(titleElement).toHaveTextContent(title);
+    expect(valueElement).toHaveTextContent(value + "mm");
     expect(isLoadingElement).not.toBeInTheDocument();
   });
 

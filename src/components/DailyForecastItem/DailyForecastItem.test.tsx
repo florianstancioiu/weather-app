@@ -33,8 +33,12 @@ describe("<DailyForecastItem> component", () => {
     );
 
     expect(titleElement).toHaveTextContent("Mon");
-    expect(maximumTemperatureElement).toContainHTML(`${maximumTemperature}°`);
-    expect(minimumTemperatureElement).toContainHTML(`${minimumTemperature}°`);
+    expect(maximumTemperatureElement).toHaveTextContent(
+      `${maximumTemperature}°`
+    );
+    expect(minimumTemperatureElement).toHaveTextContent(
+      `${minimumTemperature}°`
+    );
     expect(isLoadingStateElement).not.toBeInTheDocument();
   });
 
