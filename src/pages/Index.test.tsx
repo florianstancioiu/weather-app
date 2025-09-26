@@ -21,7 +21,7 @@ describe("<Index> page", () => {
 
     const titleElement = screen.getByTestId("todaysWeather.title");
 
-    expect(titleElement).toContainHTML("Please search for a place.");
+    expect(titleElement).toHaveTextContent("Please search for a place.");
   });
 
   test("renders the Dummy Data when the Geolocation Web API is turned on", async () => {
@@ -75,30 +75,38 @@ describe("<Index> page", () => {
     );
 
     // TodaysWeather section check
-    expect(titleElement).toContainHTML(todaysWeatherData.title);
+    expect(titleElement).toHaveTextContent(todaysWeatherData.title);
     expect(weatherCodeImageElement[0].getAttribute("alt")).toEqual(
       todaysWeatherData.weatherCodeImage
     );
-    expect(temperatureElement).toContainHTML(todaysWeatherData.temperature);
+    expect(temperatureElement).toHaveTextContent(todaysWeatherData.temperature);
 
     // DailyForecast section check
     dailyForecastTitleElements.forEach((title, index) =>
-      expect(title).toContainHTML(dailyForecastData.title[index])
+      expect(title).toHaveTextContent(dailyForecastData.title[index])
     );
     dailyForecastMaximumTemperatureElements.forEach((temp, index) =>
-      expect(temp).toContainHTML(dailyForecastData.maximumTemperature[index])
+      expect(temp).toHaveTextContent(
+        dailyForecastData.maximumTemperature[index]
+      )
     );
     dailyForecastMinimumTemperatureElements.forEach((temp, index) =>
-      expect(temp).toContainHTML(dailyForecastData.minimumTemperature[index])
+      expect(temp).toHaveTextContent(
+        dailyForecastData.minimumTemperature[index]
+      )
     );
 
     // HourlyForecast section check
-    expect(daysDropdownTitleElement).toContainHTML(hourlyForecastData.title);
+    expect(daysDropdownTitleElement).toHaveTextContent(
+      hourlyForecastData.title
+    );
     hourlyForecastItemHourElements.forEach((hour, index) =>
-      expect(hour).toContainHTML(hourlyForecastData.hour[index])
+      expect(hour).toHaveTextContent(hourlyForecastData.hour[index])
     );
     hourlyForecastItemTemperatureElements.forEach((temperature, index) =>
-      expect(temperature).toContainHTML(hourlyForecastData.temperature[index])
+      expect(temperature).toHaveTextContent(
+        hourlyForecastData.temperature[index]
+      )
     );
   });
 
@@ -141,11 +149,11 @@ describe("<Index> page", () => {
       await screen.findAllByTestId("hourlyForecastItem.isLoadingState");
 
     // TodaysWeather section check
-    expect(titleElement).toContainHTML("Please search for a place.");
+    expect(titleElement).toHaveTextContent("Please search for a place.");
     expect(weatherCodeImageElement[0].getAttribute("alt")).toEqual(
       "We don't know how the weather is outside."
     );
-    expect(temperatureElement).toContainHTML("NA");
+    expect(temperatureElement).toHaveTextContent("NA");
     weatherItemValueElements.forEach((value) =>
       expect(value).toHaveTextContent("-")
     );
@@ -237,26 +245,34 @@ describe("<Index> page", () => {
     expect(weatherCodeImageElement[0].getAttribute("alt")).toEqual(
       todaysWeatherData.weatherCodeImage
     );
-    expect(temperatureElement).toContainHTML(todaysWeatherData.temperature);
+    expect(temperatureElement).toHaveTextContent(todaysWeatherData.temperature);
 
     // DailyForecast section check
     dailyForecastTitleElements.forEach((title, index) =>
-      expect(title).toContainHTML(dailyForecastData.title[index])
+      expect(title).toHaveTextContent(dailyForecastData.title[index])
     );
     dailyForecastMaximumTemperatureElements.forEach((temp, index) =>
-      expect(temp).toContainHTML(dailyForecastData.maximumTemperature[index])
+      expect(temp).toHaveTextContent(
+        dailyForecastData.maximumTemperature[index]
+      )
     );
     dailyForecastMinimumTemperatureElements.forEach((temp, index) =>
-      expect(temp).toContainHTML(dailyForecastData.minimumTemperature[index])
+      expect(temp).toHaveTextContent(
+        dailyForecastData.minimumTemperature[index]
+      )
     );
 
     // HourlyForecast section check
-    expect(daysDropdownTitleElement).toContainHTML(hourlyForecastData.title);
+    expect(daysDropdownTitleElement).toHaveTextContent(
+      hourlyForecastData.title
+    );
     hourlyForecastItemHourElements.forEach((hour, index) =>
-      expect(hour).toContainHTML(hourlyForecastData.hour[index])
+      expect(hour).toHaveTextContent(hourlyForecastData.hour[index])
     );
     hourlyForecastItemTemperatureElements.forEach((temperature, index) =>
-      expect(temperature).toContainHTML(hourlyForecastData.temperature[index])
+      expect(temperature).toHaveTextContent(
+        hourlyForecastData.temperature[index]
+      )
     );
   });
 });

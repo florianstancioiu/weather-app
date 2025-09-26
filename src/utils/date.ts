@@ -57,5 +57,6 @@ export const getActiveFormattedHoursFromHourly = (
         index: index,
       };
     })
-    .filter((hour) => hour.hour.getDay() === activeDay);
+    .filter((hour) => hour.hour.getDay() === activeDay)
+    .sort((a, b) => a.hour.getHours() - b.hour.getHours());
 };
