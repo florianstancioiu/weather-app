@@ -5,8 +5,18 @@ import DaysDropdown from "./DaysDropdown";
 import days from "../../utils/stories/days";
 
 describe("<DaysDropdown> component", () => {
-  // TODO: Split this test in 2 tests
-  test("renders the component && onChange works", async () => {
+  test("renders the component", async () => {
+    const onChangeMock = vi.fn();
+
+    render(<DaysDropdown days={days} onChange={onChangeMock} />);
+
+    const titleElement = screen.getByTestId("daysDropdown.title");
+
+    expect(titleElement).toHaveTextContent("Monday");
+    expect(onChangeMock).toHaveBeenCalledTimes(0);
+  });
+
+  test("opens the dropdown and selects an option - it triggers onChange", async () => {
     const onChangeMock = vi.fn();
 
     render(<DaysDropdown days={days} onChange={onChangeMock} />);
@@ -21,6 +31,7 @@ describe("<DaysDropdown> component", () => {
     fireEvent.click(listItemElement);
 
     expect(listElement.children).toHaveLength(7);
+
     expect(onChangeMock).toHaveBeenCalledTimes(1);
     expect(onChangeMock).toHaveBeenCalledWith(days[1]);
   });
