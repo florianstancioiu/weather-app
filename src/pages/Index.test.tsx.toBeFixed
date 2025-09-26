@@ -20,7 +20,7 @@ describe("<Index> page", () => {
     expect(titleElement).toHaveTextContent("Please search for a place.");
   });
 
-  test("renders the Dummy Data when the Geolocation Web API is turned on", async () => {
+  test("renders the dummy data when the user allows Geolocation Web API", async () => {
     // Instruct vitest to mock fetch on the `window` object.
     global.fetch = vi.fn(
       () => new Promise((resolve) => resolve(bucharestData))
@@ -108,7 +108,7 @@ describe("<Index> page", () => {
     );
   });
 
-  test("renders the select a location state when the Geolocation Web API is turned off", async () => {
+  test("renders the select a location state when the user doesnt allow Geolocation Web API", async () => {
     // Instruct vitest to mock fetch on the `window` object.
     global.fetch = vi.fn(
       () => new Promise((resolve) => resolve(bucharestData))
@@ -170,7 +170,7 @@ describe("<Index> page", () => {
     );
   });
 
-  test("renders the Bucharest, Romania data on searching 'Bucharest, Romania'", async () => {
+  test("renders the right data when searching 'Bucharest, Romania'", async () => {
     const searchkeyword = "Bucharest, Romania";
 
     // Mock navigator.geolocation
