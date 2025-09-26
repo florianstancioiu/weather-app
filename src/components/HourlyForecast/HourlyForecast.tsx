@@ -76,7 +76,7 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
       >
         {hours !== undefined &&
           isLoading === false &&
-          hours.map((hour) => {
+          hours.map((hour, hoursIndex) => {
             const index = hour.index;
             const actualHour = hour.hour.toLocaleString("en-US", {
               hour: "numeric",
@@ -87,7 +87,7 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
 
             return (
               <HourlyForecastItem
-                key={index}
+                key={hoursIndex}
                 hour={actualHour}
                 temperature={Math.round(temperature!)}
                 weatherCode={weatherCode}
