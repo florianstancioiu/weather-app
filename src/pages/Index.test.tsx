@@ -116,12 +116,12 @@ describe("<Index> page", () => {
       );
     });
 
-    (await screen.findAllByTestId("hourlyForecastItem.temperature")).forEach(
-      (temperature, index) =>
-        expect(temperature).toHaveTextContent(
-          hourlyForecastData.temperature[index]
-        )
-    );
+    const temperatureValues = (
+      await screen.findAllByTestId("hourlyForecastItem.temperature")
+    ).map((el) => el.textContent?.trim());
+
+    expect(temperatureValues).toHaveLength(24);
+    expect(temperatureValues).toEqual(hourlyForecastData.temperature);
   });
 
   test("renders the select a location state when the user doesnt allow Geolocation Web API", async () => {
