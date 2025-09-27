@@ -28,6 +28,10 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
   const [hours, setHours] = useState<{ index: number; hour: Date }[]>();
 
   useEffect(() => {
+    if (typeof data == "undefined") {
+      return;
+    }
+
     // get the correct days in the correct order from the data object
     const numericDays = getDaysFromHourly(data?.time);
 
@@ -95,7 +99,7 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
               />
             );
           })}
-        {((hours !== undefined && hours.length === 0) || isLoading === true) &&
+        {(isLoading === true || typeof data == "undefined") &&
           [...Array(24).keys()].map((_dummy, index) => {
             return <HourlyForecastItem key={index} isLoading={true} />;
           })}

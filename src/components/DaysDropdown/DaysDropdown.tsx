@@ -89,8 +89,9 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
         {days !== undefined && days.length > 0 && (
           <p>{activeDay !== undefined ? activeDay.title : "Select a day"}</p>
         )}
-        {days === undefined ||
-          (days !== undefined && days.length === 0 && <p>No options</p>)}
+        {(days == undefined || (days !== undefined && days.length === 0)) && (
+          <p>No options</p>
+        )}
         <img src={DropdownIcon} alt="" />
       </div>
 
