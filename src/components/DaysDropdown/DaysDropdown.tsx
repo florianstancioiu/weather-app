@@ -1,6 +1,6 @@
 import DropdownIcon from "../../images/icon-dropdown.svg";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
-import { createRef, useState, useId, type KeyboardEvent } from "react";
+import { createRef, useState, useId, useEffect } from "react";
 
 export type Day =
   | "Monday"
@@ -27,6 +27,19 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
   const wrapperRef = createRef<HTMLDivElement>();
   const dropdownId = useId();
 
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleEscapeKey);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, []);
+
   // Close the dropdown on blur
   useOnClickOutside(wrapperRef, () => {
     setIsOpen(false);
@@ -43,14 +56,16 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
     setIsOpen(false);
   };
 
-  const onDropdownKeyDownHandler = (event: KeyboardEvent<HTMLDivElement>) => {
+  const onDropdownKeyDownHandler = (
+    event: React.KeyboardEvent<HTMLDivElement>
+  ) => {
     if (event.key === "Enter") {
       toggleOpenHandler();
     }
   };
 
   const onDropdownOptionKeyDownHandler = (
-    event: KeyboardEvent,
+    event: React.KeyboardEvent,
     day: DayDropdownValue
   ) => {
     if (event.key === "Enter") {
@@ -107,7 +122,7 @@ const DaysDropdown = ({ days, onChange }: DaysDropdown) => {
               <li
                 key={day.id}
                 onClick={() => onDropdownOptionClickHandler(day)}
-                onKeyDown={(event: KeyboardEvent) =>
+                onKeyDown={(event: React.KeyboardEvent) =>
                   onDropdownOptionKeyDownHandler(event, day)
                 }
                 role="option"

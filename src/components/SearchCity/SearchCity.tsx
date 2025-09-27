@@ -1,4 +1,4 @@
-import { useState, type KeyboardEvent, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import SearchIcon from "../../images/icon-search.svg?react";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 
@@ -15,9 +15,33 @@ const SearchCity = ({ onChange, onSearch, dropdownData }: SearchCity) => {
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
   const searchRef = useRef(null);
 
-  const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setDropdownIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleEscapeKey);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, []);
+
+  const onKeyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       onSearch(keyword);
+      setDropdownIsOpen(false);
+    }
+  };
+
+  const onKeyDownDropdownItemHandler = (eventKey: string, value: string) => {
+    if (eventKey === "Enter") {
+      onSearch(value);
+      setDropdownIsOpen(false);
+    }
+
+    if (eventKey === "Escape") {
       setDropdownIsOpen(false);
     }
   };
@@ -67,6 +91,9 @@ const SearchCity = ({ onChange, onSearch, dropdownData }: SearchCity) => {
                     setDropdownIsOpen(false);
                     setKeyword(val);
                   }}
+                  onKeyDown={(event) =>
+                    onKeyDownDropdownItemHandler(event.key, val)
+                  }
                   tabIndex={0}
                   className={`cursor-pointer px-[0.5rem] py-[10px] rounded-[8px] border-[1px] border-neutral-2 hover:bg-neutral-4 hover:border-lighter-blue ${
                     val === keyword ? "bg-neutral-4 border-lighter-blue " : ""

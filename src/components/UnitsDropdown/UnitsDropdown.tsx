@@ -1,4 +1,4 @@
-import { useState, createRef, useId, type KeyboardEvent } from "react";
+import { useState, createRef, useId, useEffect } from "react";
 import UnitsIcon from "../../images/icon-units.svg";
 import DropdownIcon from "../../images/icon-dropdown.svg";
 import CheckmarkIcon from "../../images/icon-checkmark.svg?react";
@@ -84,6 +84,19 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
     },
   ]);
 
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleEscapeKey);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, []);
+
   // Close the dropdown on blur
   useOnClickOutside(wrapperRef, () => {
     setIsOpen(false);
@@ -115,14 +128,14 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
     }
   }, 300);
 
-  const onDropdownKeyDownHandler = (event: KeyboardEvent) => {
+  const onDropdownKeyDownHandler = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
       toggleDropdown();
     }
   };
 
   const onDropdownOptionKeyDownHandler = (
-    event: KeyboardEvent,
+    event: React.KeyboardEvent,
     isMetric: boolean
   ) => {
     if (event.key === "Enter") {
@@ -157,7 +170,7 @@ const UnitsDropdown = ({ onChangeUnitSystem }: UnitsDropdown) => {
               className="cursor-pointer w-full text-left text-white px-[0.625rem] h-[2.625rem] rounded-[0.75rem] hover:bg-neutral-3 focus:bg-neutral-3"
               data-testid="unitsDropdown.switchButton"
               onClick={() => toggleMetricOrImperial(isMetric)}
-              onKeyDown={(event: KeyboardEvent) =>
+              onKeyDown={(event: React.KeyboardEvent) =>
                 onDropdownOptionKeyDownHandler(event, isMetric)
               }
               aria-selected={isMetric}
