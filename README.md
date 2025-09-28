@@ -29,9 +29,9 @@ Users should be able to:
 - [x] View an hourly forecast showing temperature changes throughout the day
 - [x] Switch between different days of the week using the day selector in the hourly forecast section
 - [x] Toggle between Imperial and Metric measurement units via the units dropdown
-- [ ] ~~Switch between specific temperature units (Celsius and Fahrenheit) and measurement units for wind speed (km/h and mph) and precipitation (millimeters) via the units dropdown~~ I decided to not implement this feature because it would complicate the code base and (almost) the same functionality can be achieved using the imperial-metric toggle.
 - [x] View the optimal layout for the interface depending on their device's screen size
-- [ ] See hover and focus states for all interactive elements on the page
+- [x] See hover ~~and focus~~ (I used the default focus states) states for all interactive elements on the page
+- [ ] ~~Switch between specific temperature units (Celsius and Fahrenheit) and measurement units for wind speed (km/h and mph) and precipitation (millimeters) via the units dropdown~~ I decided to not implement this feature because it would complicate the code base and (almost) the same functionality can be achieved using the imperial-metric toggle.
 
 ### Screenshot
 
@@ -62,6 +62,17 @@ Users should be able to:
 
 ### What I learned
 
+- I learned how to generate the test coverage report using Vitest and [Istanbul](https://istanbul.js.org/)
+- I learned stuff about making websites keyboard and visually accessible (though I don't think I used the best approach when making the app keyboard accessible, it works, but the code is not the best it can be)
+- I learned how to create custom hooks in React (I kinda knew this one already but I'm glad I practiced it in this project)
+- I learned that storybook can test for accessibility issues
+- I learned to use the Geolocation Web API in order to get the current location of the user
+- I learned how to add storybook to Github pages using a custom deploy.yml workflow
+- I learned that you can mock/fake a function in Vitest so that the actual function is not triggered directly (fetch)
+- I learned (but not actually used in this project) how to create github secret keys
+
+The main challenge I encountered was something to do with the _Index.test.tsx_ file, I tried to make an assertion on the HourlyForecastItem temperatures values and they matched correctly on local but failed to do so in Github Actions and the deploy failed, I still haven't managed to fix it, I removed the assertions, I now believe it has something to do with the fact that I used `useEffect` in HourlyForecast component. I won't go much in details because I'm still bitter and humbled by the situation.
+
 ### Continued development
 
 ~~I would also add [storybook](https://storybook.js.org/) to this project, I don't know if I will have time until the Frontendmentor Hackathon time runs out, but I think I will add it nonetheless.~~ I added storybook.
@@ -87,6 +98,7 @@ Users should be able to:
 - [How to make a test that will wait 5 seconds before check element appearance (React testing lib)](https://stackoverflow.com/a/70881371/12159189) - This helped me wait for a timer in test files
 - [Mocking Fetch And Network Requests With Vitest](https://stevekinney.com/courses/testing/mocking-fetch-and-network-requests) - This helped me mock fetch
 - [How to "mock" navigator.geolocation in a React Jest Test](https://stackoverflow.com/a/67019816/12159189) - This helped me mock navigator.geolocation
+- [Using secrets in GitHub Actions](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets) - I learned how to use secret keys in Github Actions
 
 ## Author
 
