@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useLayoutEffect, useRef } from "react";
 import DaysDropdown from "../DaysDropdown/DaysDropdown";
 import HourlyForecastItem from "../HourlyForecastItem/HourlyForecastItem";
 import { type DayDropdownValue, type Day } from "../DaysDropdown/DaysDropdown";
@@ -28,7 +28,7 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
   const [hours, setHours] =
     useState<{ index: string; hour: Date; originalIndex: number }[]>();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof data == "undefined") {
       return;
     }
