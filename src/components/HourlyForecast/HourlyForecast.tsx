@@ -25,7 +25,8 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
   const hourlyItemsRef = useRef<HTMLUListElement>(null);
   const [days, setDays] =
     useState<{ id: number; title: Day; isActive: boolean }[]>();
-  const [hours, setHours] = useState<{ index: number; hour: Date }[]>();
+  const [hours, setHours] =
+    useState<{ index: string; hour: Date; originalIndex: number }[]>();
 
   useEffect(() => {
     if (typeof data == "undefined") {
@@ -85,12 +86,12 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
               hour: "numeric",
               hour12: true,
             });
-            const temperature = data?.temperature_2m![index];
-            const weatherCode = data?.weather_code![index];
+            const temperature = data?.temperature_2m![hour.originalIndex];
+            const weatherCode = data?.weather_code![hour.originalIndex];
 
             return (
               <HourlyForecastItem
-                key={actualHour}
+                key={index}
                 hour={actualHour}
                 temperature={Math.round(temperature!)}
                 weatherCode={weatherCode}

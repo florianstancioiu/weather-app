@@ -22,7 +22,7 @@ describe("<HourlyForecast> component", () => {
     const numericDays = getDaysFromHourly(data.time);
     const hours = getActiveFormattedHoursFromHourly(numericDays[0], data);
     const temperatureValues = hours.map((hour) => {
-      return `${Math.round(data?.temperature_2m![hour.index])}°`;
+      return `${Math.round(data?.temperature_2m![hour.originalIndex])}°`;
     });
 
     const temperatures = temperatureElements.map((el) =>

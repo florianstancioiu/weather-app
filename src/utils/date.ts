@@ -54,7 +54,8 @@ export const getActiveFormattedHoursFromHourly = (
     .map((hour, index) => {
       return {
         hour: hour,
-        index: index,
+        originalIndex: index,
+        index: hour.toString(),
       };
     })
     .filter((hour) => hour.hour.getDay() === activeDay)
