@@ -71,7 +71,7 @@ Users should be able to:
 - I learned that you can mock/fake a function in Vitest so that the actual function is not triggered directly (fetch)
 - I learned (but not actually used in this project) how to create github secret keys
 
-The main challenge I encountered was something to do with the _Index.test.tsx_ file, I tried to make an assertion on the HourlyForecastItem temperatures values and they matched correctly on local but failed to do so in Github Actions and the deploy failed, I still haven't managed to fix it, I removed the assertions, I now believe it has something to do with the fact that I used `useEffect` in HourlyForecast component. I won't go much in details because I'm still bitter and humbled by the situation.
+The main challenge I encountered was something to do with the _Index.test.tsx_ file, I tried to make an assertion on the HourlyForecastItem temperature values and they matched correctly on local but failed to do so in Github Actions and the deploy failed, I still haven't managed to fix it, I removed the assertions, I now believe it has something to do with the fact that the API values are wrapped in a Float32Array.
 
 ### Continued development
 
