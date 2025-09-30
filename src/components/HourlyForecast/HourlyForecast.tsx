@@ -22,6 +22,11 @@ export type HourlyForecast = {
 
 // TODO: add isMetric prop
 const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
+  const temperatureArray =
+    data !== undefined ? Array.from(data?.temperature_2m!) : [];
+  const weatherCodeArray =
+    data !== undefined ? Array.from(data?.weather_code!) : [];
+
   const hourlyItemsRef = useRef<HTMLUListElement>(null);
   const [days, setDays] =
     useState<{ id: number; title: Day; isActive: boolean }[]>();
@@ -86,8 +91,8 @@ const HourlyForecast = ({ data, isLoading }: HourlyForecast) => {
               hour: "numeric",
               hour12: true,
             });
-            const temperature = data?.temperature_2m![hour.originalIndex];
-            const weatherCode = data?.weather_code![hour.originalIndex];
+            const temperature = temperatureArray[hour.originalIndex];
+            const weatherCode = weatherCodeArray[hour.originalIndex];
 
             return (
               <HourlyForecastItem
